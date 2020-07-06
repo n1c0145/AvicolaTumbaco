@@ -1,1 +1,64 @@
 <p>registrarse works!</p>
+
+<div>
+  <form
+    id="search_form"
+    class="search_form"
+    #formularioUsuario="ngForm"
+  >
+    <h4>Cedula</h4>
+    <input
+      id="search_form_name"
+      class="input_field search_form_name"
+      type="text"
+      placeholder="N° Cédula"
+      required="required"
+      [(ngModel)]="cedula"
+      name="cedula"
+      #campoCedula="ngModel"
+    />
+    <h4>Nombres</h4>
+    <input
+      id="search_form_name"
+      class="input_field search_form_name"
+      type="text"
+      placeholder="Nombres"
+      required="required"
+      [(ngModel)]="nombres"
+      name="nombres"
+    />
+    <h4>Usuario</h4>
+    <input
+      id="search_form_name"
+      class="input_field search_form_name"
+      type="text"
+      placeholder="Usuario"
+      required="required"
+      [(ngModel)]="usuario"
+      name="usuario"
+      #campoUsuario="ngModel"
+    />
+    <h4>pass</h4>
+    <input
+      id="search_form_category"
+      class="input_field search_form_category"
+      type="password"
+      placeholder="Contraseña"
+      required="required"
+      [(ngModel)]="pass"
+      name="pass"
+      #campoContrasenia="ngModel"
+    />
+    <input
+      id="search_form_category"
+      class="input_field search_form_category"
+      type="password"
+      placeholder="Repetir la Contraseña"
+      required="required"
+      [(ngModel)]="passr"
+      name="pass"
+      #campoRContrasenia="ngModel"
+    />
+    <button id="search_submit_button" type="submit" class="search_submit_button " value="Submit" (click)='ingresar()'>REGISTRARSE</button>
+  </form>
+</div>
