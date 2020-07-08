@@ -10,10 +10,19 @@ module.exports = {
   attributes: {
 
     cedula:{
+      type:'number'
+    },
+    nombre:{
       type:'string'
     },
-    nombres:{
+    apellido:{
       type:'string'
+    },
+    direccion:{
+      type:'string'
+    },
+    telefono:{
+      type:'number'
     },
     idPerfil:{
       model:'tipoPerfil'

@@ -8,6 +8,9 @@ export class LoginService {
   constructor(
     private readonly _httpClient: HttpClient
   ) { }
+  metodoGet(url: string){
+    return this._httpClient.get(url);
+}
 
   crearRegistro(datosRegistroCrear){
     const url = 'http://localhost:1337/registro';

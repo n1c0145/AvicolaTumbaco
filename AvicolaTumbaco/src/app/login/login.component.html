@@ -1,4 +1,32 @@
 <p>login works!</p>
 
-<a class="nav-link" [routerLink]="['/administrador/inicioadministrador']">Inicio</a>
-<a class="nav-link" [routerLink]="['/usuario/iniciousuario']">Inicio</a>
+<!-- <a class="nav-link" [routerLink]="['/administrador/inicioadministrador']"
+  >Inicio</a
+>
+<a class="nav-link" [routerLink]="['/usuario/iniciousuario']">Inicio</a> -->
+
+<div>
+  <form id="search_form" class="search_form" #formularioUsuario="ngForm">
+      <h4>Usuario</h4>
+    <input
+      type="text"
+      placeholder="Usuario"
+      [(ngModel)]="usuario"
+      name="usuario"
+      #campoUsuario="ngModel"
+    />
+    <h4>Contraseña</h4>
+    <input
+      type="password"
+      placeholder="Password"
+      [(ngModel)]="pass"
+      name="pass"
+      #campoContrasenia="ngModel"
+    />
+
+
+<button type="submit" (click)='iniciarSesion()'>Iniciar Sesion</button>
+<button [routerLink]="['/registrarse']">Registrarse</button>
+
+  </form>
+</div>

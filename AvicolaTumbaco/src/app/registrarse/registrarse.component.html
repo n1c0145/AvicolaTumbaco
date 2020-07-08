@@ -17,15 +17,45 @@
       name="cedula"
       #campoCedula="ngModel"
     />
-    <h4>Nombres</h4>
+    <h4>Nombre</h4>
     <input
       id="search_form_name"
       class="input_field search_form_name"
       type="text"
       placeholder="Nombres"
       required="required"
-      [(ngModel)]="nombres"
-      name="nombres"
+      [(ngModel)]="nombre"
+      name="nombre"
+    />
+    <h4>Apellido</h4>
+    <input
+    id="search_form_name"
+    class="input_field search_form_name"
+    type="text"
+    placeholder="Apellido"
+    required="required"
+    [(ngModel)]="apellido"
+    name="apellido"
+  />
+    <h4>Direccion</h4>
+    <input
+    id="search_form_name"
+    class="input_field search_form_name"
+    type="text"
+    placeholder="Direccion"
+    required="required"
+    [(ngModel)]="direccion"
+    name="direccion"
+  />
+    <h4>Telefono</h4>
+    <input
+      id="search_form_name"
+      class="input_field search_form_name"
+      type="text"
+      placeholder="Telefono"
+      required="required"
+      [(ngModel)]="telefono"
+      name="telefono"
     />
     <h4>Usuario</h4>
     <input
@@ -49,16 +79,12 @@
       name="pass"
       #campoContrasenia="ngModel"
     />
-    <input
-      id="search_form_category"
-      class="input_field search_form_category"
-      type="password"
-      placeholder="Repetir la Contraseña"
-      required="required"
-      [(ngModel)]="passr"
-      name="pass"
-      #campoRContrasenia="ngModel"
-    />
+    <select id="select" [(ngModel)]="select" name="select">
+      <option value="1">Usuario</option>
+      <option value ="2">Administrador</option>
+    </select>
+
     <button id="search_submit_button" type="submit" class="search_submit_button " value="Submit" (click)='ingresar()'>REGISTRARSE</button>
   </form>
+
 </div>
