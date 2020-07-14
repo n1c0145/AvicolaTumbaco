@@ -1,3 +1,6 @@
+import { ProductosComponent } from '../administrador/productos/productos.component';
+import { InventarioComponent } from '../administrador/inventario/inventario.component';
+import { PerfilComponent } from './perfil/perfil.component';
 import { InicioadministradorComponent } from './inicioadministrador/inicioadministrador.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -8,7 +11,18 @@ const routes: Routes = [
     path: 'inicioadministrador',
     component: InicioadministradorComponent,
   },
-
+  {
+    path: 'perfil',
+    component: PerfilComponent,
+  },
+  {
+    path: 'inventario',
+    component: InventarioComponent,
+  },
+  {
+    path: 'productos',
+    component: ProductosComponent,
+  },
 ];
 
 @NgModule({

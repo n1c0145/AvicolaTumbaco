@@ -1,9 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <img
-      src=""
-      width="10%"
-      alt=""
-    />
+    <img src="" width="10%" alt="" />
     <button
       class="navbar-toggler"
       type="button"
@@ -19,9 +15,25 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/usuario/user/perfil']">Perfil</a>
+          <a
+            class="nav-link"
+            [routerLink]="['/administrador/inicioadministrador']"
+            >Inicio</a
+          >
         </li>
-       
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/administrador/perfil']">Perfil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/administrador/inventario']"
+            >Inventario</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/administrador/productos']"
+            >Gestion Productos</a
+          >
+        </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
         <button
@@ -33,5 +45,4 @@
       </form>
     </div>
   </nav>
-
-<p>iniciousuario works!</p>
+<p>inventario works!</p>
