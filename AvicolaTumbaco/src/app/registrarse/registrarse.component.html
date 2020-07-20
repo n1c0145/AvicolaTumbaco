@@ -2,9 +2,7 @@
 
 <div>
   <form
-    id="search_form"
-    class="search_form"
-    #formularioUsuario="ngForm"
+ 
   >
     <h4>Cedula</h4>
     <input
@@ -15,7 +13,6 @@
       required="required"
       [(ngModel)]="cedula"
       name="cedula"
-      #campoCedula="ngModel"
     />
     <h4>Nombre</h4>
     <input
@@ -66,7 +63,6 @@
       required="required"
       [(ngModel)]="usuario"
       name="usuario"
-      #campoUsuario="ngModel"
     />
     <h4>pass</h4>
     <input
@@ -77,7 +73,6 @@
       required="required"
       [(ngModel)]="pass"
       name="pass"
-      #campoContrasenia="ngModel"
     />
     <select id="select" [(ngModel)]="select" name="select">
       <option value="1">Usuario</option>

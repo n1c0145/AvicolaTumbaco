@@ -45,7 +45,6 @@
     </form>
   </div>
 </nav>
-<p>productos works!</p>
 
 <div class="accordion" id="accordionExample">
   <div class="card">
@@ -59,7 +58,7 @@
           aria-expanded="true"
           aria-controls="collapseOne"
         >
-          Ingresar
+         Productos
         </button>
       </h2>
     </div>
@@ -71,59 +70,224 @@
       data-parent="#accordionExample"
     >
       <div class="card-body">
-        Aqui ingresar
+        <div>
+          <table>
+            <thead>
+              <tr>
+                <th><h4>Nombre</h4></th>
+                <th><h4>Descripcio</h4></th>
+                <th><h4>Imagen</h4></th>
+                <th><h4>Categoria</h4></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let producto of productos">
+                <th>{{ producto.nombre }}</th>
+                <th>{{ producto.descripcion }}</th>
+                <th><img src="{{ producto.imagen }}" width="200px"/></th>
+                <th>{{ producto.categoria }}</th>
+              </tr>
+            </tbody>
+          </table>
+          </div>
       </div>
     </div>
-  </div>
-  <div class="card">
-    <div class="card-header" id="headingTwo">
-      <h2 class="mb-0">
-        <button
-          class="btn btn-link btn-block text-left collapsed"
-          type="button"
-          data-toggle="collapse"
-          data-target="#collapseTwo"
-          aria-expanded="false"
-          aria-controls="collapseTwo"
-        >
-          Editar
-        </button>
-      </h2>
-    </div>
-    <div
-      id="collapseTwo"
-      class="collapse"
-      aria-labelledby="headingTwo"
-      data-parent="#accordionExample"
-    >
-      <div class="card-body">
-Aqui edita
+    <div class="card">
+      <div class="card-header" id="headingTwo">
+        <h2 class="mb-0">
+          <button
+            class="btn btn-link btn-block text-left collapsed"
+            type="button"
+            data-toggle="collapse"
+            data-target="#collapseTwo"
+            aria-expanded="false"
+            aria-controls="collapseTwo"
+          >
+            Ingresar nuevo Producto
+          </button>
+        </h2>
+      </div>
+      <div
+        id="collapseTwo"
+        class="collapse"
+        aria-labelledby="headingTwo"
+        data-parent="#accordionExample"
+      >
+        <div class="card-body">
+         
+          <div>
+            <form>
+              <h4>Nombre</h4>
+              <input
+                id="search_form_name"
+                type="text"
+                placeholder="Nombre"
+                required="required"
+                [(ngModel)]="nombre"
+                name="nombre"
+              />
+              <h4>Descripcion</h4>
+              <input
+                id="search_form_name"
+                class="input_field search_form_name"
+                type="text"
+                placeholder="Descripcion"
+                required="required"
+                [(ngModel)]="descripcion"
+                name="descripcion"
+              />
+              <h4>Path Imagen</h4>
+              <input
+                id="search_form_name"
+                class="input_field search_form_name"
+                type="text"
+                placeholder="Imagen"
+                required="required"
+                [(ngModel)]="imagen"
+                name="imagen"
+              />
+              <h4>Categoria</h4>
+              <input
+                id="search_form_name"
+                class="input_field search_form_name"
+                type="text"
+                placeholder="Categoria"
+                required="required"
+                [(ngModel)]="categoria"
+                name="categoria"
+              />
+              <h4>Stock</h4>
+              <input
+                id="search_form_name"
+                class="input_field search_form_name"
+                type="number"
+                placeholder="Stock"
+                required="required"
+                [(ngModel)]="stock"
+                name="stock"
+              />
+  
+              <button
+                id="search_submit_button"
+                type="submit"
+                class="search_submit_button"
+                value="insertar"
+                (click)="insertar()"
+              >
+                Insertar
+              </button>
+            </form>
+          </div>
+          
+
+
+
+        </div>
       </div>
     </div>
-  </div>
-  <div class="card">
-    <div class="card-header" id="headingThree">
-      <h2 class="mb-0">
-        <button
-          class="btn btn-link btn-block text-left collapsed"
-          type="button"
-          data-toggle="collapse"
-          data-target="#collapseThree"
-          aria-expanded="false"
-          aria-controls="collapseThree"
-        >
-          Eliminar
-        </button>
-      </h2>
-    </div>
-    <div
-      id="collapseThree"
-      class="collapse"
-      aria-labelledby="headingThree"
-      data-parent="#accordionExample"
-    >
-      <div class="card-body">
-Aqui elimina
+    <div class="card">
+      <div class="card-header" id="headingThree">
+        <h2 class="mb-0">
+          <button
+            class="btn btn-link btn-block text-left collapsed"
+            type="button"
+            data-toggle="collapse"
+            data-target="#collapseThree"
+            aria-expanded="false"
+            aria-controls="collapseThree"
+          >
+          Editar/Eliminar Producto
+          </button>
+        </h2>
+      </div>
+      <div
+        id="collapseThree"
+        class="collapse"
+        aria-labelledby="headingThree"
+        data-parent="#accordionExample"
+      >
+        <div class="card-body">
+         
+          <div>
+            <table>
+              <thead>
+                <tr>
+                  <th><h4>Nombre</h4></th>
+                  <th><h4>Descripcio</h4></th>
+                  <th><h4>Imagen</h4></th>
+                  <th><h4>Categoria</h4></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let producto of productos">
+                  <th>{{ producto.nombre }}</th>
+                  <th>{{ producto.descripcion }}</th>
+                  <th><img src="{{ producto.imagen }}" width="200px"/></th>
+                  <th>{{ producto.categoria }}</th>
+                  <button type="button" class="btn btn-primary" (click)="editar(producto)">Editar</button>
+
+                  <button type="button" class="btn btn-danger" (click)="eliminar(producto)">Eliminar</button>
+
+                  
+                </tr>
+              </tbody>
+            </table>
+            <div *ngIf="editOn">
+              <form>
+                <h4>Nombre</h4>
+                <input
+                  id="search_form_name"
+                  type="text"
+                  placeholder="Nombre"
+                  required="required"
+                  [(ngModel)]="selectedProducto.nombre"
+                  name="nombre"
+                  value="{{selectedProducto.nombre}}"
+                />
+                <h4>Descripcion</h4>
+                <input
+                  id="search_form_name"
+                  class="input_field search_form_name"
+                  type="text"
+                  placeholder="Descripcion"
+                  required="required"
+                  [(ngModel)]="selectedProducto.descripcion"
+                  name="descripcion"
+                  value="{{selectedProducto.descripcion}}"
+                />
+                <h4>Path Imagen</h4>
+                <input
+                  id="search_form_name"
+                  class="input_field search_form_name"
+                  type="text"
+                  placeholder="Imagen"
+                  required="required"
+                  [(ngModel)]="selectedProducto.imagen"
+                  name="imagen"
+                  value="{{selectedProducto.imagen}}"
+                />
+                <h4>Categoria</h4>
+                <input
+                  id="search_form_name"
+                  class="input_field search_form_name"
+                  type="text"
+                  placeholder="Categoria"
+                  [(ngModel)]="selectedProducto.categoria"
+                  name="categoria"
+                  value="{{selectedProducto.categoria}}"
+                />
+                <button
+                  id="search_submit_button"
+                  class="search_submit_button"
+                  (click)="actualizar(selectedProducto)"
+                >
+                Actualizar
+                </button>
+              </form>
+            </div>
+            </div>
+
+        </div>
       </div>
     </div>
   </div>

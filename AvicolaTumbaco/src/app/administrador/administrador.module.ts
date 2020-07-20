@@ -5,6 +5,8 @@ import { InicioadministradorComponent } from './inicioadministrador/inicioadmini
 import { PerfilComponent } from './perfil/perfil.component';
 import { InventarioComponent } from './inventario/inventario.component';
 import { ProductosComponent } from './productos/productos.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -13,6 +15,10 @@ import { ProductosComponent } from './productos/productos.component';
     InventarioComponent,
     ProductosComponent,
   ],
-  imports: [CommonModule, AdministradorRoutingModule],
+  imports: [CommonModule, 
+    AdministradorRoutingModule,
+    FormsModule,
+    HttpClientModule
+  ],
 })
 export class AdministradorModule {}

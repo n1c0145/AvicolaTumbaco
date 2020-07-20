@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../servicios/login.service';
-import { log } from 'util';
 @Component({
   selector: 'app-registrarse',
   templateUrl: './registrarse.component.html',
