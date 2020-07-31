@@ -24,13 +24,28 @@ module.exports = {
     telefono:{
       type:'number'
     },
-    idPerfil:{
-      model:'tipoPerfil'
+    estado:{
+      type:'string'
     },
-    login:{
-      collection:'login',
-      via:'idRegistro'
-    }
+    fechaCreacion:{
+      type:'string'
+    },
+    nombreUsuarioCreacion:{
+      type:'string'
+    },
+    fechaActualizacion:{
+      type:'string'
+    },
+    nombreUsuarioActualizacion:{
+      type:'string'
+    },
+    idLogin:{
+      model:'Login'
+    },
+    idTipoPerfil:{
+      model:'TipoPerfil'
+    },
+
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝

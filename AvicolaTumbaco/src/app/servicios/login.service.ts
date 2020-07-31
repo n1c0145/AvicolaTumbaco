@@ -16,11 +16,14 @@ export class LoginService {
     const url = 'http://localhost:1337/registro';
     return this._httpClient.post(url,datosRegistroCrear);
 }
-crearCredenciales(datosCredencialesCrear){
+crearLogin(datosCredencialesCrear){
   const url = 'http://localhost:1337/login';
   return this._httpClient.post(url,datosCredencialesCrear);
 }
 
-
+crearPerfil(datosCredencialesCrear){
+  const url = 'http://localhost:1337/TipoPerfil';
+  return this._httpClient.post(url,datosCredencialesCrear);
+}
 
 }

@@ -10,14 +10,26 @@ module.exports = {
   attributes: {
     perfil:{
       type:'string',
-
     },
-    registros:{
+    estado:{
+      type:'string'
+    },
+    fechaCreacion:{
+      type:'string'
+    },
+    nombreUsuarioCreacion:{
+      type:'string'
+    },
+    fechaActualizacion:{
+      type:'string'
+    },
+    nombreUsuarioActualizacion:{
+      type:'string'
+    },
+    registro:{
       collection:'registro',
-      via:'idPerfil'
-      
+      via:'idTipoPerfil'
     }
-
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝

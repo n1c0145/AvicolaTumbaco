@@ -14,10 +14,25 @@ module.exports = {
     clave:{
       type:'string'
     },
-    idRegistro:{
-      model:'registro'
+    estado:{
+      type:'string'
     },
-
+    fechaCreacion:{
+      type:'string'
+    },
+    nombreUsuarioCreacion:{
+      type:'string'
+    },
+    fechaActualizacion:{
+      type:'string'
+    },
+    nombreUsuarioActualizacion:{
+      type:'string'
+    },
+    registro:{
+      collection:'registro',
+      via:'idLogin'
+    }
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
