@@ -38,12 +38,58 @@ export class RegistrarseComponent implements OnInit {
         for (let key in resultadoParametro) {
           if (this.usuario === resultadoParametro[key]['usuario']) {
             this.band = true;
-            alert('incorrecto');
+            alert('Este usuario ya se encuetra registrado');
           }
         }
 
         if (this.band == false) {
-          alert('si');
+          this._loginService
+.crearPerfil({
+  perfil: 'user',
+  estado: 'activo',
+  fechaCreacion: this.fecha,
+  nombreUsuarioCreacion: this.usuario,
+  fechaActualizacion: this.fecha,
+  nombreUsuarioActualizacion: this.usuario,
+})
+.subscribe((registroCreado) => {
+  this._loginService
+    .crearLogin({
+      usuario: this.usuario,
+      clave: this.pass,
+      estado: 'activo',
+      fechaCreacion: this.fecha,
+      nombreUsuarioCreacion: this.usuario,
+      fechaActualizacion: this.fecha,
+      nombreUsuarioActualizacion: this.usuario,
+    })
+    .subscribe((registroCreado) => {
+      this.idLogin = JSON.stringify(registroCreado['id']);
+      this.idTipoPerfil = JSON.stringify(registroCreado['id']);
+      alert('Usuario Registrado');
+      this._loginService
+        .crearRegistro({
+          
+          cedula: this.cedula,
+          nombre: this.nombre,
+          apellido: this.apellido,
+          direccion: this.direccion,
+          telefono: this.telefono,
+          estado: 'activo',
+          fechaCreacion: this.fecha,
+          nombreUsuarioCreacion: this.usuario,
+          fechaActualizacion: this.fecha,
+          nombreUsuarioActualizacion: this.usuario,
+          idLogin: this.idLogin + '',
+          idTipoPerfil: this.idTipoPerfil + '',
+        })
+        .subscribe((registroCreado) => {
+
+          // const valorLocal = JSON.parse(localStorage.getItem('idPerfil'));
+        });
+    });
+});
+this._router.navigate(['login']);
         }
       });
     return (this.band = false);
