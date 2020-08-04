@@ -76,7 +76,7 @@ export class RegistrarseComponent implements OnInit {
         })
         .subscribe((registroCreado) => {
 
-          // const valorLocal = JSON.parse(localStorage.getItem('idPerfil'));
+
         
     });
 });

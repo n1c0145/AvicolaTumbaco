@@ -1,5 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <img src="" width="10%" alt="" />
+    <img
+      src=""
+      width="10%"
+      alt=""
+    />
     <button
       class="navbar-toggler"
       type="button"
@@ -15,28 +19,9 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a
-            class="nav-link"
-            [routerLink]="['/administrador/inicioadministrador']"
-            >Inicio</a
-          >
+          <a class="nav-link" [routerLink]="['/usuario/perfil']">Perfil</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/administrador/perfil']">Perfil</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/administrador/usuarios']">Usuarios</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/administrador/inventario']"
-            >Inventario</a
-          >
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/administrador/productos']"
-            >Gestion Productos</a
-          >
-        </li>
+       
       </ul>
       <form class="form-inline my-2 my-lg-0">
         <button
@@ -48,7 +33,7 @@
       </form>
     </div>
   </nav>
-  
+
 <div>
 
     <table>
@@ -61,7 +46,6 @@
             <th><h4>Telefono</h4></th>
             <th><h4>Usuario</h4></th>
             <th><h4>Clave</h4></th>
-            <th><h4>Tipo</h4></th>
           </tr>
         </thead>
         <tbody>
@@ -73,11 +57,7 @@
             <th>{{ user.telefono }}</th>
             <th>{{ user.idLogin.usuario}}</th>
             <th>{{ user.idLogin.clave}}</th>
-            <th *ngIf="user.idLogin.idTipoPerfil === 1">Usuario</th>
-            <th *ngIf="user.idLogin.idTipoPerfil === 2">Administrador</th>
-            <!-- <button type="button" class="btn btn-primary" (click)="">Editar</button>
-
-            <button type="button" class="btn btn-danger" (click)="">Eliminar</button> -->
+            
           </tr>
         </tbody>
       </table>

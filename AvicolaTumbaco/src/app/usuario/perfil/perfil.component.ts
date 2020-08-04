@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../../servicios/login.service';
 import { Login } from '../../modelos/login.interface';
+
 @Component({
   selector: 'app-perfil',
   templateUrl: './perfil.component.html',

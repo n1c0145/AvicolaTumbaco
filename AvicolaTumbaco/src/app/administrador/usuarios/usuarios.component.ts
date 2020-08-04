@@ -22,12 +22,19 @@ nombreUsuarioActualizacion= '';
 usuario= '';
 clave= '';
 idTipoPerfil= '';
+usuarios;
 
   constructor(
-    
+    private readonly _router: Router,
+    private readonly _loginService: LoginService
   ) { }
 
   ngOnInit(): void {
+    this._loginService.metodoGet('http://localhost:1337/registro?estado=activo').subscribe((data) => (this.usuarios=data));
+    console.log(this.usuarios);
+    
   }
 
 }
+
+
