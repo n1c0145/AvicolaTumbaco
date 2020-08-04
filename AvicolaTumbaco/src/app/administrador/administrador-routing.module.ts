@@ -4,7 +4,7 @@ import { PerfilComponent } from './perfil/perfil.component';
 import { InicioadministradorComponent } from './inicioadministrador/inicioadministrador.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
+import { UsuariosComponent } from "../administrador/usuarios/usuarios.component";
 
 const routes: Routes = [
   {
@@ -22,6 +22,10 @@ const routes: Routes = [
   {
     path: 'productos',
     component: ProductosComponent,
+  },
+  {
+    path: 'usuarios',
+    component: UsuariosComponent,
   },
 ];
 

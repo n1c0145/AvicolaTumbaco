@@ -42,9 +42,7 @@ module.exports = {
     idLogin:{
       model:'Login'
     },
-    idTipoPerfil:{
-      model:'TipoPerfil'
-    },
+
 
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗

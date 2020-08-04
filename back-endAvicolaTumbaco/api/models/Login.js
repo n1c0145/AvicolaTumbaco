@@ -9,7 +9,7 @@ module.exports = {
 
   attributes: {
     usuario:{
-      type:'string'
+      type:'string',
     },
     clave:{
       type:'string'
@@ -28,6 +28,9 @@ module.exports = {
     },
     nombreUsuarioActualizacion:{
       type:'string'
+    },
+    idTipoPerfil:{
+      model:'TipoPerfil'
     },
     registro:{
       collection:'registro',

@@ -1,20 +1,17 @@
-
-import { NgForm } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoginService } from '../servicios/login.service';
-import { __values } from 'tslib';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  band = false;
   usuario = '';
   pass = '';
-  admin = 2;
-  user = 1;
+  band = false;
+  idd;
   constructor(
     private readonly _loginService: LoginService,
     private readonly _activatedRoute: ActivatedRoute,
@@ -33,23 +30,27 @@ export class LoginComponent implements OnInit {
             if (this.pass === resultadoParametro[key]['clave']) {
               this.band = true;
               alert('login existoso');
-              localStorage.setItem(
-                'idusuario',
-                JSON.stringify({ idusuario: resultadoParametro[key]['id'] })
-              );
-              localStorage.setItem(
-                'idPerfil',
-                JSON.stringify({
-                  idPerfil: resultadoParametro[key]['idRegistro']['idPerfil'],
-                })
-              );
-              var valorLocal = localStorage.getItem('idPerfil');
 
-              if (valorLocal === '{"idPerfil":1}') {
-                this._router.navigate(['usuario/iniciousuario/']);
-              } else {
-                this._router.navigate(['administrador/inicioadministrador/']);
-              }
+              this._loginService
+                .metodoGet(
+                  'http://localhost:1337/login?usuario=' +
+                    this.usuario +
+                    '&&clave=' +
+                    this.pass
+                )
+                .subscribe((resultadoMetodoGet) => {
+                  this.idd = resultadoMetodoGet[0].idTipoPerfil.id;
+                  localStorage.setItem('id', JSON.stringify(this.idd));
+
+                  if (this.idd == 1) {
+                    this._router.navigate(['usuario/iniciousuario/']);
+                  }
+                  if (this.idd == 2) {
+                    this._router.navigate([
+                      'administrador/inicioadministrador/',
+                    ]);
+                  }
+                });
             }
           }
         }
@@ -60,3 +61,6 @@ export class LoginComponent implements OnInit {
       });
   }
 }
+
+
+//localStorage.clear();

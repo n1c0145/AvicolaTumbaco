@@ -23,9 +23,5 @@ crearLogin(datosCredencialesCrear){
   return this._httpClient.post(url,datosCredencialesCrear);
 }
 
-crearPerfil(datosCredencialesCrear){
-  const url = 'http://localhost:1337/TipoPerfil';
-  return this._httpClient.post(url,datosCredencialesCrear);
-}
 
 }

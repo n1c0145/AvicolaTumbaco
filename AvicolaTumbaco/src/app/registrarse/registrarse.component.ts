@@ -22,7 +22,7 @@ export class RegistrarseComponent implements OnInit {
   idTipoPerfil = '';
   fecha = new Date();
   perfil = '';
-  a = 3;
+  
   constructor(
     private readonly _router: Router,
     private readonly _loginService: LoginService
@@ -43,16 +43,7 @@ export class RegistrarseComponent implements OnInit {
         }
 
         if (this.band == false) {
-          this._loginService
-.crearPerfil({
-  perfil: 'user',
-  estado: 'activo',
-  fechaCreacion: this.fecha,
-  nombreUsuarioCreacion: this.usuario,
-  fechaActualizacion: this.fecha,
-  nombreUsuarioActualizacion: this.usuario,
-})
-.subscribe((registroCreado) => {
+
   this._loginService
     .crearLogin({
       usuario: this.usuario,
@@ -62,10 +53,10 @@ export class RegistrarseComponent implements OnInit {
       nombreUsuarioCreacion: this.usuario,
       fechaActualizacion: this.fecha,
       nombreUsuarioActualizacion: this.usuario,
+      idTipoPerfil:1,
     })
     .subscribe((registroCreado) => {
       this.idLogin = JSON.stringify(registroCreado['id']);
-      this.idTipoPerfil = JSON.stringify(registroCreado['id']);
       alert('Usuario Registrado');
       this._loginService
         .crearRegistro({
@@ -81,12 +72,12 @@ export class RegistrarseComponent implements OnInit {
           fechaActualizacion: this.fecha,
           nombreUsuarioActualizacion: this.usuario,
           idLogin: this.idLogin + '',
-          idTipoPerfil: this.idTipoPerfil + '',
+        
         })
         .subscribe((registroCreado) => {
 
           // const valorLocal = JSON.parse(localStorage.getItem('idPerfil'));
-        });
+        
     });
 });
 this._router.navigate(['login']);
@@ -96,54 +87,3 @@ this._router.navigate(['login']);
   }
 }
 
-/*
-
-this._loginService
-.crearPerfil({
-  perfil: 'user',
-  estado: 'activo',
-  fechaCreacion: this.fecha,
-  nombreUsuarioCreacion: this.usuario,
-  fechaActualizacion: this.fecha,
-  nombreUsuarioActualizacion: this.usuario,
-})
-.subscribe((registroCreado) => {
-  this._loginService
-    .crearLogin({
-      usuario: this.usuario,
-      clave: this.pass,
-      estado: 'activo',
-      fechaCreacion: this.fecha,
-      nombreUsuarioCreacion: this.usuario,
-      fechaActualizacion: this.fecha,
-      nombreUsuarioActualizacion: this.usuario,
-    })
-    .subscribe((registroCreado) => {
-      this.idLogin = JSON.stringify(registroCreado['id']);
-      this.idTipoPerfil = JSON.stringify(registroCreado['id']);
-      alert('Usuario Registrado');
-      this._loginService
-        .crearRegistro({
-          
-          cedula: this.cedula,
-          nombre: this.nombre,
-          apellido: this.apellido,
-          direccion: this.direccion,
-          telefono: this.telefono,
-          estado: 'activo',
-          fechaCreacion: this.fecha,
-          nombreUsuarioCreacion: this.usuario,
-          fechaActualizacion: this.fecha,
-          nombreUsuarioActualizacion: this.usuario,
-          idLogin: this.idLogin + '',
-          idTipoPerfil: this.idTipoPerfil + '',
-        })
-        .subscribe((registroCreado) => {
-
-          // const valorLocal = JSON.parse(localStorage.getItem('idPerfil'));
-        });
-    });
-});
-this._router.navigate(['login']);
-
-*/

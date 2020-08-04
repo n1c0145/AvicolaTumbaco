@@ -7,6 +7,7 @@ import { InventarioComponent } from './inventario/inventario.component';
 import { ProductosComponent } from './productos/productos.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { UsuariosComponent } from './usuarios/usuarios.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
     PerfilComponent,
     InventarioComponent,
     ProductosComponent,
+    UsuariosComponent,
   ],
   imports: [CommonModule, 
     AdministradorRoutingModule,

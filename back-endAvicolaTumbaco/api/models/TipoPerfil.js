@@ -26,8 +26,8 @@ module.exports = {
     nombreUsuarioActualizacion:{
       type:'string'
     },
-    registro:{
-      collection:'registro',
+    login:{
+      collection:'login',
       via:'idTipoPerfil'
     }
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
