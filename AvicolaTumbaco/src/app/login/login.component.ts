@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
   band = false;
   idd;
   idstoge;
+  user = '';
   constructor(
     private readonly _loginService: LoginService,
     private readonly _activatedRoute: ActivatedRoute,
@@ -40,11 +41,12 @@ export class LoginComponent implements OnInit {
                     this.pass
                 )
                 .subscribe((resultadoMetodoGet) => {
+                  
                   this.idd = resultadoMetodoGet[0].idTipoPerfil.id;
                   this.idstoge = resultadoMetodoGet[0].id;
+                  this.user = resultadoMetodoGet[0].usuario
                   localStorage.setItem('id', JSON.stringify(this.idstoge));
-                  console.log(this.idstoge);
-
+                  localStorage.setItem('user', JSON.stringify(this.user));
                   if (this.idd == 1) {
                     this._router.navigate(['usuario/iniciousuario/']);
                   }

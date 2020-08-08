@@ -1,9 +1,4 @@
-<p>login works!</p>
 
-<!-- <a class="nav-link" [routerLink]="['/administrador/inicioadministrador']"
-  >Inicio</a
->
-<a class="nav-link" [routerLink]="['/usuario/iniciousuario']">Inicio</a> -->
 
 <div>
   <form id="search_form" class="search_form" #formularioUsuario="ngForm">
@@ -21,10 +16,14 @@
       [(ngModel)]="pass"
       name="pass"
     />
+<div>
 
+<button type="submit" (click)='iniciarSesion()' class="btn btn-success">Iniciar Sesion</button>
 
-<button type="submit" (click)='iniciarSesion()'>Iniciar Sesion</button>
-<button [routerLink]="['/registrarse']">Registrarse</button>
+</div>
 
+<div>
+<button [routerLink]="['/registrarse']" class="btn btn-warning">Registrarse</button>
+</div>
   </form>
 </div>

@@ -11,6 +11,7 @@ export interface Login {
     nombreUsuarioCreacion: string;
     fechaActualizacion: string;
     nombreUsuarioActualizacion: string;
+    idLogin:string;
     usuario: string;
     clave: string;
     idTipoPerfil: number;

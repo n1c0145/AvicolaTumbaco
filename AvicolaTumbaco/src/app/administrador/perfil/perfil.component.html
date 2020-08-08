@@ -78,9 +78,88 @@
           <th>{{ user.telefono }}</th>
           <th>{{ user.idLogin.usuario}}</th>
           <th>{{ user.idLogin.clave}}</th>
-       
+          <button type="button" class="btn btn-primary" (click)="editar(user)">Editar</button>
         </tr>
       </tbody>
     </table>
 
 </div>
+
+
+<div *ngIf="editOn">
+  <form>
+    <h4>Cedula</h4>
+    <input
+      type="text"
+      placeholder="Cedula"
+      required="required"
+      [(ngModel)]="selectedPerfil.cedula"
+      name="cedula"
+      value="{{selectedPerfil.cedula}}"
+    />
+    <h4>Nombre</h4>
+    <input
+      type="text"
+      placeholder="Apellido"
+      required="required"
+      [(ngModel)]="selectedPerfil.nombre"
+      name="nombre"
+      value="{{selectedPerfil.nombre}}"
+    />
+    <h4>Apellido</h4>
+    <input
+      class="input_field search_form_name"
+      type="text"
+      placeholder="Apellido"
+      required="required"
+      [(ngModel)]="selectedPerfil.apellido"
+      name="apellido"
+      value="{{selectedPerfil.apellido}}"
+    />
+    <h4>Direccion</h4>
+    <input
+      class="input_field search_form_name"
+      type="text"
+      placeholder="Direccion"
+      required="required"
+      [(ngModel)]="selectedPerfil.direccion"
+      name="direccion"
+      value="{{selectedPerfil.direccion}}"
+    />
+    <h4>Telefono</h4>
+    <input
+      class="input_field search_form_name"
+      type="text"
+      placeholder="Telefono"
+      [(ngModel)]="selectedPerfil.telefono"
+      name="telefono"
+      value="{{selectedPerfil.telefono}}"
+    />
+    <h4>Usuario</h4>
+    <input
+      class="input_field search_form_name"
+      type="text"
+      placeholder="Usuario"
+      [(ngModel)]="selectedPerfil.usuario"
+      name="usuario"
+      value="{{selectedPerfil.usuario}}"
+    />
+    <h4>Clave</h4>
+    <input
+      class="input_field search_form_name"
+      type="text"
+      placeholder="Clave"
+      [(ngModel)]="selectedPerfil.clave"
+      name="clave"
+      value="{{selectedPerfil.clave}}"
+    />
+    <button
+      class="search_submit_button"
+      (click)="actualizar(selectedPerfil)"
+    >
+    Actualizar
+    </button>
+  </form>
+</div> 
+
+

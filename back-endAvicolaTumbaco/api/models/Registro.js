@@ -24,24 +24,24 @@ module.exports = {
     telefono:{
       type:'number'
     },
-    estado:{
-      type:'string'
-    },
-    fechaCreacion:{
-      type:'string'
-    },
-    nombreUsuarioCreacion:{
-      type:'string'
-    },
-    fechaActualizacion:{
-      type:'string'
-    },
-    nombreUsuarioActualizacion:{
-      type:'string'
-    },
-    idLogin:{
-      model:'Login'
-    },
+     estado:{
+       type:'string'
+     },
+      fechaCreacion:{
+        type:'string'
+      },
+      nombreUsuarioCreacion:{
+        type:'string'
+      },
+      fechaActualizacion:{
+        type:'string'
+      },
+      nombreUsuarioActualizacion:{
+        type:'string'
+      },
+       idLogin:{
+         model:'Login'
+       },
 
 
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗

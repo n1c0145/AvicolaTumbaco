@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 @Component({
   selector: 'app-inicioadministrador',
   templateUrl: './inicioadministrador.component.html',
@@ -15,9 +14,6 @@ id='';
     console.log(this.id);
     
   }
-
-
-
 
 
 }

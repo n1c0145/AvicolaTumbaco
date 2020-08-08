@@ -8,7 +8,8 @@ import { ProductosComponent } from './productos/productos.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { UsuariosComponent } from './usuarios/usuarios.component';
-
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatDialogModule} from '@angular/material/dialog';
 @NgModule({
   declarations: [
     InicioadministradorComponent,
@@ -20,7 +21,9 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
   imports: [CommonModule, 
     AdministradorRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTabsModule,
+    MatDialogModule
   ],
 })
 export class AdministradorModule {}

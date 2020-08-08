@@ -26,10 +26,10 @@ module.exports = {
     nombreUsuarioActualizacion:{
       type:'string'
     },
-    login:{
-      collection:'login',
-      via:'idTipoPerfil'
-    }
+     login:{
+       collection:'login',
+       via:'idTipoPerfil'
+     }
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝

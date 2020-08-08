@@ -6,51 +6,45 @@
  */
 
 module.exports = {
-
   attributes: {
-    usuario:{
-      type:'string',
+    usuario: {
+      type: "string",
     },
-    clave:{
-      type:'string'
+    clave: {
+      type: "string",
     },
-    estado:{
-      type:'string'
+    estado: {
+      type: "string",
     },
-    fechaCreacion:{
-      type:'string'
+    fechaCreacion: {
+      type: "string",
     },
-    nombreUsuarioCreacion:{
-      type:'string'
+    nombreUsuarioCreacion: {
+      type: "string",
     },
-    fechaActualizacion:{
-      type:'string'
+    fechaActualizacion: {
+      type: "string",
     },
-    nombreUsuarioActualizacion:{
-      type:'string'
+    nombreUsuarioActualizacion: {
+      type: "string",
     },
-    idTipoPerfil:{
-      model:'TipoPerfil'
-    },
-    registro:{
-      collection:'registro',
-      via:'idLogin'
-    }
+     idTipoPerfil: {
+       model: "TipoPerfil",
+     },
+     registro: {
+       collection: "registro",
+       via: "idLogin",
+     },
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
-
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
     //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝
 
-
     //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
-
   },
-
 };
-
