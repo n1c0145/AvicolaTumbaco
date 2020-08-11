@@ -23,9 +23,6 @@ export class LoginService {
   metodoPut(url: string, datos) {
     return this._httpClient.put(url, datos);
   }
-  metodoPatch(login: Login): Observable<Login> {
-    this.url = `${this.url}/${login.id}`;
-    return this._httpClient.patch<any>(this.url, login);
-  }
+
 
 }

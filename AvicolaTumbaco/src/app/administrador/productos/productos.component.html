@@ -25,6 +25,9 @@
         <a class="nav-link" [routerLink]="['/administrador/perfil']">Perfil</a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/administrador/usuarios']">Usuarios</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" [routerLink]="['/administrador/inventario']"
           >Inventario</a
         >
@@ -32,6 +35,11 @@
       <li class="nav-item">
         <a class="nav-link" [routerLink]="['/administrador/productos']"
           >Gestion Productos</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/administrador/proveedor']"
+          >Proveedores</a
         >
       </li>
     </ul>
@@ -46,76 +54,11 @@
   </div>
 </nav>
 
-<div class="accordion" id="accordionExample">
-  <div class="card">
-    <div class="card-header" id="headingOne">
-      <h2 class="mb-0">
-        <button
-          class="btn btn-link btn-block text-left"
-          type="button"
-          data-toggle="collapse"
-          data-target="#collapseOne"
-          aria-expanded="true"
-          aria-controls="collapseOne"
-        >
-         Productos
-        </button>
-      </h2>
-    </div>
 
-    <div
-      id="collapseOne"
-      class="collapse show"
-      aria-labelledby="headingOne"
-      data-parent="#accordionExample"
-    >
-      <div class="card-body">
-        <div>
-          <table>
-            <thead>
-              <tr>
-                <th><h4>Nombre</h4></th>
-                <th><h4>Descripcio</h4></th>
-                <th><h4>Imagen</h4></th>
-                <th><h4>Categoria</h4></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let producto of productos">
-                <th>{{ producto.nombre }}</th>
-                <th>{{ producto.descripcion }}</th>
-                <th><img src="{{ producto.imagen }}" width="200px"/></th>
-                <th>{{ producto.categoria }}</th>
-              </tr>
-            </tbody>
-          </table>
-          </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-header" id="headingTwo">
-        <h2 class="mb-0">
-          <button
-            class="btn btn-link btn-block text-left collapsed"
-            type="button"
-            data-toggle="collapse"
-            data-target="#collapseTwo"
-            aria-expanded="false"
-            aria-controls="collapseTwo"
-          >
-            Ingresar nuevo Producto
-          </button>
-        </h2>
-      </div>
-      <div
-        id="collapseTwo"
-        class="collapse"
-        aria-labelledby="headingTwo"
-        data-parent="#accordionExample"
-      >
-        <div class="card-body">
-         
-          <div>
+
+ <mat-tab-group>
+  <mat-tab label="Insertar">
+    <div>
             <form>
               <h4>Nombre</h4>
               <input
@@ -177,53 +120,25 @@
                 Insertar
               </button>
             </form>
-          </div>
-          
-
-
-
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-header" id="headingThree">
-        <h2 class="mb-0">
-          <button
-            class="btn btn-link btn-block text-left collapsed"
-            type="button"
-            data-toggle="collapse"
-            data-target="#collapseThree"
-            aria-expanded="false"
-            aria-controls="collapseThree"
-          >
-          Editar/Eliminar Producto
-          </button>
-        </h2>
-      </div>
-      <div
-        id="collapseThree"
-        class="collapse"
-        aria-labelledby="headingThree"
-        data-parent="#accordionExample"
-      >
-        <div class="card-body">
-         
-          <div>
-            <table>
+          </div>  
+  </mat-tab>
+  <mat-tab label="Editar/Eliminar"> 
+   <div>
+    <table class="mat-elevation-z8">
               <thead>
                 <tr>
-                  <th><h4>Nombre</h4></th>
-                  <th><h4>Descripcio</h4></th>
-                  <th><h4>Imagen</h4></th>
-                  <th><h4>Categoria</h4></th>
+                  <th>Nombre</th>
+                  <th>Descripcio</th>
+                  <th>Imagen</th>
+                  <th>Categoria</th>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let producto of productos">
-                  <th>{{ producto.nombre }}</th>
-                  <th>{{ producto.descripcion }}</th>
-                  <th><img src="{{ producto.imagen }}" width="200px"/></th>
-                  <th>{{ producto.categoria }}</th>
+                  <td>{{ producto.nombre }}</td>
+                  <td>{{ producto.descripcion }}</td>
+                  <td><img src="{{ producto.imagen }}" width="200px"/></td>
+                  <td>{{ producto.categoria }}</td>
                   <button type="button" class="btn btn-primary" (click)="editar(producto)">Editar</button>
 
                   <button type="button" class="btn btn-danger" (click)="eliminar(producto)">Eliminar</button>
@@ -286,9 +201,8 @@
               </form>
             </div>
             </div>
+  </mat-tab>
+</mat-tab-group> 
 
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+
+

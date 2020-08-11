@@ -1,88 +1,89 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <img src="" width="10%" alt="" />
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            [routerLink]="['/administrador/inicioadministrador']"
-            >Inicio</a
-          >
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/administrador/perfil']">Perfil</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/administrador/inventario']"
-            >Inventario</a
-          >
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/administrador/productos']"
-            >Gestion Productos</a
-          >
-        </li>
-      </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <button
-          class="btn btn-outline-danger my-2 my-sm-0"
-          [routerLink]="['/inicio']"
+  <img src="" width="10%" alt="" />
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          [routerLink]="['/administrador/inicioadministrador']"
+          >Inicio</a
         >
-          Cerrar Sesion
-        </button>
-      </form>
-    </div>
-  </nav>
-
-
-
-  
-
-<p>perfil works!</p>
-
-
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/administrador/perfil']">Perfil</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/administrador/usuarios']"
+          >Usuarios</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/administrador/inventario']"
+          >Inventario</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/administrador/productos']"
+          >Gestion Productos</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/administrador/proveedor']"
+          >Proveedores</a
+        >
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <button
+        class="btn btn-outline-danger my-2 my-sm-0"
+        [routerLink]="['/inicio']"
+      >
+        Cerrar Sesion
+      </button>
+    </form>
+  </div>
+</nav>
 
 <div>
-
-  <table>
-      <thead>
-        <tr>
-          <th><h4>Cedula</h4></th>
-          <th><h4>Nombre</h4></th>
-          <th><h4>Apellido</h4></th>
-          <th><h4>Direccion</h4></th>
-          <th><h4>Telefono</h4></th>
-          <th><h4>Usuario</h4></th>
-          <th><h4>Clave</h4></th>
-        
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let user of usuarios">
-          <th>{{ user.cedula }}</th>
-          <th>{{ user.nombre }}</th>
-          <th>{{ user.apellido }}</th>
-          <th>{{ user.direccion }}</th>
-          <th>{{ user.telefono }}</th>
-          <th>{{ user.idLogin.usuario}}</th>
-          <th>{{ user.idLogin.clave}}</th>
-          <button type="button" class="btn btn-primary" (click)="editar(user)">Editar</button>
-        </tr>
-      </tbody>
-    </table>
-
+  <table class="mat-elevation-z8">
+    <thead>
+      <tr>
+        <th>Cedula</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Direccion</th>
+        <th>Telefono</th>
+        <th>Usuario</th>
+        <th>Clave</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of usuarios">
+        <td>{{ user.cedula }}</td>
+        <td>{{ user.nombre }}</td>
+        <td>{{ user.apellido }}</td>
+        <td>{{ user.direccion }}</td>
+        <td>{{ user.telefono }}</td>
+        <td>{{ user.idLogin.usuario }}</td>
+        <td>*****</td>
+        <button type="button" class="btn btn-primary" (click)="editar(user)">
+          Editar
+        </button>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 
@@ -95,7 +96,7 @@
       required="required"
       [(ngModel)]="selectedPerfil.cedula"
       name="cedula"
-      value="{{selectedPerfil.cedula}}"
+      value="{{ selectedPerfil.cedula }}"
     />
     <h4>Nombre</h4>
     <input
@@ -104,7 +105,7 @@
       required="required"
       [(ngModel)]="selectedPerfil.nombre"
       name="nombre"
-      value="{{selectedPerfil.nombre}}"
+      value="{{ selectedPerfil.nombre }}"
     />
     <h4>Apellido</h4>
     <input
@@ -114,7 +115,7 @@
       required="required"
       [(ngModel)]="selectedPerfil.apellido"
       name="apellido"
-      value="{{selectedPerfil.apellido}}"
+      value="{{ selectedPerfil.apellido }}"
     />
     <h4>Direccion</h4>
     <input
@@ -124,7 +125,7 @@
       required="required"
       [(ngModel)]="selectedPerfil.direccion"
       name="direccion"
-      value="{{selectedPerfil.direccion}}"
+      value="{{ selectedPerfil.direccion }}"
     />
     <h4>Telefono</h4>
     <input
@@ -133,33 +134,28 @@
       placeholder="Telefono"
       [(ngModel)]="selectedPerfil.telefono"
       name="telefono"
-      value="{{selectedPerfil.telefono}}"
+      value="{{ selectedPerfil.telefono }}"
     />
     <h4>Usuario</h4>
     <input
       class="input_field search_form_name"
       type="text"
       placeholder="Usuario"
-      [(ngModel)]="selectedPerfil.usuario"
+      [(ngModel)]="usuario"
       name="usuario"
-      value="{{selectedPerfil.usuario}}"
+      value="usuario"
     />
     <h4>Clave</h4>
     <input
       class="input_field search_form_name"
-      type="text"
+      type="password"
       placeholder="Clave"
-      [(ngModel)]="selectedPerfil.clave"
+      [(ngModel)]="clave"
       name="clave"
-      value="{{selectedPerfil.clave}}"
+      value="clave"
     />
-    <button
-      class="search_submit_button"
-      (click)="actualizar(selectedPerfil)"
-    >
-    Actualizar
+    <button class="search_submit_button" (click)="actualizar(selectedPerfil)">
+      Actualizar
     </button>
   </form>
-</div> 
-
-
+</div>

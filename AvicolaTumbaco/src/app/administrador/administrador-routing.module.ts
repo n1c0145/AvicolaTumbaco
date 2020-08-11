@@ -1,3 +1,4 @@
+import { ProveedorComponent } from './proveedor/proveedor.component';
 import { ProductosComponent } from '../administrador/productos/productos.component';
 import { InventarioComponent } from '../administrador/inventario/inventario.component';
 import { PerfilComponent } from './perfil/perfil.component';
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'usuarios',
     component: UsuariosComponent,
+  },
+  {
+    path: 'proveedor',
+    component: ProveedorComponent,
   },
 ];
 

@@ -6,52 +6,71 @@ import { Login } from '../../modelos/login.interface';
 @Component({
   selector: 'app-perfil',
   templateUrl: './perfil.component.html',
-  styleUrls: ['./perfil.component.css']
+  styleUrls: ['./perfil.component.css'],
 })
 export class PerfilComponent implements OnInit {
   nombre = '';
-  apellido= '';
+  apellido = '';
   direccion = '';
-  telefono= '';
-  estado= '';
-  fechaCreacion= '';
-  nombreUsuarioCreacion= '';
-  fechaActualizacion= '';
-  nombreUsuarioActualizacion= '';
-  usuario= '';
-  clave= '';
-  idTipoPerfil= '';
+  telefono = '';
+  estado = '';
+  fechaActualizacion = '';
+  nombreUsuarioActualizacion = '';
+  usuario = '';
+  clave = '';
   usuarios;
   id;
   user;
-  perfil: Login[];
   editOn = false;
   selectedPerfil: Login;
+  datos;
+  fecha = new Date();
   constructor(
     private readonly _router: Router,
-    private readonly _loginService: LoginService
-  ) { }
+    private readonly _LoginService: LoginService
+  ) {}
 
   ngOnInit(): void {
     this.id = localStorage.getItem('id');
-   this.user= localStorage.getItem('user')
-    this._loginService.metodoGet('http://localhost:1337/registro?estado=activo&&id='+this.id).subscribe((data) => (this.usuarios=data));
+    this.user = localStorage.getItem('user');
+    this._LoginService
+      .metodoGet('http://localhost:1337/registro?estado=activo&&id=' + this.id)
+      .subscribe((data) => (this.usuarios = data));
     console.log(this.usuarios);
-    
   }
 
-
-  editar(perfil:Login){
+  editar(perfil: Login) {
     this.editOn = true;
     this.selectedPerfil = perfil;
-   // this.selectedPerfil = perfil2
+    this.datos = perfil.idLogin;
+    this.usuario = this.datos.usuario;
+    this.clave = this.datos.clave;
   }
 
-actualizar(perfil:Login){
-this._loginService.metodoPatch(perfil).subscribe((perfil)=>{
-  alert('Actualizado')
-  this.editOn=false
-})
-}
-
+  actualizar(perfil: Login) {
+    this._LoginService
+      .metodoPut('http://localhost:1337/registro/' + this.id, {
+        cedula: this.selectedPerfil.cedula,
+        nombre: this.selectedPerfil.nombre,
+        apellido: this.selectedPerfil.apellido,
+        direccion: this.selectedPerfil.direccion,
+        telefono: this.selectedPerfil.telefono,
+        fechaActualizacion: this.fecha,
+        nombreUsuarioActualizacion: this.user,
+      })
+      .subscribe(() => {
+        this._LoginService
+          .metodoPut('http://localhost:1337/login/' + this.id, {
+            usuario: this.usuario,
+            clave: this.clave,
+            fechaActualizacion: this.fecha,
+            nombreUsuarioActualizacion: this.user,
+          })
+          .subscribe(() => {
+            alert('Actualizado');
+            this.editOn = false;
+            location.reload();
+          });
+      });
+  }
 }
