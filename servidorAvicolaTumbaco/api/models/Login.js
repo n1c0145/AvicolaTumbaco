@@ -1,5 +1,5 @@
 /**
- * Inventario.js
+ * Login.js
  *
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
@@ -8,23 +8,34 @@
 module.exports = {
 
   attributes: {
-
-    
-    nombre:{
-      type:'string'
+    usuario: {
+      type: "string",
     },
-    descripcion:{
-      type:'string'
+    clave: {
+      type: "string",
     },
-    imagen:{
-      type:'string'
+    estado: {
+      type: "string",
     },
-    categoria:{
-      type:'string'
+    fechaCreacion: {
+      type: "string",
     },
-    stock:{
-      type:'number'
+    nombreUsuarioCreacion: {
+      type: "string",
     },
+    fechaActualizacion: {
+      type: "string",
+    },
+    nombreUsuarioActualizacion: {
+      type: "string",
+    },
+     idTipoPerfil: {
+       model: "TipoPerfil",
+     },
+     registro: {
+       collection: "registro",
+       via: "idLogin",
+     },
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝

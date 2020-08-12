@@ -8,7 +8,6 @@
 module.exports = {
 
   attributes: {
-
     nombre: {
       type: "string",
     },
@@ -33,7 +32,6 @@ module.exports = {
     nombreUsuarioActualizacion: {
       type: "string",
     },
-
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝

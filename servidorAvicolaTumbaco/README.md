@@ -1,4 +1,4 @@
-# back-end-avicola-tumbaco
+# servidor-avicola-tumbaco
 
 a [Sails v1](https://sailsjs.com) application
 
@@ -14,7 +14,7 @@ a [Sails v1](https://sailsjs.com) application
 
 ### Version info
 
-This app was originally generated on Mon Jul 06 2020 17:39:12 GMT-0500 (GMT-05:00) using Sails v1.2.4.
+This app was originally generated on Wed Aug 12 2020 10:14:14 GMT-0500 (Colombia Standard Time) using Sails v1.2.4.
 
 <!-- Internally, Sails used [`sails-generate@1.17.2`](https://github.com/balderdashy/sails-generate/tree/v1.17.2/lib/core-generators/new). -->
 

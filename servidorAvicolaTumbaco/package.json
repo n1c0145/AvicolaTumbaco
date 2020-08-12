@@ -1,5 +1,5 @@
 {
-  "name": "back-end-avicola-tumbaco",
+  "name": "servidor-avicola-tumbaco",
   "private": true,
   "version": "0.0.0",
   "description": "a Sails application",
@@ -13,7 +13,7 @@
     "sails-hook-grunt": "^4.0.0",
     "sails-hook-orm": "^2.1.1",
     "sails-hook-sockets": "^2.0.0",
-    "sails-mysql": "^1.0.1"
+    "sails-mysql": "1.0.1"
   },
   "devDependencies": {
     "eslint": "5.16.0"
@@ -27,11 +27,11 @@
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/anonymous node/sails user/back-end-avicola-tumbaco.git"
+    "url": "git://github.com/anonymous node/sails user/servidor-avicola-tumbaco.git"
   },
   "author": "anonymous node/sails user",
   "license": "",
   "engines": {
-    "node": "^12.16"
+    "node": "^12.18"
   }
 }
