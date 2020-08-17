@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/internal/Observable';
-import { Login } from '../modelos/login.interface';
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
-export class LoginService {
-  private url = 'http://localhost:1337/registro';
+export class AvicolaService {
+
   constructor(private readonly _httpClient: HttpClient) {}
   metodoGet(url: string) {
     return this._httpClient.get(url);
   }
-
+  metodoPut(url: string, datos) {
+    return this._httpClient.put(url, datos);
+  }
   crearRegistro(datosRegistroCrear) {
     const url = 'http://localhost:1337/registro';
     return this._httpClient.post(url, datosRegistroCrear);
@@ -20,9 +20,13 @@ export class LoginService {
     const url = 'http://localhost:1337/login';
     return this._httpClient.post(url, datosCredencialesCrear);
   }
-  metodoPut(url: string, datos) {
-    return this._httpClient.put(url, datos);
+  crearProducto(datosRegistroCrear) {
+    const url = 'http://localhost:1337/inventario';
+    return this._httpClient.post(url, datosRegistroCrear);
   }
-
+  crearProveedor(datosRegistroCrear) {
+    const url = 'http://localhost:1337/proveedor';
+    return this._httpClient.post(url, datosRegistroCrear);
+  }
 
 }

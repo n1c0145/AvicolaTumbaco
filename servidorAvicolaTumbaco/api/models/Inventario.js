@@ -24,6 +24,21 @@ module.exports = {
     stock:{
       type:'number'
     },
+    estado: {
+      type: "string",
+    },
+    fechaCreacion: {
+      type: "string",
+    },
+    nombreUsuarioCreacion: {
+      type: "string",
+    },
+    fechaActualizacion: {
+      type: "string",
+    },
+    nombreUsuarioActualizacion: {
+      type: "string",
+    },
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝

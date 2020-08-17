@@ -34,32 +34,3 @@
     </div>
   </nav>
 
-<div>
-
-    <table>
-        <thead>
-          <tr>
-            <th><h4>Cedula</h4></th>
-            <th><h4>Nombre</h4></th>
-            <th><h4>Apellido</h4></th>
-            <th><h4>Direccion</h4></th>
-            <th><h4>Telefono</h4></th>
-            <th><h4>Usuario</h4></th>
-            <th><h4>Clave</h4></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let user of usuarios">
-            <th>{{ user.cedula }}</th>
-            <th>{{ user.nombre }}</th>
-            <th>{{ user.apellido }}</th>
-            <th>{{ user.direccion }}</th>
-            <th>{{ user.telefono }}</th>
-            <th>{{ user.idLogin.usuario}}</th>
-            <th>{{ user.idLogin.clave}}</th>
-            
-          </tr>
-        </tbody>
-      </table>
-
-</div>

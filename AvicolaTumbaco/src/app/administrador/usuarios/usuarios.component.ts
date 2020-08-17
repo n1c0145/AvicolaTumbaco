@@ -1,7 +1,7 @@
+import { AvicolaService } from './../../servicios/avicola.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginService } from '../../servicios/login.service';
 import { Login } from '../../modelos/login.interface';
 
 @Component({
@@ -33,13 +33,13 @@ export class UsuariosComponent implements OnInit {
   select;
   constructor(
     private readonly _router: Router,
-    private readonly _LoginService: LoginService
+    private readonly _AvicolaService: AvicolaService
   ) {}
 
   ngOnInit(): void {
     this.user = localStorage.getItem('user');
     console.log(this.user);
-    this._LoginService
+    this._AvicolaService
       .metodoGet('http://localhost:1337/registro?estado=activo')
       .subscribe((data) => {
         this.usuarios = data;
@@ -64,7 +64,7 @@ export class UsuariosComponent implements OnInit {
 
   actualizar() {
     this.seleccionUsuario();
-    this._LoginService
+    this._AvicolaService
       .metodoPut('http://localhost:1337/registro/' + this.id, {
         cedula: this.selectedPerfil.cedula,
         nombre: this.selectedPerfil.nombre,
@@ -75,7 +75,7 @@ export class UsuariosComponent implements OnInit {
         nombreUsuarioActualizacion: this.user,
       })
       .subscribe(() => {
-        this._LoginService
+        this._AvicolaService
           .metodoPut('http://localhost:1337/login/' + this.id, {
             usuario: this.usuario,
             clave: this.clave,
@@ -94,13 +94,13 @@ export class UsuariosComponent implements OnInit {
   eliminar(perfil: Login) {
     this.selectedPerfil = perfil;
     this.id = perfil.id;
-    this._LoginService
+    this._AvicolaService
       .metodoPut('http://localhost:1337/registro/' + this.id, {
         estado: 'inactivo',
         nombreUsuarioActualizacion: this.user,
       })
       .subscribe(() => {
-        this._LoginService
+        this._AvicolaService
           .metodoPut('http://localhost:1337/login/' + this.id, {
             estado: 'inactivo',
             nombreUsuarioActualizacion: this.user,

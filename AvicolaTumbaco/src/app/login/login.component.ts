@@ -1,6 +1,6 @@
+import { AvicolaService } from './../servicios/avicola.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LoginService } from '../servicios/login.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   idstoge;
   user = '';
   constructor(
-    private readonly _loginService: LoginService,
+    private readonly _AvicolaService: AvicolaService,
     private readonly _activatedRoute: ActivatedRoute,
     private _router: Router
   ) {}
@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   iniciarSesion() {
-    this._loginService
+    this._AvicolaService
       .metodoGet('http://localhost:1337/login/')
       .subscribe((resultadoParametro) => {
         var rest = JSON.stringify(resultadoParametro);
@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
               this.band = true;
               alert('login existoso');
 
-              this._loginService
+              this._AvicolaService
                 .metodoGet(
                   'http://localhost:1337/login?usuario=' +
                     this.usuario +

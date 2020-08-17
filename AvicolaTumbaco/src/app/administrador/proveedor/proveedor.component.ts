@@ -1,5 +1,5 @@
+import { AvicolaService } from './../../servicios/avicola.service';
 import { Proveedor } from './../../modelos/proveedor.interface';
-import { ProveedorService } from './../../servicios/proveedor.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -22,20 +22,20 @@ proveedor:Proveedor[];
 id;
   constructor(
     private readonly _router: Router,
-    private readonly _ProveedorService: ProveedorService
+    private readonly _AviclaService: AvicolaService
 
   ) { }
 
   ngOnInit(): void {
     this.user = localStorage.getItem('user');
-    this._ProveedorService
+    this._AviclaService
     .metodoGet('http://localhost:1337/proveedor?estado=activo')
     .subscribe((data) => {
       this.proveedores = data;
     });
   }
 ingresar(){
-  this._ProveedorService.crearProveedor({
+  this._AviclaService.crearProveedor({
     nombre:this.nombre,
     descripcion:this.descripcion,
     telefono:this.telefono,
@@ -54,7 +54,7 @@ editar(proveedor:Proveedor){
   this.id = proveedor.id;
 }
 actualizar(){
-  this._ProveedorService.metodoPut('http://localhost:1337/proveedor/' + this.id,{
+  this._AviclaService.metodoPut('http://localhost:1337/proveedor/' + this.id,{
     nombre: this.selectedProveedor.nombre,
     descripcion: this.selectedProveedor.descripcion,
     telefono: this.selectedProveedor.telefono,
@@ -68,7 +68,7 @@ actualizar(){
 eliminar(proveedor:Proveedor){
   this.selectedProveedor = proveedor;
   this.id = proveedor.id;
-  this._ProveedorService.metodoPut('http://localhost:1337/proveedor/' + this.id,{
+  this._AviclaService.metodoPut('http://localhost:1337/proveedor/' + this.id,{
     estado: 'inactivo',
     nombreUsuarioActualizacion: this.user,
   }).subscribe(()=>{

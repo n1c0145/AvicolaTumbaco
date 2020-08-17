@@ -1,7 +1,7 @@
+import { AvicolaService } from './../../servicios/avicola.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginService } from '../../servicios/login.service';
 import { Login } from '../../modelos/login.interface';
 @Component({
   selector: 'app-perfil',
@@ -27,13 +27,13 @@ export class PerfilComponent implements OnInit {
   fecha = new Date();
   constructor(
     private readonly _router: Router,
-    private readonly _LoginService: LoginService
+    private readonly _AvicolaService: AvicolaService
   ) {}
 
   ngOnInit(): void {
     this.id = localStorage.getItem('id');
     this.user = localStorage.getItem('user');
-    this._LoginService
+    this._AvicolaService
       .metodoGet('http://localhost:1337/registro?estado=activo&&id=' + this.id)
       .subscribe((data) => (this.usuarios = data));
     console.log(this.usuarios);
@@ -48,7 +48,7 @@ export class PerfilComponent implements OnInit {
   }
 
   actualizar(perfil: Login) {
-    this._LoginService
+    this._AvicolaService
       .metodoPut('http://localhost:1337/registro/' + this.id, {
         cedula: this.selectedPerfil.cedula,
         nombre: this.selectedPerfil.nombre,
@@ -59,7 +59,7 @@ export class PerfilComponent implements OnInit {
         nombreUsuarioActualizacion: this.user,
       })
       .subscribe(() => {
-        this._LoginService
+        this._AvicolaService
           .metodoPut('http://localhost:1337/login/' + this.id, {
             usuario: this.usuario,
             clave: this.clave,
