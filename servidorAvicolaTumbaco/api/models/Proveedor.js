@@ -32,6 +32,10 @@ module.exports = {
     nombreUsuarioActualizacion: {
       type: "string",
     },
+    inventario: {
+      collection: "inventario",
+      via: "idProveedor",
+    },
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝

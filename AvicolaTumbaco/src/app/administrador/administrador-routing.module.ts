@@ -1,12 +1,11 @@
+import { ProductosComponent } from './productos/productos.component';
 import { ProveedorComponent } from './proveedor/proveedor.component';
-import { ProductosComponent } from '../administrador/productos/productos.component';
 import { InventarioComponent } from '../administrador/inventario/inventario.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { InicioadministradorComponent } from './inicioadministrador/inicioadministrador.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { UsuariosComponent } from "../administrador/usuarios/usuarios.component";
-
 const routes: Routes = [
   {
     path: 'inicioadministrador',
@@ -20,10 +19,10 @@ const routes: Routes = [
     path: 'inventario',
     component: InventarioComponent,
   },
-  {
-    path: 'productos',
-    component: ProductosComponent,
-  },
+   {
+     path: 'productos',
+     component: ProductosComponent,
+   },
   {
     path: 'usuarios',
     component: UsuariosComponent,

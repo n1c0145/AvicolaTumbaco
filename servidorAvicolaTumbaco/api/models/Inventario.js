@@ -39,6 +39,9 @@ module.exports = {
     nombreUsuarioActualizacion: {
       type: "string",
     },
+    idProveedor: {
+      model: "Proveedor",
+    },
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝

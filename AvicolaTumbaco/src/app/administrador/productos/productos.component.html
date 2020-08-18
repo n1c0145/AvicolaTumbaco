@@ -25,7 +25,9 @@
         <a class="nav-link" [routerLink]="['/administrador/perfil']">Perfil</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/administrador/usuarios']">Usuarios</a>
+        <a class="nav-link" [routerLink]="['/administrador/usuarios']"
+          >Usuarios</a
+        >
       </li>
       <li class="nav-item">
         <a class="nav-link" [routerLink]="['/administrador/inventario']"
@@ -55,155 +57,102 @@
 </nav>
 
 
-<mat-tab-group>
-  <mat-tab label="Editar/Eliminar"> 
+     <table class="mat-elevation-z8">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Descripcion</th>
+        <th>Imagen</th>
+        <th>Categoria</th>
+        <th>Proveedor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of productos">
+        <td>{{ user.nombre }}</td>
+        <td>{{ user.descripcion }}</td>
+        <td>{{ user.imagen }}</td>
+        <td>{{ user.categoria }}</td>
+        <td>{{ user.idProveedor.nombre }}</td>
+         <button type="button" class="btn btn-primary" (click)="editar()">
+          Editar
+        </button>
+  
+        <button type="button" class="btn btn-danger" (click)="eliminar()">
+          Eliminar
+        </button> 
+      </tr>
+    </tbody>
+  </table>   
+
+
+
+  <form>
+    <h4>Nombre</h4>
+    <input
+      class="input_field search_form_name"
+      type="text"
+      placeholder="Nombres"
+      required="required"
+      [(ngModel)]="nombre"
+      name="nombre"
+    />
+
+    <h4>Descripcion</h4>
+    <input
+      class="input_field search_form_name"
+      type="text"
+      placeholder="Descripcion"
+      required="required"
+      [(ngModel)]="descripcion"
+      name="descripcion"
+    />
+
+    <h4>Imagen</h4>
+    <input
+      class="input_field search_form_name"
+      type="text"
+      placeholder="Path imageb"
+      [(ngModel)]="imagen"
+      name="imagen"
+    />
+    <h4>Categoria</h4>
+    <input
+      class="input_field search_form_name"
+      type="text"
+      placeholder="Categoria"
+      [(ngModel)]="categoria"
+      name="categoria"
+    />
+    <h4>Stock</h4>
+    <input
+      class="input_field search_form_name"
+      type="text"
+      placeholder="stock"
+      [(ngModel)]="stock"
+      name="stock"
+    />
+
+    <h4>Proveedor</h4>
+     <mat-form-field>
+      <mat-label>Escoja un proveedor</mat-label>
+      <mat-select [(ngModel)]="select" name="select">
+        <mat-option value="{{ item.nombre }}" *ngFor="let item of proveedor">{{
+          item.nombre
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field> 
+
+
+    <!-- <select name="select" id="2" [(ngModel)]="select">
+        <option value="{{ item.nombre }}" *ngFor="let item of proveedor">{{
+            item.nombre
+          }}<option>
+    </select> -->
   
 
-    <table class="mat-elevation-z8">
-          <thead>
-            <tr>
-              <th>Nombre</th>
-              <th>Descripcion</th>
-              <th>Imagen</th>
-              <th>Categoria</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let user of productos">
-              <td>{{ user.nombre }}</td>
-              <td>{{ user.descripcion }}</td>
-              <td> <img src="{{ user.imagen }}" width="200px"> </td>
-              <td>{{ user.categoria }}</td>
-
-              <button type="button" class="btn btn-primary" (click)="editar(user)">Editar</button>
-  
-              <button type="button" class="btn btn-danger" (click)="eliminar(user)">Eliminar</button>   
-            </tr>
-          </tbody>
-        </table>
-
-        <div *ngIf="editOn">
-          <form>
-
-            <h4>Nombre</h4>
-            <input
-              type="text"
-              placeholder="Apellido"
-              required="required"
-              [(ngModel)]="selectedProducto.nombre"
-              name="nombre"
-              value="{{selectedProducto.nombre}}"
-            />
-
-            <h4>Descripcion</h4>
-            <input
-              class="input_field search_form_name"
-              type="text"
-              placeholder="Descripcion"
-              required="required"
-              [(ngModel)]="selectedProducto.descripcion"
-              name="descripcion"
-              value="{{selectedProducto.descripcion}}"
-            />
-            <h4>Imagen</h4>
-            <input
-              class="input_field search_form_name"
-              type="text"
-              placeholder="Path imageb"
-              [(ngModel)]="selectedProducto.imagen"
-              name="imagen"
-              value="{{selectedProducto.imagen}}"
-            />
-            <h4>Categoria</h4>
-            <input
-              class="input_field search_form_name"
-              type="text"
-              placeholder="Categoria"
-              [(ngModel)]="selectedProducto.categoria"
-              name="categoria"
-              value="{{selectedProducto.categoria}}"
-            />
-    
-            <button
-              class="search_submit_button"
-              (click)="actualizar()"
-              class="btn btn-primary"
-            >
-            Actualizar
-            </button>
-          
-          </form>
-      </div>
-        
-
-
-
-  </mat-tab>
-  <mat-tab label="Insertar">  
-      
-
-      <div>
-          <form
-         
-          >
-
-            <h4>Nombre</h4>
-            <input
-              class="input_field search_form_name"
-              type="text"
-              placeholder="Nombres"
-              required="required"
-              [(ngModel)]="nombre"
-              name="nombre"
-            />
-            <h4>Descripcion</h4>
-            <input
-            class="input_field search_form_name"
-            type="text"
-            placeholder="Descripcion"
-            required="required"
-            [(ngModel)]="descripcion"
-            name="descripcion"
-          />
-
-          <h4>Imagen</h4>
-          <input
-            class="input_field search_form_name"
-            type="text"
-            placeholder="Path imageb"
-            [(ngModel)]="imagen"
-            name="imagen"
-       
-          />
-          <h4>Categoria</h4>
-          <input
-            class="input_field search_form_name"
-            type="text"
-            placeholder="Categoria"
-            [(ngModel)]="categoria"
-            name="categoria"
-          />
-          <h4>Stock</h4>
-          <input
-            class="input_field search_form_name"
-            type="text"
-            placeholder="stock"
-            [(ngModel)]="stock"
-            name="stock"
-          />
-            <button  type="submit" class="btn btn-primary"  (click)='ingresar()'>Ingresar</button>
-          
-          </form>
-        </div>
-        
-
-
-
-  </mat-tab>
-
-</mat-tab-group>
-
-
- 
-
+    <button type="submit" class="btn btn-primary" (click)="ingresar()">
+      Ingresar
+    </button>
+  </form>
 
