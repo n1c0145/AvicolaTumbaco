@@ -56,103 +56,106 @@
   </div>
 </nav>
 
+<table class="mat-elevation-z8">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Descripcion</th>
+      <th>Imagen</th>
+      <th>Categoria</th>
+      <th>Proveedor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of productos">
+      <td>{{ user.nombre }}</td>
+      <td>{{ user.descripcion }}</td>
+      <td>{{ user.imagen }}</td>
+      <td>{{ user.categoria }}</td>
+      <td>{{ user.idProveedor.nombre }}</td>
+      <button type="button" class="btn btn-primary" (click)="editar()">
+        Editar
+      </button>
 
-     <table class="mat-elevation-z8">
-    <thead>
-      <tr>
-        <th>Nombre</th>
-        <th>Descripcion</th>
-        <th>Imagen</th>
-        <th>Categoria</th>
-        <th>Proveedor</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let user of productos">
-        <td>{{ user.nombre }}</td>
-        <td>{{ user.descripcion }}</td>
-        <td>{{ user.imagen }}</td>
-        <td>{{ user.categoria }}</td>
-        <td>{{ user.idProveedor.nombre }}</td>
-         <button type="button" class="btn btn-primary" (click)="editar()">
-          Editar
-        </button>
-  
-        <button type="button" class="btn btn-danger" (click)="eliminar()">
-          Eliminar
-        </button> 
-      </tr>
-    </tbody>
-  </table>   
+      <button type="button" class="btn btn-danger" (click)="eliminar()">
+        Eliminar
+      </button>
+    </tr>
+  </tbody>
+</table>
 
+<form>
+  <h4>Nombre</h4>
+  <input
+    class="input_field search_form_name"
+    type="text"
+    placeholder="Nombres"
+    required="required"
+    [(ngModel)]="nombre"
+    name="nombre"
+  />
 
+  <h4>Descripcion</h4>
+  <input
+    class="input_field search_form_name"
+    type="text"
+    placeholder="Descripcion"
+    required="required"
+    [(ngModel)]="descripcion"
+    name="descripcion"
+  />
 
-  <form>
-    <h4>Nombre</h4>
-    <input
-      class="input_field search_form_name"
-      type="text"
-      placeholder="Nombres"
-      required="required"
-      [(ngModel)]="nombre"
-      name="nombre"
-    />
+  <h4>Imagen</h4>
+  <input
+    class="input_field search_form_name"
+    type="text"
+    placeholder="Path imageb"
+    [(ngModel)]="imagen"
+    name="imagen"
+  />
+  <h4>Categoria</h4>
+  <input
+    class="input_field search_form_name"
+    type="text"
+    placeholder="Categoria"
+    [(ngModel)]="categoria"
+    name="categoria"
+  />
+  <h4>Categoria</h4>
+  <mat-form-field>
+    <mat-label>Escoja una categoria</mat-label>
+    <mat-select [(ngModel)]="select" name="select">
+      <mat-option value="{{ item.nombre }}" *ngFor="let item of proveedor">
+        {{ item.nombre }}</mat-option
+      >
+    </mat-select>
+  </mat-form-field>
+  <h4>Stock</h4>
+  <input
+    class="input_field search_form_name"
+    type="text"
+    placeholder="stock"
+    [(ngModel)]="stock"
+    name="stock"
+  />
 
-    <h4>Descripcion</h4>
-    <input
-      class="input_field search_form_name"
-      type="text"
-      placeholder="Descripcion"
-      required="required"
-      [(ngModel)]="descripcion"
-      name="descripcion"
-    />
+  <h4>Proveedor</h4>
+  <mat-form-field>
+    <mat-label>Escoja un proveedor</mat-label>
+    <mat-select [(ngModel)]="select" name="select">
+      <mat-option value="{{ item.nombre }}" *ngFor="let item of proveedor">
+        {{ item.nombre }}</mat-option
+      >
+    </mat-select>
+  </mat-form-field>
 
-    <h4>Imagen</h4>
-    <input
-      class="input_field search_form_name"
-      type="text"
-      placeholder="Path imageb"
-      [(ngModel)]="imagen"
-      name="imagen"
-    />
-    <h4>Categoria</h4>
-    <input
-      class="input_field search_form_name"
-      type="text"
-      placeholder="Categoria"
-      [(ngModel)]="categoria"
-      name="categoria"
-    />
-    <h4>Stock</h4>
-    <input
-      class="input_field search_form_name"
-      type="text"
-      placeholder="stock"
-      [(ngModel)]="stock"
-      name="stock"
-    />
-
-    <h4>Proveedor</h4>
-     <mat-form-field>
-      <mat-label>Escoja un proveedor</mat-label>
-      <mat-select [(ngModel)]="select" name="select">
-        <mat-option value="{{ item.nombre }}" *ngFor="let item of proveedor">{{
-          item.nombre
-        }}</mat-option>
-      </mat-select>
-    </mat-form-field> 
-
-
-    <!-- <select name="select" id="2" [(ngModel)]="select">
+  <!-- <select name="select" id="2" [(ngModel)]="select">
         <option value="{{ item.nombre }}" *ngFor="let item of proveedor">{{
             item.nombre
           }}<option>
     </select> -->
-  
 
-    <button type="submit" class="btn btn-primary" (click)="ingresar()">
-      Ingresar
-    </button>
-  </form>
-
+  <button type="submit" class="btn btn-primary" (click)="ingresar()">
+    Ingresar
+  </button>
+</form>

@@ -18,9 +18,6 @@ module.exports = {
     imagen:{
       type:'string'
     },
-    categoria:{
-      type:'string'
-    },
     stock:{
       type:'number'
     },
@@ -38,6 +35,9 @@ module.exports = {
     },
     nombreUsuarioActualizacion: {
       type: "string",
+    },
+    idCategoria: {
+      model: "Categoria",
     },
     idProveedor: {
       model: "Proveedor",

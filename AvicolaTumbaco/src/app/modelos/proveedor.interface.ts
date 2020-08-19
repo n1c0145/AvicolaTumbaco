@@ -8,4 +8,5 @@ export interface Proveedor {
     nombreUsuarioCreacion: string;
     fechaActualizacion: string;
     nombreUsuarioActualizacion: string;
+    idProveedor:number
   }
