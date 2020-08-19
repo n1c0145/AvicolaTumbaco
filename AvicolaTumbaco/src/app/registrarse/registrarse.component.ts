@@ -64,7 +64,7 @@ export class RegistrarseComponent implements OnInit {
                   nombreUsuarioCreacion: this.usuario,
                   fechaActualizacion: this.fecha,
                   nombreUsuarioActualizacion: this.usuario,
-                  idTipoPerfil: 1,
+                  idTipoPerfil: 2,
                 })
                 .subscribe((registroCreado) => {
                   this.idLogin = JSON.stringify(registroCreado['id']);
