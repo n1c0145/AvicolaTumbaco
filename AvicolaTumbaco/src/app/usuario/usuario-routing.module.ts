@@ -1,3 +1,6 @@
+import { NuevopedidoComponent } from './nuevopedido/nuevopedido.component';
+import { PedidosComponent } from './pedidos/pedidos.component';
+import { FacturaComponent } from './factura/factura.component';
 import { IniciousuarioComponent } from './iniciousuario/iniciousuario.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -14,6 +17,22 @@ const routes: Routes = [
     component: PerfilComponent,
 
   },
+  {
+    path: 'factura',
+    component: FacturaComponent,
+
+  },
+  {
+    path: 'pedidos',
+    component: PedidosComponent,
+
+  },
+  {
+    path: 'nuevopedido',
+    component: NuevopedidoComponent,
+
+  },
+  
   
 ];
 

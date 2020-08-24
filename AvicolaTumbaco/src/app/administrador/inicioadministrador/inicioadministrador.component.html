@@ -42,6 +42,21 @@
           >Proveedores</a
         >
       </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/administrador/datosempresa']"
+          >Datos Empresa</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/administrador/pedidos']"
+          >Pedidos</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/administrador/ventaproducto']"
+          >Venta Producto</a
+        >
+      </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <button
@@ -56,9 +71,12 @@
 
 
 
-<!-- <mat-tab-group>
-  <mat-tab label="Insertar"> Content 1 </mat-tab>
-  <mat-tab label="Editar/Eliminar"> Content 2 </mat-tab>
-</mat-tab-group> -->
+<div class="p-field p-col-12 p-md-4">
+  <label for="icon">Fecha</label>
+  <p-calendar [(ngModel)]="date1" [showIcon]="true" inputId="icon"></p-calendar>
+</div>
 
+{{date1}}
+{{finaldate}}
 
+<button (click)="a()">cxvcxv</button>

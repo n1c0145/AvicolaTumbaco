@@ -156,11 +156,16 @@
       name="clave"
       value="clave"
     /> 
-    <h4>TipoUsuario</h4>
-    <select id="select" [(ngModel)]="select" name="select">
-      <option value="1">Usuario</option>
-      <option value ="2">Administrador</option>
-    </select>
+
+<div>
+    <mat-form-field>
+      <mat-label>Cambiar Tipo de Usuario</mat-label>
+      <mat-select [(ngModel)]="select" name="select">
+        <mat-option value="1">Usuario</mat-option>
+        <mat-option value ="2">Administrador</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
     <div>
     <button
       class="search_submit_button"
@@ -172,4 +177,3 @@
   </div>
   </form>
 </div> 
-

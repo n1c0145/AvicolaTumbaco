@@ -1,0 +1,159 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <img src="" width="10%" alt="" />
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLink]="['/administrador/inicioadministrador']"
+            >Inicio</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/administrador/perfil']">Perfil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/administrador/usuarios']">Usuarios</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/administrador/inventario']"
+            >Inventario</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/administrador/productos']"
+            >Gestion Productos</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/administrador/proveedor']"
+            >Proveedores</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/administrador/datosempresa']"
+            >Datos Empresa</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/administrador/pedidos']"
+            >Pedidos</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/administrador/ventaproducto']"
+            >Venta Producto</a
+          >
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <button
+          class="btn btn-outline-danger my-2 my-sm-0"
+          [routerLink]="['/inicio']"
+        >
+          Cerrar Sesion
+        </button>
+      </form>
+    </div>
+  </nav>
+
+
+
+  <div>
+
+    <table class="mat-elevation-z8">
+          <thead>
+            <tr>
+           
+              <th>Nombre</th>
+              <th>Direccion</th>
+              <th>Ruc</th>
+              <th>Telefono</th>
+              <th>Telefono 2</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of datos">
+                <td>{{ user.nombre }}</td>
+              <td>{{ user.ruc }}</td>         
+              <td>{{ user.direccion }}</td>
+              <td>0{{ user.telefono }}</td>
+              <td>0{{ user.telefono2 }}</td>
+              
+               <button type="button" class="btn btn-primary" (click)="editar(user)">Editar</button> 
+  
+            </tr>
+          </tbody>
+        </table>
+  
+  </div> 
+
+
+
+  <div *ngIf="editOn">
+    <form>
+        <h4>Nombre</h4>
+        <input
+          type="text"
+          required="required"
+          [(ngModel)]="selectedDato.nombre"
+          name="cedula"
+          value="{{selectedDato.nombre}}"
+        />
+      <h4>Ruc</h4>
+      <input
+        type="text"
+        required="required"
+        [(ngModel)]="selectedDato.ruc"
+        name="ruc"
+        value="{{selectedDato.nombre}}"
+      />
+      <h4>Direccion</h4>
+      <input
+        class="input_field search_form_name"
+        type="text"
+        required="required"
+        [(ngModel)]="selectedDato.direccion"
+        name="direccion"
+        value="{{selectedDato.direccion}}"
+      />
+      <h4>Telefono</h4>
+      <input
+        class="input_field search_form_name"
+        type="text"
+        [(ngModel)]="selectedDato.telefono"
+        name="telefono"
+        value="{{selectedDato.telefono}}"
+      />
+      <h4>Telefono 2</h4>
+      <input
+        class="input_field search_form_name"
+        type="text"
+        [(ngModel)]="selectedDato.telefono2"
+        name="telefono2"
+        value="{{selectedDato.telefono2}}"
+      />
+     
+      <div>
+      <button
+        class="search_submit_button"
+        (click)="actualizar()"
+        class="btn btn-primary"
+      >
+      Actualizar
+      </button>
+    </div>
+    </form>
+  </div> 

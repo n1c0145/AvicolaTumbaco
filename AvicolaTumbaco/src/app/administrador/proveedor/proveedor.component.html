@@ -25,7 +25,9 @@
         <a class="nav-link" [routerLink]="['/administrador/perfil']">Perfil</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/administrador/usuarios']">Usuarios</a>
+        <a class="nav-link" [routerLink]="['/administrador/usuarios']"
+          >Usuarios</a
+        >
       </li>
       <li class="nav-item">
         <a class="nav-link" [routerLink]="['/administrador/inventario']"
@@ -54,125 +56,110 @@
   </div>
 </nav>
 
-<mat-tab-group>
-    <mat-tab label="Editar/Eliminar"> 
-    
+<mat-tab-group mat-align-tabs="center">
+  <mat-tab label="Editar/Eliminar">
+    <table class="mat-elevation-z8">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Descripcion</th>
+          <th>Telefono</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of proveedores">
+          <td>{{ user.nombre }}</td>
+          <td>{{ user.descripcion }}</td>
+          <td>{{ user.telefono }}</td>
+          <button type="button" class="btn btn-primary" (click)="editar(user)">
+            Editar
+          </button>
 
-      <table class="mat-elevation-z8">
-            <thead>
-              <tr>
-                <th>Nombre</th>
-                <th>Descripcion</th>
-                <th>Telefono</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let user of proveedores">
-                <td>{{ user.nombre }}</td>
-                <td>{{ user.descripcion }}</td>
-                <td>{{ user.telefono }}</td>
-                <button type="button" class="btn btn-primary" (click)="editar(user)">Editar</button>
-    
-                <button type="button" class="btn btn-danger" (click)="eliminar(user)">Eliminar</button>   
-              </tr>
-            </tbody>
-          </table>
+          <button type="button" class="btn btn-danger" (click)="eliminar(user)">
+            Eliminar
+          </button>
+        </tr>
+      </tbody>
+    </table>
 
-          <div *ngIf="editOn">
-            <form>
-  
-              <h4>Nombre</h4>
-              <input
-                type="text"
-                placeholder="Apellido"
-                required="required"
-                [(ngModel)]="selectedProveedor.nombre"
-                name="nombre"
-                value="{{selectedProveedor.nombre}}"
-              />
+    <div *ngIf="editOn">
+      <form>
+        <h4>Nombre</h4>
+        <input
+          type="text"
+          placeholder="Apellido"
+          required="required"
+          [(ngModel)]="selectedProveedor.nombre"
+          name="nombre"
+          value="{{ selectedProveedor.nombre }}"
+        />
 
-              <h4>Descripcion</h4>
-              <input
-                class="input_field search_form_name"
-                type="text"
-                placeholder="Descripcion"
-                required="required"
-                [(ngModel)]="selectedProveedor.descripcion"
-                name="descripcion"
-                value="{{selectedProveedor.descripcion}}"
-              />
-              <h4>Telefono</h4>
-              <input
-                class="input_field search_form_name"
-                type="text"
-                placeholder="Telefono"
-                [(ngModel)]="selectedProveedor.telefono"
-                name="telefono"
-                value="{{selectedProveedor.telefono}}"
-              />
-              <button
-                class="search_submit_button"
-                (click)="actualizar()"
-                class="btn btn-primary"
-              >
-              Actualizar
-              </button>
-            
-            </form>
-        </div>
-          
+        <h4>Descripcion</h4>
+        <input
+          class="input_field search_form_name"
+          type="text"
+          placeholder="Descripcion"
+          required="required"
+          [(ngModel)]="selectedProveedor.descripcion"
+          name="descripcion"
+          value="{{ selectedProveedor.descripcion }}"
+        />
+        <h4>Telefono</h4>
+        <input
+          class="input_field search_form_name"
+          type="text"
+          placeholder="Telefono"
+          [(ngModel)]="selectedProveedor.telefono"
+          name="telefono"
+          value="{{ selectedProveedor.telefono }}"
+        />
+        <button
+          class="search_submit_button"
+          (click)="actualizar()"
+          class="btn btn-primary"
+        >
+          Actualizar
+        </button>
+      </form>
+    </div>
+  </mat-tab>
+  <mat-tab label="Insertar">
+    <div>
+      <form>
+        <h4>Nombre</h4>
+        <input
+          class="input_field search_form_name"
+          type="text"
+          placeholder="Nombres"
+          required="required"
+          [(ngModel)]="nombre"
+          name="nombre"
+        />
+        <h4>Descripcion</h4>
+        <input
+          class="input_field search_form_name"
+          type="text"
+          placeholder="Descripcion"
+          required="required"
+          [(ngModel)]="descripcion"
+          name="descripcion"
+        />
 
-
-
-    </mat-tab>
-    <mat-tab label="Insertar">  
-        
-
+        <h4>Telefono</h4>
+        <input
+          class="input_field search_form_name"
+          type="text"
+          placeholder="Telefono"
+          required="required"
+          [(ngModel)]="telefono"
+          name="telefono"
+        />
         <div>
-            <form
-           
-            >
-
-              <h4>Nombre</h4>
-              <input
-                class="input_field search_form_name"
-                type="text"
-                placeholder="Nombres"
-                required="required"
-                [(ngModel)]="nombre"
-                name="nombre"
-              />
-              <h4>Descripcion</h4>
-              <input
-              class="input_field search_form_name"
-              type="text"
-              placeholder="Descripcion"
-              required="required"
-              [(ngModel)]="descripcion"
-              name="descripcion"
-            />
-
-              <h4>Telefono</h4>
-              <input
-                class="input_field search_form_name"
-                type="text"
-                placeholder="Telefono"
-                required="required"
-                [(ngModel)]="telefono"
-                name="telefono"
-              />
-          <div>
-              <button  type="submit" class="btn btn-primary"  (click)='ingresar()'>Ingresar</button>
-            </div>
-            </form>
-          
-          </div>
-
-
-
-    </mat-tab>
-
-  </mat-tab-group>
-
-
-
+          <button type="submit" class="btn btn-primary" (click)="ingresar()">
+            Ingresar
+          </button>
+        </div>
+      </form>
+    </div>
+  </mat-tab>
+</mat-tab-group>

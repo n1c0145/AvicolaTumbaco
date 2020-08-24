@@ -13,6 +13,13 @@ import { ProveedorComponent } from './proveedor/proveedor.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ProductosComponent } from './productos/productos.component';
+import {InputNumberModule} from 'primeng/inputnumber';
+import {RadioButtonModule} from 'primeng/radiobutton';
+import {CalendarModule} from 'primeng/calendar';
+import { DatosempresaComponent } from './datosempresa/datosempresa.component';
+import { PedidosComponent } from './pedidos/pedidos.component';
+import { FacturaComponent } from './factura/factura.component';
+import { VentaproductoComponent } from './ventaproducto/ventaproducto.component';
 @NgModule({
   declarations: [
     InicioadministradorComponent,
@@ -21,6 +28,10 @@ import { ProductosComponent } from './productos/productos.component';
     UsuariosComponent,
     ProveedorComponent,
     ProductosComponent,
+    DatosempresaComponent,
+    PedidosComponent,
+    FacturaComponent,
+    VentaproductoComponent,
   ],
   imports: [CommonModule, 
     AdministradorRoutingModule,
@@ -30,7 +41,9 @@ import { ProductosComponent } from './productos/productos.component';
     MatDialogModule,
     MatSelectModule,
     MatFormFieldModule,
-   
+    InputNumberModule,
+    RadioButtonModule,
+    CalendarModule
   ],
 })
 export class AdministradorModule {}

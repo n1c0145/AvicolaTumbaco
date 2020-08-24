@@ -3,14 +3,20 @@ import { CommonModule } from '@angular/common';
 import { UsuarioRoutingModule } from './usuario-routing.module';
 import { IniciousuarioComponent } from './iniciousuario/iniciousuario.component';
 import { PerfilComponent } from './perfil/perfil.component';
-
-
+import { PedidosComponent } from './pedidos/pedidos.component';
+import { NuevopedidoComponent } from './nuevopedido/nuevopedido.component';
+import { FacturaComponent } from './factura/factura.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
-  declarations: [IniciousuarioComponent, PerfilComponent],
-  providers:[],
-  imports: [
-    CommonModule,
-    UsuarioRoutingModule
-  ]
+  declarations: [
+    IniciousuarioComponent,
+    PerfilComponent,
+    PedidosComponent,
+    NuevopedidoComponent,
+    FacturaComponent,
+  ],
+  providers: [],
+  imports: [CommonModule, UsuarioRoutingModule , FormsModule,HttpClientModule],
 })
-export class UsuarioModule { }
+export class UsuarioModule {}

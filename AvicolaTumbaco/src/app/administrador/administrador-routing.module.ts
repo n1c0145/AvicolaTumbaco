@@ -1,3 +1,7 @@
+import { VentaproductoComponent } from './ventaproducto/ventaproducto.component';
+import { PedidosComponent } from './../usuario/pedidos/pedidos.component';
+import { FacturaComponent } from './../usuario/factura/factura.component';
+import { DatosempresaComponent } from './datosempresa/datosempresa.component';
 import { ProductosComponent } from './productos/productos.component';
 import { ProveedorComponent } from './proveedor/proveedor.component';
 import { InventarioComponent } from '../administrador/inventario/inventario.component';
@@ -30,6 +34,22 @@ const routes: Routes = [
   {
     path: 'proveedor',
     component: ProveedorComponent,
+  },
+  {
+    path: 'datosempresa',
+    component: DatosempresaComponent,
+  },
+  {
+    path: 'factura',
+    component: FacturaComponent,
+  },
+  {
+    path: 'pedidos',
+    component: PedidosComponent,
+  },
+  {
+    path: 'ventaproducto',
+    component: VentaproductoComponent,
   },
 ];
 
