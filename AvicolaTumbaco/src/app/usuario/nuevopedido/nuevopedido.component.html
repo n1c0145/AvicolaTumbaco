@@ -1,42 +1,72 @@
 <div>
+  <table class="mat-elevation-z8">
+    <thead>
+      <tr>
+        <th>Descripcion</th>
+        <th>Peso</th>
+        <th>Precio por libra</th>
+        <th>Pollos disponibles</th>
+        <th>Fecha de salida</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of productos">
+        <td>{{ user.descripcion }}</td>
+        <td>{{ user.peso }}</td>
+        <td>{{ user.precio }}</td>
+        <td>{{ user.stock }}</td>
+        <td>{{ user.fecha | date }}</td>
 
-    <table class="mat-elevation-z8">
-        <thead>
-          <tr>
-            <th>Descripcion</th>
-            <th>Peso</th>
-            <th>Precio por libra</th>
-            <th>Pollos disponibles</th>
-            <th>Fecha de salida</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let user of productos">
-            <td>{{ user.descripcion }}</td>
-            <td>{{ user.peso }}</td>
-            <td>{{ user.precio }}</td>
-            <td>{{ user.stock }}</td>
-            <td>{{ user.fecha | date}}</td>
-         
-            <button type="button" class="btn btn-primary" (click)="agregar(user)">Agregar</button>
+        <button type="button" class="btn btn-primary" (click)="agregar(user)">
+          Agregar
+        </button>
+      </tr>
+    </tbody>
+  </table>
 
-          </tr>
-        </tbody>
-      </table>
+  <div *ngIf="editOn">
+    <p-inputNumber
+      [(ngModel)]="val"
+      mode="decimal"
+      [showButtons]="true"
+      buttonLayout="vertical"
+      spinnerMode="vertical"
+      decrementButtonClass="p-button-secondary"
+      incrementButtonClass="p-button-secondary"
+      incrementButtonIcon="pi pi-plus"
+      decrementButtonIcon="pi pi-minus"
+      min="0"
+    ></p-inputNumber>
+    <div>
+      <button type="button" class="btn btn-primary" (click)="agregar2()">
+        Agregar
+      </button>
+    </div>
+  </div>
 
-      <div *ngIf="editOn">
-        <!-- <p-inputNumber
-        [(ngModel)]="val"
-        mode="decimal"
-        [showButtons]="true"
-        buttonLayout="vertical"
-        spinnerMode="vertical"
-        decrementButtonClass="p-button-secondary"
-        incrementButtonClass="p-button-secondary"
-        incrementButtonIcon="pi pi-plus"
-        decrementButtonIcon="pi pi-minus"
-      ></p-inputNumber> -->
-      </div>
-
-{{pedido}}
+  <div *ngFor="let user of arraydescripcion">
+    <div>
+      <div>{{ user }}</div>
+    </div>
+  </div>
+  <div *ngFor="let user of arraypeso">
+    <div>
+      <div>{{ user }}</div>
+    </div>
+  </div>
+  <div *ngFor="let user of arrayprecio">
+    <div>
+      <div>{{ user }}</div>
+    </div>
+  </div>
+  <div *ngFor="let user of arraystock">
+    <div>
+      <div>{{ user }}</div>
+    </div>
+  </div>
+  <div *ngFor="let user of arraysubtotal; let i=index">
+    <div>
+      <div>{{ user }}</div><button (click)="eliminar(i)">x</button>
+    </div>
+  </div>
 </div>

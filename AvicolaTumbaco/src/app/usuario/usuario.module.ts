@@ -8,6 +8,7 @@ import { NuevopedidoComponent } from './nuevopedido/nuevopedido.component';
 import { FacturaComponent } from './factura/factura.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import {InputNumberModule} from 'primeng/inputnumber';
 @NgModule({
   declarations: [
     IniciousuarioComponent,
@@ -18,6 +19,6 @@ import { HttpClientModule } from '@angular/common/http';
     
   ],
   providers: [],
-  imports: [CommonModule, UsuarioRoutingModule, FormsModule, HttpClientModule],
+  imports: [CommonModule, UsuarioRoutingModule, FormsModule, HttpClientModule, InputNumberModule],
 })
 export class UsuarioModule {}
