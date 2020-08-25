@@ -15,8 +15,9 @@ import { HttpClientModule } from '@angular/common/http';
     PedidosComponent,
     NuevopedidoComponent,
     FacturaComponent,
+    
   ],
   providers: [],
-  imports: [CommonModule, UsuarioRoutingModule , FormsModule,HttpClientModule],
+  imports: [CommonModule, UsuarioRoutingModule, FormsModule, HttpClientModule],
 })
 export class UsuarioModule {}

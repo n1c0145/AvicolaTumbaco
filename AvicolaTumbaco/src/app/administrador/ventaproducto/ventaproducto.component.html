@@ -1,1 +1,238 @@
-<p>ventaproducto works!</p>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <img src="" width="10%" alt="" />
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          [routerLink]="['/administrador/inicioadministrador']"
+          >Inicio</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/administrador/perfil']">Perfil</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/administrador/usuarios']"
+          >Usuarios</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/administrador/inventario']"
+          >Inventario</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/administrador/productos']"
+          >Gestion Productos</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/administrador/proveedor']"
+          >Proveedores</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/administrador/datosempresa']"
+          >Datos Empresa</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/administrador/pedidos']"
+          >Pedidos</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/administrador/ventaproducto']"
+          >Venta Producto</a
+        >
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <button
+        class="btn btn-outline-danger my-2 my-sm-0"
+        [routerLink]="['/inicio']"
+      >
+        Cerrar Sesion
+      </button>
+    </form>
+  </div>
+</nav>
+
+
+<mat-tab-group mat-align-tabs="center">
+  <mat-tab label="Lista productos a la venta">
+
+    <table class="mat-elevation-z8">
+      <thead>
+        <tr>
+          <th>Descripcion</th>
+          <th>Peso</th>
+          <th>Precio</th>
+          <th>Stock</th>
+          <th>Fecha</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of productos">
+          <td>{{ user.descripcion }}</td>
+          <td>{{ user.peso }}</td>
+          <td>{{ user.precio }}</td>
+          <td>{{ user.stock }}</td>
+          <td>{{ user.fecha | date }}</td>
+          <button type="button" class="btn btn-primary" (click)="editar(user)">
+            Editar
+          </button>
+    
+          <button type="button" class="btn btn-danger" (click)="eliminar(user)">
+            Eliminar
+          </button>
+        </tr>
+      </tbody>
+    </table>
+    <div *ngIf="editOn">
+      <h4>Descripcion</h4>
+     
+      <input
+        class="input_field search_form_name"
+        type="text"
+        placeholder="Descripcion"
+        required="required"
+        [(ngModel)]="selectedProducto.descripcion"
+        name="descripcion"
+        value="{{ selectedProducto.descripcion }}"
+      />
+   
+       <div>Peso: {{selectedProducto.peso}}</div>
+      <mat-form-field>
+        <mat-label>Escoja el peso</mat-label>
+        <mat-select [(ngModel)]="peso" name="peso">
+          <mat-option value="5.5">5-5.5libras</mat-option>
+          <mat-option value="6">5.5-6libras</mat-option>
+          <mat-option value="6.5">6-6.5libras</mat-option>
+          <mat-option value="7">6.5-7libras</mat-option>
+        </mat-select>
+      </mat-form-field>
+    
+      <h4>Precio por libra</h4>
+      <input
+        class="input_field search_form_name"
+        type="text"
+        placeholder="Precio"
+        required="required"
+        [(ngModel)]="selectedProducto.precio"
+        name="precio"
+        value="{{ selectedProducto.precio }}"
+      />
+      <div>Stock: {{selectedProducto.stock}}</div>
+      
+        <p-inputNumber
+          [(ngModel)]="stock"
+          [showButtons]="true"
+          buttonLayout="vertical"
+          spinnerMode="vertical"
+          decrementButtonClass="p-button-secondary"
+          incrementButtonClass="p-button-secondary"
+          incrementButtonIcon="pi pi-plus"
+          decrementButtonIcon="pi pi-minus"
+          [min]="0"
+        ></p-inputNumber> 
+    <div>Fecha: {{selectedProducto.fecha|date}}</div>
+    <div>
+      <div class="p-field p-col-12 p-md-4">
+        <p-calendar
+          [(ngModel)]="date"
+          [showIcon]="true"
+          inputId="icon"
+        ></p-calendar>
+      </div>
+    </div>
+        <button
+          class="search_submit_button"
+          (click)="actualizar()"
+          class="btn btn-primary"
+        >
+          Actualizar
+        </button>
+      
+     
+    </div> 
+
+
+  </mat-tab>
+  <mat-tab label="Insertar">
+
+    <div>
+      <h4>Descripcion</h4>
+      <input
+        class="input_field search_form_name"
+        type="text"
+        placeholder="Descripcion"
+        required="required"
+        [(ngModel)]="descripcion"
+        name="descripcion"
+      />
+      <h4>Peso</h4>
+      <mat-form-field>
+        <mat-label>Escoja el peso</mat-label>
+        <mat-select [(ngModel)]="peso" name="peso">
+          <mat-option value="5.5">5-5.5libras</mat-option>
+          <mat-option value="6">5.5-6libras</mat-option>
+          <mat-option value="6.5">6-6.5libras</mat-option>
+          <mat-option value="7">6.5-7libras</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <h4>Precio por libra</h4>
+      <input
+        class="input_field search_form_name"
+        type="number"
+        placeholder="precio"
+        [(ngModel)]="precio"
+        name="precio"
+      />
+      <h4>Stock</h4>
+      <div>
+        <p-inputNumber
+          [(ngModel)]="stock"
+          [showButtons]="true"
+          buttonLayout="vertical"
+          spinnerMode="vertical"
+          decrementButtonClass="p-button-secondary"
+          incrementButtonClass="p-button-secondary"
+          incrementButtonIcon="pi pi-plus"
+          decrementButtonIcon="pi pi-minus"
+          [min]="0"
+        ></p-inputNumber>
+    
+        <h4>Fecha</h4>
+        <div>
+          <div class="p-field p-col-12 p-md-4">
+            <p-calendar
+              [(ngModel)]="date"
+              [showIcon]="true"
+              inputId="icon"
+            ></p-calendar>
+          </div>
+        </div>
+    
+        <button type="submit" class="btn btn-primary" (click)="ingresar()">
+          Ingresar
+        </button>
+      </div>
+    </div>
+
+  </mat-tab>
+
+</mat-tab-group>
