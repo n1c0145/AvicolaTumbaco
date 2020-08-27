@@ -31,7 +31,8 @@ export class NuevopedidoComponent implements OnInit {
   val;
   id;
   idd;
-  direccion;
+  direccion='';
+  direc='';
   date: Date;
   finaldate;
   fechavalida = false;
@@ -56,6 +57,7 @@ export class NuevopedidoComponent implements OnInit {
       .subscribe((data) => {
         this.productos = data;
       });
+
   }
 
   agregar(dato: Producto) {
@@ -109,8 +111,18 @@ export class NuevopedidoComponent implements OnInit {
       });
   }
   pedir() {
+
     if (this.arraydescripcion.length > 0) {
       this.editOn2 = true;
+      this._AvicolaService
+      .metodoGet('http://localhost:1337/registro?estado=activo&&id='+this.id)
+      .subscribe((data) => {
+        this.persona = data;
+        for (let i in this.persona) {
+       this.direc= this.persona[i]["direccion"]
+        
+        }
+      });
     } else {
       alert('Aun no compra nada');
     }
@@ -138,36 +150,32 @@ export class NuevopedidoComponent implements OnInit {
           })
           .subscribe(() => {
             // --- Creacion factura
-                
+
             for (var i = 0; i < this.arraysubtotal.length; i++) {
               this.subtotal += this.arraysubtotal[i];
             }
 
-             this.total = (this.subtotal * 0.12) + this.subtotal;
-
-
-             
+            this.total = this.subtotal * 0.12 + this.subtotal;
 
             this._AvicolaService
-               .crearDetalleFactura({
-                  descripcionFactura: this.arraydescripcion,
-                  peso: this.arraypeso,
-                  precioPorLibra: this.arrayprecio,
-                  cantidad: this.arraystock,
-                  subtotalPorPedido: this.arraysubtotal,
-                  subtotal: this.subtotal,
-                  total: this.total,
-                  fechaEntrega: this.date,
+              .crearDetalleFactura({
+                descripcionFactura: this.arraydescripcion,
+                peso: this.arraypeso,
+                precioPorLibra: this.arrayprecio,
+                cantidad: this.arraystock,
+                subtotalPorPedido: this.arraysubtotal,
+                subtotal: this.subtotal,
+                total: this.total,
+                fechaEntrega: this.date,
 
-                 estado: 'activo',
-                 fechaCreacion: this.fechaactual,
-                 nombreUsuarioCreacion: this.user,
-                 fechaActualizacion: this.fechaactual,
-                 nombreUsuarioActualizacion: this.user,
-               })
-               .subscribe((registroCreado) => {
+                estado: 'activo',
+                fechaCreacion: this.fechaactual,
+                nombreUsuarioCreacion: this.user,
+                fechaActualizacion: this.fechaactual,
+                nombreUsuarioActualizacion: this.user,
+              })
+              .subscribe((registroCreado) => {
                 this.idFactura = JSON.stringify(registroCreado['id']);
-                alert('Usuario Registrado');
                 this._AvicolaService
                   .crearFactura({
                     fechaEmision: this.fechaactual,
@@ -182,7 +190,7 @@ export class NuevopedidoComponent implements OnInit {
                   .subscribe((registroCreado) => {
                     alert('todo creado');
                   });
-               });
+              });
           });
       } else {
         alert('fecha no valida');
