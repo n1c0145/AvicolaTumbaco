@@ -35,11 +35,41 @@
       incrementButtonClass="p-button-secondary"
       incrementButtonIcon="pi pi-plus"
       decrementButtonIcon="pi pi-minus"
-      min="0"
+      min="1"
     ></p-inputNumber>
     <div>
       <button type="button" class="btn btn-primary" (click)="agregar2()">
         Agregar
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="editOn2">
+    <h4>Actualizar Direccion</h4>
+    <input
+      class="input_field search_form_name"
+      type="text"
+      placeholder="Direccion actualizada"
+      required="required"
+      [(ngModel)]="direccion"
+      name="direccion"
+    />
+
+    <h2>Recuerde realizar el pedido en estas fechas</h2>
+    <div  *ngFor="let user of arrayfechas">
+      <div>{{ user |date}}</div>
+
+    </div>
+    <div class="p-field p-col-12 p-md-4">
+      <p-calendar
+        [(ngModel)]="date"
+        [showIcon]="true"
+        inputId="icon"
+      ></p-calendar>
+    </div>
+    <div>
+      <button type="button" class="btn btn-primary" (click)="comprar()">
+    Pedir
       </button>
     </div>
   </div>
@@ -64,9 +94,15 @@
       <div>{{ user }}</div>
     </div>
   </div>
-  <div *ngFor="let user of arraysubtotal; let i=index">
+  <div *ngFor="let user of arraysubtotal; let i = index">
     <div>
-      <div>{{ user }}</div><button (click)="eliminar(i)">x</button>
+      <div>{{ user }}</div>
+      <button (click)="eliminar(i)">x</button>
     </div>
   </div>
+  <div>
+    <button (click)="pedir()">Realizar pedido</button>
+  </div>
 </div>
+
+

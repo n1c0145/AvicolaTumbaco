@@ -37,7 +37,6 @@ export class PerfilComponent implements OnInit {
     this._AvicolaService
       .metodoGet('http://localhost:1337/registro?estado=activo&&id=' + this.id)
       .subscribe((data) => (this.usuarios = data));
-    console.log(this.usuarios);
   }
 
   editar(perfil: Login) {

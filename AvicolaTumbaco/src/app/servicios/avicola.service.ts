@@ -32,5 +32,12 @@ export class AvicolaService {
     const url = 'http://localhost:1337/producto';
     return this._httpClient.post(url, datosRegistroCrear);
   }
-
+  crearDetalleFactura(datosRegistroCrear) {
+    const url = 'http://localhost:1337/detallefactura';
+    return this._httpClient.post(url, datosRegistroCrear);
+  }
+  crearFactura(datosRegistroCrear) {
+    const url = 'http://localhost:1337/factura';
+    return this._httpClient.post(url, datosRegistroCrear);
+  }
 }

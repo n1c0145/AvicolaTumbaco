@@ -1,28 +1,37 @@
 /**
- * DatosEmpresa.js
+ * DetalleFactura.js
  *
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
  */
 
 module.exports = {
-
   attributes: {
-    nombre: {
+    descripcionFactura: {
+      type: "json",
+    },
+    peso: {
+      type: "json",
+    },
+    precioPorLibra: {
+      type: "json",
+    },
+    cantidad: {
+      type: "json",
+    },
+    subtotalPorPedido: {
+      type: "json",
+    },
+    subtotal: {
+      type: "number",
+    },
+    total: {
+      type: "number",
+    },
+    fechaEntrega: {
       type: "string",
     },
-    direccion: {
-      type: "string",
-    },
-    ruc: {
-      type: "number",
-    },
-    telefono: {
-      type: "number",
-    },
-    telefono2: {
-      type: "number",
-    },
+
     estado: {
       type: "string",
     },
@@ -40,24 +49,18 @@ module.exports = {
     },
     factura:{
       collection:'factura',
-      via:'idDatosEmpresa'
+      via:'idDetalleFactura'
     }
-
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
-
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
     //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝
 
-
     //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
-
   },
-
 };
-

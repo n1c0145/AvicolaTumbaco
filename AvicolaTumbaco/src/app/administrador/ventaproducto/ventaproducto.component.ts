@@ -37,12 +37,15 @@ productos;
     });
   }
   ingresar() {
+   
+    
     if (this.stock === undefined) {
       alert('Coloque un numero de stock');
     } else {
       if (this.date === undefined) {
         alert('Escoja una fecha');
       } else {
+        console.log(this.date);
         this._AvicolaService
           .crearVenta({
             descripcion: 'pollos',

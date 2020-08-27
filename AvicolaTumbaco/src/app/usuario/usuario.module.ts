@@ -9,6 +9,7 @@ import { FacturaComponent } from './factura/factura.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import {InputNumberModule} from 'primeng/inputnumber';
+import {CalendarModule} from 'primeng/calendar';
 @NgModule({
   declarations: [
     IniciousuarioComponent,
@@ -19,6 +20,6 @@ import {InputNumberModule} from 'primeng/inputnumber';
     
   ],
   providers: [],
-  imports: [CommonModule, UsuarioRoutingModule, FormsModule, HttpClientModule, InputNumberModule],
+  imports: [CommonModule, UsuarioRoutingModule, FormsModule, HttpClientModule, InputNumberModule, CalendarModule],
 })
 export class UsuarioModule {}

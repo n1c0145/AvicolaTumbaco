@@ -1,5 +1,5 @@
 /**
- * DatosEmpresa.js
+ * Factura.js
  *
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
@@ -8,20 +8,8 @@
 module.exports = {
 
   attributes: {
-    nombre: {
+    fechaEmision: {
       type: "string",
-    },
-    direccion: {
-      type: "string",
-    },
-    ruc: {
-      type: "number",
-    },
-    telefono: {
-      type: "number",
-    },
-    telefono2: {
-      type: "number",
     },
     estado: {
       type: "string",
@@ -38,11 +26,12 @@ module.exports = {
     nombreUsuarioActualizacion: {
       type: "string",
     },
-    factura:{
-      collection:'factura',
-      via:'idDatosEmpresa'
-    }
-
+    idDatosEmpresa: {
+      model: "DatosEmpresa",
+    },
+    idDetalleFactura: {
+      model: "DetalleFactura",
+    },
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
