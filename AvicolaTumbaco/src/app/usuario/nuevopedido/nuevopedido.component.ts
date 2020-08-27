@@ -166,22 +166,22 @@ export class NuevopedidoComponent implements OnInit {
                  nombreUsuarioActualizacion: this.user,
                })
                .subscribe((registroCreado) => {
-            //     // this.idFactura = JSON.stringify(registroCreado['id']);
-            //     // alert('Usuario Registrado');
-            //     // this._AvicolaService
-            //     //   .crearFactura({
-            //     //     fechaEmision: this.fechaactual,
-            //     //     estado: 'activo',
-            //     //     fechaCreacion: this.fechaactual,
-            //     //     nombreUsuarioCreacion: this.user,
-            //     //     fechaActualizacion: this.fechaactual,
-            //     //     nombreUsuarioActualizacion: this.user,
-            //     //     idDetalleFactura: this.idFactura + '',
-            //     //     idDatosEmpresa: 1,
-            //     //   })
-            //     //   .subscribe((registroCreado) => {
-            //     //     alert('todo creado');
-            //     //   });
+                this.idFactura = JSON.stringify(registroCreado['id']);
+                alert('Usuario Registrado');
+                this._AvicolaService
+                  .crearFactura({
+                    fechaEmision: this.fechaactual,
+                    estado: 'activo',
+                    fechaCreacion: this.fechaactual,
+                    nombreUsuarioCreacion: this.user,
+                    fechaActualizacion: this.fechaactual,
+                    nombreUsuarioActualizacion: this.user,
+                    idDetalleFactura: this.idFactura + '',
+                    idDatosEmpresa: 1,
+                  })
+                  .subscribe((registroCreado) => {
+                    alert('todo creado');
+                  });
                });
           });
       } else {
