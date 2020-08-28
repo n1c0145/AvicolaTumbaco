@@ -17,8 +17,8 @@ import {InputNumberModule} from 'primeng/inputnumber';
 import {RadioButtonModule} from 'primeng/radiobutton';
 import {CalendarModule} from 'primeng/calendar';
 import { DatosempresaComponent } from './datosempresa/datosempresa.component';
-import { PedidosComponent } from './pedidos/pedidos.component';
-import { FacturaComponent } from './factura/factura.component';
+import { PedidosComponent } from '../administrador/pedidos/pedidos.component';
+import { FacturaComponent } from '../administrador/factura/factura.component';
 import { VentaproductoComponent } from './ventaproducto/ventaproducto.component';
 @NgModule({
   declarations: [

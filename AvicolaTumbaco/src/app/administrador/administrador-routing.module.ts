@@ -1,6 +1,6 @@
 import { VentaproductoComponent } from './ventaproducto/ventaproducto.component';
-import { PedidosComponent } from './../usuario/pedidos/pedidos.component';
-import { FacturaComponent } from './../usuario/factura/factura.component';
+import { PedidosComponent } from '../administrador/pedidos/pedidos.component';
+import { FacturaComponent } from './../administrador/factura/factura.component';
 import { DatosempresaComponent } from './datosempresa/datosempresa.component';
 import { ProductosComponent } from './productos/productos.component';
 import { ProveedorComponent } from './proveedor/proveedor.component';

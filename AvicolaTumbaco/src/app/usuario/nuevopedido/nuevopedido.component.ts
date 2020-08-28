@@ -38,7 +38,7 @@ export class NuevopedidoComponent implements OnInit {
   idFactura;
   fechaactual = new Date();
   subtotal = 0;
-  calculosubtotal;
+  arraysubtotal2 = [];
   total;
   persona;
   prueba;
@@ -81,7 +81,9 @@ export class NuevopedidoComponent implements OnInit {
         this.arraypeso.push(this.peso);
         this.arrayprecio.push(this.precio);
         this.arraystock.push(this.val);
-      //  this.calculosubtotal=(this.peso * this.precio * this.val)
+        this.arraysubtotal2.push(
+          (this.peso * this.precio * this.val).toFixed(2)
+        );
         this.arraysubtotal.push(this.peso * this.precio * this.val);
         this.arrayfechas.push(this.fecha);
         this.cambiostock.push(this.val);
@@ -100,6 +102,7 @@ export class NuevopedidoComponent implements OnInit {
     this.arrayprecio.splice(i, 1);
     this.arraystock.splice(i, 1);
     this.arraysubtotal.splice(i, 1);
+    this.arraysubtotal2.splice(i, 1);
     this.arrayfechas.splice(i, 1);
 
     this._AvicolaService
@@ -122,7 +125,6 @@ export class NuevopedidoComponent implements OnInit {
           for (let i in this.persona) {
             this.direc = this.persona[i]['direccion'];
             console.log(this.direc);
-            
           }
         });
     } else {
@@ -165,9 +167,9 @@ export class NuevopedidoComponent implements OnInit {
                 peso: this.arraypeso,
                 precioPorLibra: this.arrayprecio,
                 cantidad: this.arraystock,
-                subtotalPorPedido: this.arraysubtotal,
-                subtotal: this.subtotal,
-                total: this.total,
+                subtotalPorPedido: this.arraysubtotal2,
+                subtotal: this.subtotal.toFixed(2),
+                total: this.total.toFixed(2),
                 fechaEntrega: this.date,
                 estado: 'activo',
                 fechaCreacion: this.fechaactual,
@@ -186,15 +188,18 @@ export class NuevopedidoComponent implements OnInit {
                     fechaActualizacion: this.fechaactual,
                     nombreUsuarioActualizacion: this.user,
                     idDetalleFactura: this.idFactura + '',
-                    idRegistro:this.id,
+                    idRegistro: this.id,
                     idDatosEmpresa: 1,
                   })
                   .subscribe((registroCreado) => {
                     this.idFactura = JSON.stringify(registroCreado['id']);
-                    localStorage.removeItem("idFactura");
-
-                    localStorage.setItem('idFactura', JSON.stringify( this.idFactura));
-                    alert('todo creado'+this.idFactura);
+                    
+                    localStorage.removeItem('idFactura');
+                    localStorage.setItem(
+                      'idFactura',
+                      JSON.stringify(this.idFactura)
+                    );
+                    alert('todo creado' + this.idFactura);
                     this._router.navigate(['usuario/factura/']);
                   });
               });

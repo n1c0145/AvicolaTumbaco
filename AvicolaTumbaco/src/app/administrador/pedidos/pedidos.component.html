@@ -1,1 +1,77 @@
-<p>pedidos works!</p>
+<h1>Pedidos</h1>
+
+
+<table class="mat-elevation-z8">
+    <thead>
+      <tr>
+        <th>Numero de Factura</th>
+
+        <th>Cedula</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Fecha Emision</th>
+        <th>Fecha Entrega Pedido</th>
+        <th>Telefono</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of facturas">
+        <td>000{{ user.id}}</td>
+
+        <td>{{ user.idRegistro.cedula }}</td>
+
+        <td>{{ user.idRegistro.nombre }}</td>
+        <td>{{ user.idRegistro.apellido }}</td>
+      
+        <td>{{ user.fechaEmision | date}}</td>
+        <td>{{ user.idDetalleFactura.fechaEntrega | date}}</td>
+        <td>{{ user.idRegistro.telefono }}</td>
+        <td>{{ user.idDetalleFactura.total}}</td>
+
+<button (click)="cambiar(user)">Cambiar a entregado</button>
+<button (click)="facturar(user)">Ver factura</button>
+
+
+      </tr>
+    </tbody>
+  </table>
+
+
+  <h1>Pedidos Entregados</h1>
+
+
+  <table class="mat-elevation-z8">
+    <thead>
+      <tr>
+        <th>Numero de Factura</th>
+        <th>Cedula</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Fecha Emision</th>
+        <th>Fecha Entrega Pedido</th>
+        <th>Telefono</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of facturasentregadas">
+        <td>000{{ user.id}}</td>
+
+        <td>{{ user.idRegistro.cedula }}</td>
+
+        <td>{{ user.idRegistro.nombre }}</td>
+        <td>{{ user.idRegistro.apellido }}</td>
+      
+        <td>{{ user.fechaEmision | date}}</td>
+        <td>{{ user.idDetalleFactura.fechaEntrega | date}}</td>
+        <td>{{ user.idRegistro.telefono }}</td>
+        <td>{{ user.idDetalleFactura.total}}</td>
+
+<button (click)="eliminar(user)">Eliminar</button>
+<button (click)="facturar(user)">Ver factura</button>
+
+
+      </tr>
+    </tbody>
+  </table>

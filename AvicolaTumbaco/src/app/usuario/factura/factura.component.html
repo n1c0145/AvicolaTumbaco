@@ -2,7 +2,7 @@
 
 
 <div *ngFor="let user of factura">
-    <div>Numero Factura: 0000{{user.id}}</div>
+    <div>Numero Factura: 000{{user.id}}</div>
 <div>{{user.fechaEmision}}</div>
 <div>{{user.idDatosEmpresa.nombre}}</div>
 <div>{{user.idDatosEmpresa.direccion}}</div>
@@ -25,7 +25,29 @@
     </div>
 </div>
 
+<div *ngFor="let user of peso">
+    <div>
+{{user}}
+    </div>
+</div>
 
+<div *ngFor="let user of preciolibra">
+    <div>
+{{user}}
+    </div>
+</div>
+
+<div *ngFor="let user of cantidad">
+    <div>
+{{user}}
+    </div>
+</div>
+
+<div *ngFor="let user of subtotalpedido">
+    <div>
+{{user}}
+    </div>
+</div>
 
 
 </div>

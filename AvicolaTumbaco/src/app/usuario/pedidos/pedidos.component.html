@@ -1,1 +1,22 @@
-<p>pedidos works!</p>
+<table class="mat-elevation-z8">
+  <thead>
+    <tr>
+        <th>Empresa</th>
+      <th>Fecha Emision</th>
+      <th>Fecha Entrega Pedido</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of facturas">
+        <td>{{ user.idDatosEmpresa.nombre }}</td>
+
+      <td>{{ user.fechaEmision | date }}</td>
+      <td>{{ user.idDetalleFactura.fechaEntrega | date }}</td>
+      <td>{{ user.idDetalleFactura.total }}</td>
+
+      <button (click)="facturar(user)">Ver factura</button>
+
+    </tr>
+  </tbody>
+</table>
