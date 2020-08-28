@@ -33,6 +33,8 @@ export class PerfilComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = localStorage.getItem('id');
+    console.log(this.id);
+    
     this.user = localStorage.getItem('user');
     this._AvicolaService
       .metodoGet('http://localhost:1337/registro?estado=activo&&id=' + this.id)

@@ -41,6 +41,10 @@ module.exports = {
     idLogin: {
       model: "Login",
     },
+    factura:{
+      collection:'factura',
+      via:'idRegistro'
+    }
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝

@@ -29,6 +29,9 @@ module.exports = {
     idDatosEmpresa: {
       model: "DatosEmpresa",
     },
+    idRegistro: {
+      model: "Registro",
+    },
     idDetalleFactura: {
       model: "DetalleFactura",
     },

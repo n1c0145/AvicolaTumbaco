@@ -1,4 +1,3 @@
-import { Login } from './../../modelos/login.interface';
 import { PedidosComponent } from './../../administrador/pedidos/pedidos.component';
 import { Producto } from './../../modelos/producto.interface';
 import { Component, OnInit } from '@angular/core';
@@ -31,14 +30,15 @@ export class NuevopedidoComponent implements OnInit {
   val;
   id;
   idd;
-  direccion='';
-  direc='';
+  direccion = '';
+  direc = '';
   date: Date;
   finaldate;
   fechavalida = false;
   idFactura;
   fechaactual = new Date();
   subtotal = 0;
+  calculosubtotal;
   total;
   persona;
   prueba;
@@ -57,7 +57,6 @@ export class NuevopedidoComponent implements OnInit {
       .subscribe((data) => {
         this.productos = data;
       });
-
   }
 
   agregar(dato: Producto) {
@@ -82,6 +81,7 @@ export class NuevopedidoComponent implements OnInit {
         this.arraypeso.push(this.peso);
         this.arrayprecio.push(this.precio);
         this.arraystock.push(this.val);
+      //  this.calculosubtotal=(this.peso * this.precio * this.val)
         this.arraysubtotal.push(this.peso * this.precio * this.val);
         this.arrayfechas.push(this.fecha);
         this.cambiostock.push(this.val);
@@ -111,18 +111,20 @@ export class NuevopedidoComponent implements OnInit {
       });
   }
   pedir() {
-
     if (this.arraydescripcion.length > 0) {
       this.editOn2 = true;
       this._AvicolaService
-      .metodoGet('http://localhost:1337/registro?estado=activo&&id='+this.id)
-      .subscribe((data) => {
-        this.persona = data;
-        for (let i in this.persona) {
-       this.direc= this.persona[i]["direccion"]
-        
-        }
-      });
+        .metodoGet(
+          'http://localhost:1337/registro?estado=activo&&id=' + this.id
+        )
+        .subscribe((data) => {
+          this.persona = data;
+          for (let i in this.persona) {
+            this.direc = this.persona[i]['direccion'];
+            console.log(this.direc);
+            
+          }
+        });
     } else {
       alert('Aun no compra nada');
     }
@@ -167,15 +169,14 @@ export class NuevopedidoComponent implements OnInit {
                 subtotal: this.subtotal,
                 total: this.total,
                 fechaEntrega: this.date,
-
                 estado: 'activo',
                 fechaCreacion: this.fechaactual,
                 nombreUsuarioCreacion: this.user,
                 fechaActualizacion: this.fechaactual,
                 nombreUsuarioActualizacion: this.user,
               })
-              .subscribe((registroCreado) => {
-                this.idFactura = JSON.stringify(registroCreado['id']);
+              .subscribe((registro) => {
+                this.idFactura = JSON.stringify(registro['id']);
                 this._AvicolaService
                   .crearFactura({
                     fechaEmision: this.fechaactual,
@@ -185,10 +186,14 @@ export class NuevopedidoComponent implements OnInit {
                     fechaActualizacion: this.fechaactual,
                     nombreUsuarioActualizacion: this.user,
                     idDetalleFactura: this.idFactura + '',
+                    idRegistro:this.id,
                     idDatosEmpresa: 1,
                   })
                   .subscribe((registroCreado) => {
-                    alert('todo creado');
+                    this.idFactura = JSON.stringify(registroCreado['id']);
+                    localStorage.setItem('idFactura', JSON.stringify( this.idFactura));
+                    alert('todo creado'+this.idFactura);
+                    this._router.navigate(['usuario/factura/']);
                   });
               });
           });

@@ -1,1 +1,33 @@
-<p>factura works!</p>
+<h1>factura</h1>
+
+
+<div *ngFor="let user of factura">
+<div>{{user.fechaEmision}}</div>
+<div>{{user.idDatosEmpresa.nombre}}</div>
+<div>{{user.idDatosEmpresa.direccion}}</div>
+<div>{{user.idDatosEmpresa.ruc}}</div>
+<div>{{user.idDatosEmpresa.telefono}}</div>
+<div>{{user.idDatosEmpresa.telefono2}}</div>
+<div>{{user.idRegistro.cedula}}</div>
+<div>{{user.idRegistro.nombre}}</div>
+<div>{{user.idRegistro.apellido}}</div>
+<div>{{user.idRegistro.direccion}}</div>
+<div>{{user.idRegistro.telefono}}</div>
+<div>{{user.idDetalleFactura.descripcionFactura}}</div>
+<div>{{user.idDetalleFactura.peso}}</div>
+<div>{{user.idDetalleFactura.precioPorLibra}}</div>
+<div>{{user.idDetalleFactura.cantidad}}</div>
+<div>{{user.idDetalleFactura.subtotalPorPedido}}</div>
+<div>{{user.idDetalleFactura.subtotal}}</div>
+<div>{{user.idDetalleFactura.total}}</div>
+<div>{{user.idDetalleFactura.fechaEntrega}}</div>
+
+
+
+
+
+
+
+
+
+</div>
