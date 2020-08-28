@@ -191,6 +191,8 @@ export class NuevopedidoComponent implements OnInit {
                   })
                   .subscribe((registroCreado) => {
                     this.idFactura = JSON.stringify(registroCreado['id']);
+                    localStorage.removeItem("idFactura");
+
                     localStorage.setItem('idFactura', JSON.stringify( this.idFactura));
                     alert('todo creado'+this.idFactura);
                     this._router.navigate(['usuario/factura/']);

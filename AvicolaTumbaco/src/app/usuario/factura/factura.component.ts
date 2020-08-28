@@ -9,25 +9,47 @@ import { Router } from '@angular/router';
 export class FacturaComponent implements OnInit {
   idfactura;
   factura;
-  id=0;
+  array;
+  id = 0;
+  prueba = 55.6789;
+  prueba2;
+  descripcion;
+  peso;
+  preciolibra;
+  cantidad;
+  subtotalpedido;
+  subtotal;
+  total;
+  iddetalle;
+  detallefactura;
   constructor(
     private readonly _router: Router,
     private readonly _AvicolaService: AvicolaService
   ) {}
 
   ngOnInit(): void {
-    this.idfactura = (localStorage.getItem('idFactura'));
-    this.id=this.idfactura.substr(1,1.5)
-console.log(this.idfactura);
+    this.idfactura = localStorage.getItem('idFactura');
+    this.id = this.idfactura.substr(1, 1.5);
 
     this._AvicolaService
-      .metodoGet(
-        'http://localhost:1337/factura?estado=activo&&id='+this.id
-      )
+      .metodoGet('http://localhost:1337/factura?estado=activo&&id=' + this.id)
       .subscribe((data) => {
         this.factura = data;
-        console.log(this.factura);
-        
+
+        this.iddetalle = data[0].idDetalleFactura.id;
+        this._AvicolaService
+        .metodoGet('http://localhost:1337/detallefactura?id=' + this.iddetalle)
+        .subscribe((data) => {
+          this.detallefactura = data;
+          this.array = data;
+          for (let i in this.array) {
+            this.descripcion = this.array[i]['descripcionFactura'];
+ 
+         }
+        });
+   
       });
+
+ 
   }
 }
