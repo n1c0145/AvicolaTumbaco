@@ -20,6 +20,7 @@ import { DatosempresaComponent } from './datosempresa/datosempresa.component';
 import { PedidosComponent } from '../administrador/pedidos/pedidos.component';
 import { FacturaComponent } from '../administrador/factura/factura.component';
 import { VentaproductoComponent } from './ventaproducto/ventaproducto.component';
+import { FiltroPipe } from '../pipes/filtro.pipe';
 @NgModule({
   declarations: [
     InicioadministradorComponent,
@@ -32,6 +33,7 @@ import { VentaproductoComponent } from './ventaproducto/ventaproducto.component'
     PedidosComponent,
     FacturaComponent,
     VentaproductoComponent,
+    FiltroPipe,
   ],
   imports: [CommonModule, 
     AdministradorRoutingModule,

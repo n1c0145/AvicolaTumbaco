@@ -55,7 +55,7 @@
 </nav>
   
  <div>
-
+<input type="text" placeholder="Search...." [(ngModel)]="filterPost" name="filterPost">
   <table class="mat-elevation-z8">
         <thead>
           <tr>
@@ -70,7 +70,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let user of usuarios">
+          <tr *ngFor="let user of usuarios | filtro:filterPost">
             <td>{{ user.cedula }}</td>
             <td>{{ user.nombre }}</td>
             <td>{{ user.apellido }}</td>
@@ -177,3 +177,10 @@
   </div>
   </form>
 </div> 
+
+
+
+
+
+
+

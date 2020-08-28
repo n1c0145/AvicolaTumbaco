@@ -31,6 +31,8 @@ export class UsuariosComponent implements OnInit {
   id;
   user;
   select;
+  filterPost ='';
+
   constructor(
     private readonly _router: Router,
     private readonly _AvicolaService: AvicolaService
@@ -111,4 +113,5 @@ export class UsuariosComponent implements OnInit {
           });
       });
   }
+
 }
