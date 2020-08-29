@@ -64,36 +64,36 @@
         <tr>
           <th>Nombre</th>
           <th>Descripcion</th>
-          <th>Stock</th>
+          <th>Operatividad</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let user of cat1  | filtro2:filterPost ">
           <td>{{ user.nombre }}</td>
           <td>{{ user.descripcion }}</td>
-          <td>{{ user.stock }}</td>
+          <td>{{ user.operativo }}</td>
           <button type="button" class="btn btn-warning" (click)="editar(user)">
-            Editar Stock
+            Editar Operatividad
             </button>
         </tr>
       </tbody>
     </table>
 
     <div *ngIf="editOn">
-    <p-inputNumber
-    [(ngModel)]="val"
-    mode="decimal"
-    [showButtons]="true"
-    buttonLayout="vertical"
-    spinnerMode="vertical"
-    decrementButtonClass="p-button-secondary"
-    incrementButtonClass="p-button-secondary"
-    incrementButtonIcon="pi pi-plus"
-    decrementButtonIcon="pi pi-minus"
+<h4>Operatividad</h4>
+{{operativo}}
+<div>
+  <mat-form-field>
 
-  ></p-inputNumber>
-  <button type="button" class="btn btn-outline-success" (click)="ingreso()">
-  Actualizar Stock
+    <mat-label>Estado Operacional</mat-label>
+    <mat-select [(ngModel)]="selectoperacional" name="selectoperacional">
+      <mat-option value="1">Operativo</mat-option>
+      <mat-option value ="2">No Operativo</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+  <button type="button" class="btn btn-outline-success" (click)="ingresoactivo()">
+  Actualizar 
     </button>
 
 </div>

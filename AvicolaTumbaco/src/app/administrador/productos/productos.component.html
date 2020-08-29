@@ -69,7 +69,6 @@
         <tr>
           <th>Nombre</th>
           <th>Descripcion</th>
-          <th>Imagen</th>
           <th>Categoria</th>
           <th>Proveedor</th>
         </tr>
@@ -78,9 +77,7 @@
         <tr *ngFor="let user of productos | filtro2: filterPost">
           <td>{{ user.nombre }}</td>
           <td>{{ user.descripcion }}</td>
-          <td>
-            <img src="{{ user.imagen }}" alt="" />
-          </td>
+       
 
           <td>{{ user.idCategoria.categoria }}</td>
           <td>{{ user.idProveedor.nombre }}</td>
@@ -117,15 +114,7 @@
           name="descripcion"
           value="{{ selectedProducto.descripcion }}"
         />
-        <h4>Imagen</h4>
-        <input
-          class="input_field search_form_name"
-          type="text"
-          placeholder="Path imageb"
-          [(ngModel)]="selectedProducto.imagen"
-          name="imagen"
-          value="{{ selectedProducto.imagen }}"
-        />
+    
         <h4>Categoria</h4>
         <mat-form-field>
           <mat-label>Escoja una categoria</mat-label>
@@ -161,7 +150,7 @@
       </form>
     </div>
   </mat-tab>
-  <mat-tab label="Insertar">
+  <mat-tab label="Insertar Producto">
     <form>
       <h4>Nombre</h4>
       <input
@@ -183,14 +172,6 @@
         name="descripcion"
       />
 
-      <h4>Imagen</h4>
-      <input
-        class="input_field search_form_name"
-        type="text"
-        placeholder="Path imageb"
-        [(ngModel)]="imagen"
-        name="imagen"
-      />
       <h4>Categoria</h4>
       <mat-form-field>
         <mat-label>Escoja una categoria</mat-label>
@@ -233,5 +214,54 @@
         Ingresar
       </button>
     </form>
+  </mat-tab>
+  <mat-tab label="Insertar Activo">
+
+    <form>
+      <h4>Nombre</h4>
+      <input
+        class="input_field search_form_name"
+        type="text"
+        placeholder="Nombres"
+        required="required"
+        [(ngModel)]="nombre"
+        name="nombre"
+      />
+
+      <h4>Descripcion</h4>
+      <input
+        class="input_field search_form_name"
+        type="text"
+        placeholder="Descripcion"
+        required="required"
+        [(ngModel)]="descripcion"
+        name="descripcion"
+      />
+
+      <h4>Categoria : Activo</h4>
+      <h4>Proveedor</h4>
+      <mat-form-field>
+        <mat-label>Escoja un proveedor</mat-label>
+        <mat-select [(ngModel)]="select3" name="select3">
+          <mat-option value="{{ item.nombre }}" *ngFor="let item of proveedor">
+            {{ item.nombre }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+      <div>
+        <mat-form-field>
+
+          <mat-label>Estado Operacional</mat-label>
+          <mat-select [(ngModel)]="selectoperacional" name="selectoperacional">
+            <mat-option value="1">Operativo</mat-option>
+            <mat-option value ="2">No Operativo</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="ingresar2()">
+        Ingresar
+      </button>
+    </form>
+
   </mat-tab>
 </mat-tab-group>

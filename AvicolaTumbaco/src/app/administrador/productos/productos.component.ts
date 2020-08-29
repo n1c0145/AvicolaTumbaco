@@ -12,7 +12,6 @@ import { Inventario } from '../../modelos/inventario.interface';
 export class ProductosComponent implements OnInit {
   nombre: '';
   descripcion: '';
-  imagen: '';
   categoria;
   stock: '';
   desabastecimiento;
@@ -26,11 +25,14 @@ export class ProductosComponent implements OnInit {
   user;
   select;
   select2;
+  select3;
+  selectoperacional;
+  operacion;
   productos;
   proveedor;
   editOn = false;
   selectedProducto: Inventario;
-  filterPost ='';
+  filterPost = '';
   constructor(
     private readonly _router: Router,
     private readonly _AvicolaService: AvicolaService
@@ -56,82 +58,126 @@ export class ProductosComponent implements OnInit {
   }
 
   ingresar() {
-
     this._AvicolaService
-    .metodoGet('http://localhost:1337/inventario?estado=activo')
-    .subscribe((resultadoParametro) => {
-      var rest = JSON.stringify(resultadoParametro);
-      for (let key in resultadoParametro) {
-        if (this.nombre === resultadoParametro[key]['nombre']) {
-          this.band = true;
-          alert('Este producto ya se encuetra registrado');
+      .metodoGet('http://localhost:1337/inventario?estado=activo')
+      .subscribe((resultadoParametro) => {
+        var rest = JSON.stringify(resultadoParametro);
+        for (let key in resultadoParametro) {
+          if (this.nombre === resultadoParametro[key]['nombre']) {
+            this.band = true;
+            alert('Este producto ya se encuetra registrado');
+          }
+        }
+      });
+
+
+    if (this.band == false) {
+      if (this.select2 === undefined) {
+        alert('escoja una categoria');
+      } else {
+        if (this.select === undefined) {
+          alert('escoja un proveedor ');
+        } else {
+          this._AvicolaService
+            .metodoGet(
+              'http://localhost:1337/categoria?categoria=' + this.select2
+            )
+            .subscribe((data5) => {
+              this.idcategoria = data5[0].id;
+              this._AvicolaService
+                .metodoGet(
+                  'http://localhost:1337/proveedor?estado=activo&&nombre=' +
+                    this.select
+                )
+                .subscribe((data3) => {
+                  this.idproveedor = data3[0].id;
+
+                  this._AvicolaService
+                    .crearProducto({
+                      nombre: this.nombre,
+                      descripcion: this.descripcion,
+                      stock: this.stock,
+                      desabastecimiento: this.desabastecimiento,
+                      estado: 'activo',
+                      fechaCreacion: this.fecha,
+                      nombreUsuarioCreacion: this.user,
+                      fechaActualizacion: this.fecha,
+                      nombreUsuarioActualizacion: this.user,
+                      idCategoria: this.idcategoria,
+                      idProveedor: this.idproveedor,
+                    })
+                    .subscribe((registroCreado) => {
+                      alert('Producto creado');
+                    });
+                });
+            });
         }
       }
-})
-
- if(this.band==false){
-
-
-
-
-
-
-
-    if (this.select2 === undefined) {
-      alert('escoja una categoria');
-    } else {
-      if (this.select === undefined) {
-        alert('escoja un proveedor ');
-      } else {
-
-
-        this._AvicolaService
-          .metodoGet(
-            'http://localhost:1337/categoria?categoria=' + this.select2
-          )
-          .subscribe((data5) => {
-            this.idcategoria = data5[0].id;
-            this._AvicolaService
-              .metodoGet(
-                'http://localhost:1337/proveedor?estado=activo&&nombre=' +
-                  this.select
-              )
-              .subscribe((data3) => {
-                this.idproveedor = data3[0].id;
-
-                this._AvicolaService
-                  .crearProducto({
-                    nombre: this.nombre,
-                    descripcion: this.descripcion,
-                    imagen: this.imagen,
-                    stock: this.stock,
-                    desabastecimiento:this.desabastecimiento,
-                    estado: 'activo',
-                    fechaCreacion: this.fecha,
-                    nombreUsuarioCreacion: this.user,
-                    fechaActualizacion: this.fecha,
-                    nombreUsuarioActualizacion: this.user,
-                    idCategoria: this.idcategoria,
-                    idProveedor: this.idproveedor,
-                  })
-                  .subscribe((registroCreado) => {
-                    alert('Producto creado');
-                  });
-              });
-          });
-      }
-    }
     }
     return (this.band = false);
   }
+  ingresar2() {
+    this._AvicolaService
+      .metodoGet('http://localhost:1337/inventario?estado=activo')
+      .subscribe((resultadoParametro) => {
+        var rest = JSON.stringify(resultadoParametro);
+        for (let key in resultadoParametro) {
+          if (this.nombre === resultadoParametro[key]['nombre']) {
+            this.band = true;
+            alert('Este producto ya se encuetra registrado');
+          }
+        }
+      });
+      console.log(this.band);
+    if (this.band == false) {
+      if (this.selectoperacional === undefined) {
+        alert('escoja un estado');
+      } else {
+        if (this.select3 === undefined) {
+          alert('escoja un proveedor ');
+        } else {
+          this._AvicolaService
+            .metodoGet(
+              'http://localhost:1337/proveedor?estado=activo&&nombre=' +
+                this.select3
+            )
+            .subscribe((data3) => {
+              this.idproveedor = data3[0].id;
 
+              if (this.selectoperacional == 1) {
+                this.operacion = 'operativo';
+              } else if (this.selectoperacional == 2) {
+                this.operacion = 'no operativo';
+              }
+
+               this._AvicolaService
+                 .crearProducto({
+                   nombre: this.nombre,
+                   descripcion: this.descripcion,
+                   operativo: this.operacion,
+                   estado: 'activo',
+                   fechaCreacion: this.fecha,
+                   nombreUsuarioCreacion: this.user,
+                   fechaActualizacion: this.fecha,
+                   nombreUsuarioActualizacion: this.user,
+                   idCategoria: 1,
+                   idProveedor: this.idproveedor,
+                 })
+                 .subscribe((registroCreado) => {
+                   alert('Producto creado');
+                 });
+            });
+        }
+      }
+    }
+    return (this.band = false);
+  }
   editar(producto: Inventario) {
     this.editOn = true;
     this.selectedProducto = producto;
     this.id = producto.id;
   }
   actualizar() {
-
     if (this.select2 === undefined) {
       alert('escoja una categoria');
     } else {
@@ -140,40 +186,35 @@ export class ProductosComponent implements OnInit {
       } else {
       }
     }
-      this._AvicolaService
-        .metodoGet('http://localhost:1337/categoria?categoria=' + this.select2)
-        .subscribe((data5) => {
-          this.idcategoria = data5[0].id;
-  
-          this._AvicolaService
-            .metodoGet(
-              'http://localhost:1337/proveedor?estado=activo&&nombre=' +
-                this.select
-            )
-            .subscribe((data3) => {
-              this.idproveedor = data3[0].id;
-              this._AvicolaService
+    this._AvicolaService
+      .metodoGet('http://localhost:1337/categoria?categoria=' + this.select2)
+      .subscribe((data5) => {
+        this.idcategoria = data5[0].id;
+
+        this._AvicolaService
+          .metodoGet(
+            'http://localhost:1337/proveedor?estado=activo&&nombre=' +
+              this.select
+          )
+          .subscribe((data3) => {
+            this.idproveedor = data3[0].id;
+            this._AvicolaService
               .metodoPut('http://localhost:1337/inventario/' + this.id, {
                 nombre: this.selectedProducto.nombre,
                 descripcion: this.selectedProducto.descripcion,
-                imagen: this.selectedProducto.imagen,
                 fechaActualizacion: this.fecha,
                 nombreUsuarioActualizacion: this.user,
                 idCategoria: this.idcategoria,
                 idProveedor: this.idproveedor,
-            })
+              })
               .subscribe((producto) => {
                 alert('Producto Actualizado');
-               location.reload();
+                location.reload();
               });
-     
-            });
-        });
-
-     
+          });
+      });
   }
   eliminar(producto: Inventario) {
-
     this.selectedProducto = producto;
     this.id = producto.id;
     this._AvicolaService
@@ -185,7 +226,5 @@ export class ProductosComponent implements OnInit {
         alert('Producto eliminado');
         location.reload();
       });
-
-
   }
 }

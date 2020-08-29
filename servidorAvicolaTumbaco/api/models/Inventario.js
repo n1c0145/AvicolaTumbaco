@@ -15,14 +15,14 @@ module.exports = {
     descripcion:{
       type:'string'
     },
-    imagen:{
-      type:'string'
-    },
     stock:{
       type:'number'
     },
     desabastecimiento:{
       type:'number'
+    },
+    operativo:{
+      type: "string"
     },
     estado: {
       type: "string",

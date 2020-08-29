@@ -24,9 +24,10 @@ export class InventarioComponent implements OnInit {
   desabastecimiento;
   unidad;
   selectedProducto: Inventario;
-  
+  operativo;
   filterPost ='';
-
+  selectoperacional;
+  operacion;
   constructor(
     private readonly _router: Router,
     private readonly _AvicolaService: AvicolaService
@@ -74,38 +75,47 @@ export class InventarioComponent implements OnInit {
     this.editOn = true;
     this.selectedProducto = cat1;
     this.id = cat1.id;
-    this.stock = cat1.stock;
+    this.operativo = cat1.operativo;
   }
   editar2(cat2: Inventario) {
     this.editOn = true;
     this.selectedProducto = cat2;
     this.id = cat2.id;
     this.stock = cat2.stock;
+    this.desabastecimiento = cat2.desabastecimiento
   }
   editar3(cat3: Inventario) {
     this.editOn = true;
     this.selectedProducto = cat3;
     this.id = cat3.id;
     this.stock = cat3.stock;
+    this.desabastecimiento = cat3.desabastecimiento
+
   }
   editar4(cat4: Inventario) {
     this.editOn = true;
     this.selectedProducto = cat4;
     this.id = cat4.id;
     this.stock = cat4.stock;
+    this.desabastecimiento = cat4.desabastecimiento
+
   }
   editar5(cat5: Inventario) {
     this.editOn = true;
     this.selectedProducto = cat5;
     this.id = cat5.id;
     this.stock = cat5.stock;
+    this.desabastecimiento = cat5.desabastecimiento
+
   }
   ingreso() {
     if (this.val === undefined) {
       alert('Escoja un valor a cambiar');
     } else {
       this.cantidad = this.stock + this.val;
-
+if(this.cantidad<=this.desabastecimiento){
+  alert('Hay un desabastecimiento')
+}
       this._AvicolaService
         .metodoPut('http://localhost:1337/inventario/' + this.id, {
           stock: this.cantidad,
@@ -126,7 +136,9 @@ export class InventarioComponent implements OnInit {
       } else {
         this.cantidad = this.stock + this.val;
        
-
+        if(this.cantidad<=this.desabastecimiento){
+          alert('Hay un desabastecimiento')
+        }
         this._AvicolaService
           .metodoPut('http://localhost:1337/inventario/' + this.id, {
             stock: this.cantidad,
@@ -143,7 +155,9 @@ export class InventarioComponent implements OnInit {
         alert('Escoja un valor a cambiar');
       } else {
         this.cantidad = this.stock + this.val / 100;
-        console.log(this.cantidad);
+        if(this.cantidad<=this.desabastecimiento){
+          alert('Hay un desabastecimiento')
+        }
         this._AvicolaService
           .metodoPut('http://localhost:1337/inventario/' + this.id, {
             stock: this.cantidad,
@@ -157,6 +171,28 @@ export class InventarioComponent implements OnInit {
       }
     } else {
       alert('escoja una unidad');
+    }
+  }
+  ingresoactivo(){
+    if (this.selectoperacional === undefined) {
+      alert('escoja un estado');
+    } else {
+      if (this.selectoperacional == 1) {
+        this.operacion = 'operativo';
+      } else if (this.selectoperacional == 2) {
+        this.operacion = 'no operativo';
+      }
+      this._AvicolaService
+      .metodoPut('http://localhost:1337/inventario/' + this.id, {
+        operativo: this.operacion,
+        fechaActualizacion: this.fecha,
+        nombreUsuarioActualizacion: this.user,
+      })
+      .subscribe((producto) => {
+        alert('Actualizado');
+        location.reload();
+      });
+
     }
   }
 }
