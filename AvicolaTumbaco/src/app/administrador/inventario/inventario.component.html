@@ -58,7 +58,7 @@
 
 <mat-tab-group mat-align-tabs="center">
   <mat-tab label="Activos">
-
+    <input type="text" placeholder="Search...." [(ngModel)]="filterPost" name="filterPost">
     <table class="mat-elevation-z8">
       <thead>
         <tr>
@@ -68,7 +68,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let user of cat1">
+        <tr *ngFor="let user of cat1  | filtro2:filterPost ">
           <td>{{ user.nombre }}</td>
           <td>{{ user.descripcion }}</td>
           <td>{{ user.stock }}</td>
@@ -101,7 +101,7 @@
 
   </mat-tab>
   <mat-tab label="Equipos de Proteccion Personal"> 
-
+    <input type="text" placeholder="Search...." [(ngModel)]="filterPost" name="filterPost">
     <table class="mat-elevation-z8">
       <thead>
         <tr>
@@ -111,7 +111,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let user of cat2">
+        <tr *ngFor="let user of cat2 | filtro2:filterPost ">
           <td>{{ user.nombre }}</td>
           <td>{{ user.descripcion }}</td>
           <td>{{ user.stock }}</td>
@@ -142,7 +142,7 @@
 
   </mat-tab>
   <mat-tab label="Alimento-Balanceado">
-
+    <input type="text" placeholder="Search...." [(ngModel)]="filterPost" name="filterPost">
     <table class="mat-elevation-z8">
       <thead>
         <tr>
@@ -152,7 +152,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let user of cat3">
+        <tr *ngFor="let user of cat3 | filtro2:filterPost ">
           <td>{{ user.nombre }}</td>
           <td>{{ user.descripcion }}</td>
           <td>{{ user.stock }}</td>Quintales
@@ -195,7 +195,7 @@
   </div>
   </mat-tab>
   <mat-tab label="Vacunas">
-
+    <input type="text" placeholder="Search...." [(ngModel)]="filterPost" name="filterPost">
     <table class="mat-elevation-z8">
       <thead>
         <tr>
@@ -205,7 +205,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let user of cat4">
+        <tr *ngFor="let user of cat4 | filtro2:filterPost ">
           <td>{{ user.nombre }}</td>
           <td>{{ user.descripcion }}</td>
           <td>{{ user.stock }}</td>
@@ -234,7 +234,7 @@
   </div>
   </mat-tab>
   <mat-tab label="Implementos Operacion">
-
+    <input type="text" placeholder="Search...." [(ngModel)]="filterPost" name="filterPost">
     <table class="mat-elevation-z8">
       <thead>
         <tr>
@@ -244,7 +244,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let user of cat5">
+        <tr *ngFor="let user of cat5  | filtro2:filterPost ">
           <td>{{ user.nombre }}</td>
           <td>{{ user.descripcion }}</td>
           <td>{{ user.stock }}</td>

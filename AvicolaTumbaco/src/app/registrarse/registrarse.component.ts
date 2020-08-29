@@ -32,7 +32,7 @@ export class RegistrarseComponent implements OnInit {
 
   ingresar() {
     this._AvicolaService
-      .metodoGet('http://localhost:1337/registro')
+      .metodoGet('http://localhost:1337/registro?estado=activo')
       .subscribe((resultado) => {
         var rest = resultado;
         for (let key in resultado) {
@@ -42,7 +42,7 @@ export class RegistrarseComponent implements OnInit {
           }
         }
         this._AvicolaService
-        .metodoGet('http://localhost:1337/login')
+        .metodoGet('http://localhost:1337/login?estado=activo')
         .subscribe((resultadoParametro) => {
           var rest = JSON.stringify(resultadoParametro);
           for (let key in resultadoParametro) {

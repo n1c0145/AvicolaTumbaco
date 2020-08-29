@@ -58,6 +58,12 @@
 
 <mat-tab-group mat-align-tabs="center">
   <mat-tab label="Editar/Eliminar">
+    <input
+      type="text"
+      placeholder="Search...."
+      [(ngModel)]="filterPost"
+      name="filterPost"
+    />
     <table class="mat-elevation-z8">
       <thead>
         <tr>
@@ -69,10 +75,13 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let user of productos">
+        <tr *ngFor="let user of productos | filtro2: filterPost">
           <td>{{ user.nombre }}</td>
           <td>{{ user.descripcion }}</td>
-          <td>{{ user.imagen }}</td>
+          <td>
+            <img src="{{ user.imagen }}" alt="" />
+          </td>
+
           <td>{{ user.idCategoria.categoria }}</td>
           <td>{{ user.idProveedor.nombre }}</td>
           <button type="button" class="btn btn-primary" (click)="editar(user)">
@@ -202,7 +211,14 @@
         [(ngModel)]="stock"
         name="stock"
       />
-
+      <h4>Numero desabastecimiento</h4>
+      <input
+        class="input_field search_form_name"
+        type="text"
+        placeholder="desabastecimiento"
+        [(ngModel)]="desabastecimiento"
+        name="desabastecimiento"
+      />
       <h4>Proveedor</h4>
       <mat-form-field>
         <mat-label>Escoja un proveedor</mat-label>
@@ -219,4 +235,3 @@
     </form>
   </mat-tab>
 </mat-tab-group>
-

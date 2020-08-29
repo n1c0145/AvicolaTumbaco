@@ -21,8 +21,11 @@ export class InventarioComponent implements OnInit {
   cat4;
   cat5;
   id;
+  desabastecimiento;
   unidad;
   selectedProducto: Inventario;
+  
+  filterPost ='';
 
   constructor(
     private readonly _router: Router,
@@ -122,7 +125,7 @@ export class InventarioComponent implements OnInit {
         alert('Escoja un valor a cambiar');
       } else {
         this.cantidad = this.stock + this.val;
-        console.log(this.cantidad);
+       
 
         this._AvicolaService
           .metodoPut('http://localhost:1337/inventario/' + this.id, {

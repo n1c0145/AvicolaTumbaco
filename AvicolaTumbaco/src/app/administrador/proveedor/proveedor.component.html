@@ -58,6 +58,7 @@
 
 <mat-tab-group mat-align-tabs="center">
   <mat-tab label="Editar/Eliminar">
+    <input type="text" placeholder="Search...." [(ngModel)]="filterPost" name="filterPost">
     <table class="mat-elevation-z8">
       <thead>
         <tr>
@@ -67,7 +68,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let user of proveedores">
+        <tr *ngFor="let user of proveedores | filtro2:filterPost ">
           <td>{{ user.nombre }}</td>
           <td>{{ user.descripcion }}</td>
           <td>{{ user.telefono }}</td>

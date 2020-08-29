@@ -15,12 +15,14 @@ export class ProductosComponent implements OnInit {
   imagen: '';
   categoria;
   stock: '';
+  desabastecimiento;
   idproveedor;
   idcategoria;
   fecha = new Date();
   prueba1;
   prueba2;
   id;
+  band = false;
   user;
   select;
   select2;
@@ -28,6 +30,7 @@ export class ProductosComponent implements OnInit {
   proveedor;
   editOn = false;
   selectedProducto: Inventario;
+  filterPost ='';
   constructor(
     private readonly _router: Router,
     private readonly _AvicolaService: AvicolaService
@@ -53,6 +56,27 @@ export class ProductosComponent implements OnInit {
   }
 
   ingresar() {
+
+    this._AvicolaService
+    .metodoGet('http://localhost:1337/inventario?estado=activo')
+    .subscribe((resultadoParametro) => {
+      var rest = JSON.stringify(resultadoParametro);
+      for (let key in resultadoParametro) {
+        if (this.nombre === resultadoParametro[key]['nombre']) {
+          this.band = true;
+          alert('Este producto ya se encuetra registrado');
+        }
+      }
+})
+
+ if(this.band==false){
+
+
+
+
+
+
+
     if (this.select2 === undefined) {
       alert('escoja una categoria');
     } else {
@@ -81,6 +105,7 @@ export class ProductosComponent implements OnInit {
                     descripcion: this.descripcion,
                     imagen: this.imagen,
                     stock: this.stock,
+                    desabastecimiento:this.desabastecimiento,
                     estado: 'activo',
                     fechaCreacion: this.fecha,
                     nombreUsuarioCreacion: this.user,
@@ -96,6 +121,8 @@ export class ProductosComponent implements OnInit {
           });
       }
     }
+    }
+    return (this.band = false);
   }
 
   editar(producto: Inventario) {

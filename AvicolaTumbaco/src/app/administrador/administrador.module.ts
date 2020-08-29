@@ -21,6 +21,7 @@ import { PedidosComponent } from '../administrador/pedidos/pedidos.component';
 import { FacturaComponent } from '../administrador/factura/factura.component';
 import { VentaproductoComponent } from './ventaproducto/ventaproducto.component';
 import { FiltroPipe } from '../pipes/filtro.pipe';
+import { Filtro2Pipe } from '../pipes/filtro2.pipe';
 @NgModule({
   declarations: [
     InicioadministradorComponent,
@@ -34,6 +35,7 @@ import { FiltroPipe } from '../pipes/filtro.pipe';
     FacturaComponent,
     VentaproductoComponent,
     FiltroPipe,
+    Filtro2Pipe,
   ],
   imports: [CommonModule, 
     AdministradorRoutingModule,

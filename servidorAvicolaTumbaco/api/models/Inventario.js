@@ -21,6 +21,9 @@ module.exports = {
     stock:{
       type:'number'
     },
+    desabastecimiento:{
+      type:'number'
+    },
     estado: {
       type: "string",
     },

@@ -12,6 +12,8 @@ facturas;
 facturasentregadas;
 user;
 id;
+filterPost ='';
+filterPost2 ='';
   constructor(
     private readonly _router: Router,
     private readonly _AvicolaService: AvicolaService
