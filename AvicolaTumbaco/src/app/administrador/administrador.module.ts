@@ -22,6 +22,8 @@ import { FacturaComponent } from '../administrador/factura/factura.component';
 import { VentaproductoComponent } from './ventaproducto/ventaproducto.component';
 import { FiltroPipe } from '../pipes/filtro.pipe';
 import { Filtro2Pipe } from '../pipes/filtro2.pipe';
+import {ToastModule} from 'primeng/toast';
+
 @NgModule({
   declarations: [
     InicioadministradorComponent,
@@ -47,7 +49,8 @@ import { Filtro2Pipe } from '../pipes/filtro2.pipe';
     MatFormFieldModule,
     InputNumberModule,
     RadioButtonModule,
-    CalendarModule
+    CalendarModule,
+    ToastModule
   ],
 })
 export class AdministradorModule {}

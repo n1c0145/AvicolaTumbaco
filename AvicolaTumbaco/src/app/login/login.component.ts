@@ -1,11 +1,12 @@
 import { AvicolaService } from './../servicios/avicola.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import {MessageService} from 'primeng/api';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
+  providers: [MessageService]
 })
 export class LoginComponent implements OnInit {
   usuario = '';
@@ -14,10 +15,12 @@ export class LoginComponent implements OnInit {
   idd;
   idstoge;
   user = '';
+
   constructor(
     private readonly _AvicolaService: AvicolaService,
     private readonly _activatedRoute: ActivatedRoute,
-    private _router: Router
+    private _router: Router,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {}
@@ -31,7 +34,7 @@ export class LoginComponent implements OnInit {
           if (this.usuario === resultadoParametro[key]['usuario']) {
             if (this.pass === resultadoParametro[key]['clave']) {
               this.band = true;
-              alert('login existoso');
+      
 
               this._AvicolaService
                 .metodoGet(
@@ -48,9 +51,11 @@ export class LoginComponent implements OnInit {
                   localStorage.setItem('id', JSON.stringify(this.idstoge));
                   localStorage.setItem('user', JSON.stringify(this.user));
                   if (this.idd == 1) {
+                 
                     this._router.navigate(['usuario/iniciousuario/']);
                   }
                   if (this.idd == 2) {
+                    this.showSuccess()
                     this._router.navigate([
                       'administrador/inicioadministrador/',
                     ]);
@@ -61,10 +66,16 @@ export class LoginComponent implements OnInit {
         }
 
         if (this.band == false) {
-          alert('incorrecto');
+          this.showError()
         }
       });
   }
+  showError() {
+    this.messageService.add({severity:'error', summary: 'Error', detail: 'Usuario o Contraseña incorrectos'});
+}  
+showSuccess() {
+  this.messageService.add({severity:'success', summary: 'Success', detail: 'Login exitoso', sticky: true});
+}
 }
 
 //localStorage.clear();

@@ -3,10 +3,12 @@ import { Proveedor } from './../../modelos/proveedor.interface';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import {MessageService} from 'primeng/api';
 @Component({
   selector: 'app-proveedor',
   templateUrl: './proveedor.component.html',
   styleUrls: ['./proveedor.component.css'],
+  providers: [MessageService]
 })
 export class ProveedorComponent implements OnInit {
   nombre = '';
@@ -24,7 +26,8 @@ export class ProveedorComponent implements OnInit {
   filterPost = '';
   constructor(
     private readonly _router: Router,
-    private readonly _AvicolaService: AvicolaService
+    private readonly _AvicolaService: AvicolaService,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
@@ -63,7 +66,8 @@ console.log(this.band);
           fechaActualizacion: this.fecha,
           nombreUsuarioActualizacion: this.user,
         }).subscribe((registrocreado)=>{
-       alert('Proveedor Creador');
+      // alert('Proveedor Creador');
+       this.showSuccess()
         })
      }
 });
@@ -101,4 +105,11 @@ console.log(this.band);
         location.reload();
       });
   }
+  showSuccess() {
+    this.messageService.add({key: 'tc', severity:'success', detail: 'Proveedor ingresado'});
+return setTimeout('document.location.reload()',2200);
+
+
+  }
+
 }

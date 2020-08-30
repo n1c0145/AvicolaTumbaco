@@ -3,11 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Login } from '../../modelos/login.interface';
-
+import {MessageService} from 'primeng/api';
 @Component({
   selector: 'app-perfil',
   templateUrl: './perfil.component.html',
-  styleUrls: ['./perfil.component.css']
+  styleUrls: ['./perfil.component.css'],
+  providers: [MessageService]
 })
 export class PerfilComponent implements OnInit {
   nombre = '';
@@ -28,10 +29,12 @@ export class PerfilComponent implements OnInit {
   fecha = new Date();
   constructor(
     private readonly _router: Router,
-    private readonly _AvicolaService: AvicolaService
+    private readonly _AvicolaService: AvicolaService,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
+  
     this.id = localStorage.getItem('id');
     console.log(this.id);
     
@@ -69,10 +72,15 @@ export class PerfilComponent implements OnInit {
             nombreUsuarioActualizacion: this.user,
           })
           .subscribe(() => {
-            alert('Actualizado');
+            this.showSuccess()
+              // location.reload();
             this.editOn = false;
-            location.reload();
           });
       });
+  }
+  showSuccess() {
+    this.messageService.add({severity:'success', summary: 'Success', detail: 'Registro Actualizado'});
+
+    alert('vale')
   }
 }

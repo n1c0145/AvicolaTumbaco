@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import {InputNumberModule} from 'primeng/inputnumber';
 import {CalendarModule} from 'primeng/calendar';
+import {ToastModule} from 'primeng/toast';
 @NgModule({
   declarations: [
     IniciousuarioComponent,
@@ -20,6 +21,6 @@ import {CalendarModule} from 'primeng/calendar';
     
   ],
   providers: [],
-  imports: [CommonModule, UsuarioRoutingModule, FormsModule, HttpClientModule, InputNumberModule, CalendarModule],
+  imports: [CommonModule, UsuarioRoutingModule, FormsModule, HttpClientModule, InputNumberModule, CalendarModule, ToastModule],
 })
 export class UsuarioModule {}
