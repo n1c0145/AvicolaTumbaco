@@ -73,4 +73,5 @@ export class PerfilComponent implements OnInit {
           });
       });
   }
+  obtenerFormulario(formulario) {}
 }

@@ -81,6 +81,7 @@ export class PerfilComponent implements OnInit {
   showSuccess() {
     this.messageService.add({severity:'success', summary: 'Success', detail: 'Registro Actualizado'});
 
-    alert('vale')
+  
   }
+  obtenerFormulario(formulario) {}
 }

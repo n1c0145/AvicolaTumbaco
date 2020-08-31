@@ -33,6 +33,7 @@ export class ProductosComponent implements OnInit {
   editOn = false;
   selectedProducto: Inventario;
   filterPost = '';
+
   constructor(
     private readonly _router: Router,
     private readonly _AvicolaService: AvicolaService
@@ -227,4 +228,5 @@ export class ProductosComponent implements OnInit {
         location.reload();
       });
   }
+  obtenerFormulario(formulario) {}
 }

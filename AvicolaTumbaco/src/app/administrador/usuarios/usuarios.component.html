@@ -90,7 +90,10 @@
 </div> 
 
 <div *ngIf="editOn">
-  <form>
+  <form
+    (ngSubmit)="obtenerFormulario(formularioUsuario)"
+    #formularioUsuario="ngForm"
+  >
     <h4>Cedula</h4>
     <input
       type="text"
@@ -136,6 +139,8 @@
       placeholder="Telefono"
       [(ngModel)]="selectedPerfil.telefono"
       name="telefono"
+      required="required"
+
       value="{{selectedPerfil.telefono}}"
     />
      <h4>Usuario</h4>
@@ -144,6 +149,8 @@
       type="text"
       placeholder="Usuario"
       [(ngModel)]="usuario"
+      required="required"
+
       name="usuario"
       value="usuario"
     />
@@ -153,6 +160,8 @@
       type="password"
       placeholder="Clave"
       [(ngModel)]="clave"
+      required="required"
+
       name="clave"
       value="clave"
     /> 
@@ -171,6 +180,7 @@
       class="search_submit_button"
       (click)="actualizar()"
       class="btn btn-primary"
+      [disabled]="formularioUsuario.invalid"
     >
     Actualizar
     </button>

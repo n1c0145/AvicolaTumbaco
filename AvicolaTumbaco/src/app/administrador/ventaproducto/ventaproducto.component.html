@@ -71,10 +71,8 @@
   </div>
 </nav>
 
-
 <mat-tab-group mat-align-tabs="center">
   <mat-tab label="Lista productos a la venta">
-
     <table class="mat-elevation-z8">
       <thead>
         <tr>
@@ -95,7 +93,7 @@
           <button type="button" class="btn btn-primary" (click)="editar(user)">
             Editar
           </button>
-    
+
           <button type="button" class="btn btn-danger" (click)="eliminar(user)">
             Eliminar
           </button>
@@ -103,41 +101,41 @@
       </tbody>
     </table>
     <div *ngIf="editOn">
-      <h4>Descripcion</h4>
-     
-      <input
-        class="input_field search_form_name"
-        type="text"
-        placeholder="Descripcion"
-        required="required"
-        [(ngModel)]="selectedProducto.descripcion"
-        name="descripcion"
-        value="{{ selectedProducto.descripcion }}"
-      />
-   
-       <div>Peso: {{selectedProducto.peso}}</div>
-      <mat-form-field>
-        <mat-label>Escoja el peso</mat-label>
-        <mat-select [(ngModel)]="peso" name="peso">
-          <mat-option value="5.5">5-5.5libras</mat-option>
-          <mat-option value="6">5.5-6libras</mat-option>
-          <mat-option value="6.5">6-6.5libras</mat-option>
-          <mat-option value="7">6.5-7libras</mat-option>
-        </mat-select>
-      </mat-form-field>
-    
-      <h4>Precio por libra</h4>
-      <input
-        class="input_field search_form_name"
-        type="text"
-        placeholder="Precio"
-        required="required"
-        [(ngModel)]="selectedProducto.precio"
-        name="precio"
-        value="{{ selectedProducto.precio }}"
-      />
-      <div>Stock: {{selectedProducto.stock}}</div>
-      
+      <form>
+        <h4>Descripcion</h4>
+
+        <input
+          class="input_field search_form_name"
+          type="text"
+          placeholder="Descripcion"
+          required="required"
+          [(ngModel)]="selectedProducto.descripcion"
+          name="descripcion"
+          value="{{ selectedProducto.descripcion }}"
+        />
+
+        <h4>Precio por libra</h4>
+        <input
+          class="input_field search_form_name"
+          type="text"
+          placeholder="Precio"
+          required="required"
+          [(ngModel)]="selectedProducto.precio"
+          name="precio"
+          value="{{ selectedProducto.precio }}"
+        />
+        <div>Peso: {{ selectedProducto.peso }}</div>
+        <mat-form-field>
+          <mat-label>Escoja el peso</mat-label>
+          <mat-select [(ngModel)]="peso" name="peso">
+            <mat-option value="5.5">5-5.5libras</mat-option>
+            <mat-option value="6">5.5-6libras</mat-option>
+            <mat-option value="6.5">6-6.5libras</mat-option>
+            <mat-option value="7">6.5-7libras</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div>Stock: {{ selectedProducto.stock }}</div>
+
         <p-inputNumber
           [(ngModel)]="stock"
           [showButtons]="true"
@@ -147,18 +145,18 @@
           incrementButtonClass="p-button-secondary"
           incrementButtonIcon="pi pi-plus"
           decrementButtonIcon="pi pi-minus"
-          [min]="0"
-        ></p-inputNumber> 
-    <div>Fecha: {{selectedProducto.fecha|date}}</div>
-    <div>
-      <div class="p-field p-col-12 p-md-4">
-        <p-calendar
-          [(ngModel)]="date"
-          [showIcon]="true"
-          inputId="icon"
-        ></p-calendar>
-      </div>
-    </div>
+          [min]="1"
+        ></p-inputNumber>
+        <div>Fecha: {{ selectedProducto.fecha | date }}</div>
+        <div>
+          <div class="p-field p-col-12 p-md-4">
+            <p-calendar
+              [(ngModel)]="date"
+              [showIcon]="true"
+              inputId="icon"
+            ></p-calendar>
+          </div>
+        </div>
         <button
           class="search_submit_button"
           (click)="actualizar()"
@@ -166,24 +164,35 @@
         >
           Actualizar
         </button>
-      
-     
-    </div> 
-
-
+      </form>
+    </div>
   </mat-tab>
   <mat-tab label="Insertar">
-
     <div>
-      <h4>Descripcion</h4>
-      <input
-        class="input_field search_form_name"
-        type="text"
-        placeholder="Descripcion"
-        required="required"
-        [(ngModel)]="descripcion"
-        name="descripcion"
-      />
+      <form
+        (ngSubmit)="obtenerFormulario(formularioUsuario)"
+        #formularioUsuario="ngForm"
+      >
+        <h4>Descripcion</h4>
+        <input
+          class="input_field search_form_name"
+          type="text"
+          placeholder="Descripcion"
+          required="required"
+          [(ngModel)]="descripcion"
+          name="descripcion"
+        />
+
+        <h4>Precio por libra</h4>
+        <input
+          class="input_field search_form_name"
+          type="number"
+          placeholder="precio"
+          required="required"
+          [(ngModel)]="precio"
+          name="precio"
+        />
+      </form>
       <h4>Peso</h4>
       <mat-form-field>
         <mat-label>Escoja el peso</mat-label>
@@ -194,45 +203,39 @@
           <mat-option value="7">6.5-7libras</mat-option>
         </mat-select>
       </mat-form-field>
-      <h4>Precio por libra</h4>
-      <input
-        class="input_field search_form_name"
-        type="number"
-        placeholder="precio"
-        [(ngModel)]="precio"
-        name="precio"
-      />
       <h4>Stock</h4>
-      <div>
-        <p-inputNumber
-          [(ngModel)]="stock"
-          [showButtons]="true"
-          buttonLayout="vertical"
-          spinnerMode="vertical"
-          decrementButtonClass="p-button-secondary"
-          incrementButtonClass="p-button-secondary"
-          incrementButtonIcon="pi pi-plus"
-          decrementButtonIcon="pi pi-minus"
-          [min]="0"
-        ></p-inputNumber>
-    
-        <h4>Fecha</h4>
-        <div>
-          <div class="p-field p-col-12 p-md-4">
-            <p-calendar
-              [(ngModel)]="date"
-              [showIcon]="true"
-              inputId="icon"
-            ></p-calendar>
-          </div>
-        </div>
-    
-        <button type="submit" class="btn btn-primary" (click)="ingresar()">
-          Ingresar
-        </button>
+
+      <p-inputNumber
+        [(ngModel)]="stock"
+        mode="decimal"
+        [showButtons]="true"
+        buttonLayout="vertical"
+        spinnerMode="vertical"
+        decrementButtonClass="p-button-secondary"
+        incrementButtonClass="p-button-secondary"
+        incrementButtonIcon="pi pi-plus"
+        decrementButtonIcon="pi pi-minus"
+        [min]="1"
+      ></p-inputNumber>
+
+      <h4>Fecha</h4>
+
+      <div class="p-field p-col-12 p-md-4">
+        <p-calendar
+          [(ngModel)]="date"
+          [showIcon]="true"
+          inputId="icon"
+        ></p-calendar>
       </div>
+
+      <button
+        type="submit"
+        class="btn btn-primary"
+        (click)="ingresar()"
+        [disabled]="formularioUsuario.invalid"
+      >
+        Ingresar
+      </button>
     </div>
-
   </mat-tab>
-
 </mat-tab-group>

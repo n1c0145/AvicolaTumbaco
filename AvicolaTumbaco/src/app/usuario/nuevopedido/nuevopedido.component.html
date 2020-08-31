@@ -45,6 +45,7 @@
   </div>
 
   <div *ngIf="editOn2">
+
     <h4>Actualizar Direccion</h4>
     <input
     class="input_field search_form_name"
@@ -55,6 +56,7 @@
     name="direccion"
     value="{{direc}}"
     />
+    
     <h2>Recuerde realizar el pedido en estas fechas</h2>
     <div  *ngFor="let user of arrayfechas">
       <div>{{ user |date}}</div>

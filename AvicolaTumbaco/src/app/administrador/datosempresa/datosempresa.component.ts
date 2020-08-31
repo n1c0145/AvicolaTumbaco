@@ -58,4 +58,5 @@ alert('Datos actualizados')
 location.reload();
       })
   }
+  obtenerFormulario(formulario) {}
 }

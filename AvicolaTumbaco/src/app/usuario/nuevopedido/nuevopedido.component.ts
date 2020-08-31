@@ -132,6 +132,11 @@ export class NuevopedidoComponent implements OnInit {
     }
   }
   comprar() {
+    if(this.direccion==""){
+alert('Direccion no valida')
+    }else{
+
+   
     if (this.date === undefined) {
       alert('Escoja una fecha');
     } else {
@@ -209,4 +214,6 @@ export class NuevopedidoComponent implements OnInit {
       }
     }
   }
+  }
+ 
 }

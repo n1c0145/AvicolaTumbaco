@@ -1,6 +1,5 @@
 <h1>Pedidos</h1>
 
-<input type="text" placeholder="Search...." [(ngModel)]="filterPost" name="filterPost">
 <table class="mat-elevation-z8">
     <thead>
       <tr>
@@ -16,7 +15,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let user of facturas | filtro2:filterPost ">
+      <tr *ngFor="let user of facturas">
         <td>000{{ user.id}}</td>
 
         <td>{{ user.idRegistro.cedula }}</td>
@@ -40,7 +39,6 @@
 
   <h1>Pedidos Entregados</h1>
 
-  <input type="text" placeholder="Search...." [(ngModel)]="filterPost2" name="filterPost2">
   <table class="mat-elevation-z8">
     <thead>
       <tr>
@@ -55,7 +53,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let user of facturasentregadas | filtro2:filterPost2 ">
+      <tr *ngFor="let user of facturasentregadas">
         <td>000{{ user.id}}</td>
 
         <td>{{ user.idRegistro.cedula }}</td>

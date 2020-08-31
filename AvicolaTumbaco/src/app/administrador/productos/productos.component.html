@@ -77,7 +77,6 @@
         <tr *ngFor="let user of productos | filtro2: filterPost">
           <td>{{ user.nombre }}</td>
           <td>{{ user.descripcion }}</td>
-       
 
           <td>{{ user.idCategoria.categoria }}</td>
           <td>{{ user.idProveedor.nombre }}</td>
@@ -93,7 +92,10 @@
     </table>
 
     <div *ngIf="editOn">
-      <form>
+      <form
+        (ngSubmit)="obtenerFormulario(formularioUsuario)"
+        #formularioUsuario="ngForm"
+      >
         <h4>Nombre</h4>
         <input
           type="text"
@@ -114,7 +116,7 @@
           name="descripcion"
           value="{{ selectedProducto.descripcion }}"
         />
-    
+
         <h4>Categoria</h4>
         <mat-form-field>
           <mat-label>Escoja una categoria</mat-label>
@@ -144,6 +146,7 @@
           class="search_submit_button"
           (click)="actualizar()"
           class="btn btn-primary"
+          [disabled]="formularioUsuario.invalid"
         >
           Actualizar
         </button>
@@ -151,7 +154,10 @@
     </div>
   </mat-tab>
   <mat-tab label="Insertar Producto">
-    <form>
+    <form
+      (ngSubmit)="obtenerFormulario(formularioUsuario)"
+      #formularioUsuario="ngForm"
+    >
       <h4>Nombre</h4>
       <input
         class="input_field search_form_name"
@@ -187,19 +193,40 @@
       <h4>Stock</h4>
       <input
         class="input_field search_form_name"
-        type="text"
+        type="number"
         placeholder="stock"
         [(ngModel)]="stock"
         name="stock"
+        required="required"
+        pattern="^[0-9]+$"
+        #campoStock="ngModel"
       />
+      <div
+      class="alert alert-danger"
+      role="alert"
+      *ngIf="(campoStock.errors)
+      && campoStock.dirty === true">
+      <p *ngIf="campoStock.errors.required">El stock es requerido</p>
+      </div>
       <h4>Numero desabastecimiento</h4>
       <input
         class="input_field search_form_name"
-        type="text"
+        type="number"
         placeholder="desabastecimiento"
         [(ngModel)]="desabastecimiento"
         name="desabastecimiento"
+        required="required"
+        pattern="^[0-9]+$"
+        #campodesabastecimiento="ngModel"
+
       />
+      <div
+      class="alert alert-danger"
+      role="alert"
+      *ngIf="(campodesabastecimiento.errors)
+      && campodesabastecimiento.dirty === true">
+      <p *ngIf="campodesabastecimiento.errors.required">El stock es requerido</p>
+      </div>
       <h4>Proveedor</h4>
       <mat-form-field>
         <mat-label>Escoja un proveedor</mat-label>
@@ -210,14 +237,21 @@
         </mat-select>
       </mat-form-field>
 
-      <button type="submit" class="btn btn-primary" (click)="ingresar()">
+      <button
+        type="submit"
+        class="btn btn-primary"
+        (click)="ingresar()"
+        [disabled]="formularioUsuario.invalid"
+      >
         Ingresar
       </button>
     </form>
   </mat-tab>
   <mat-tab label="Insertar Activo">
-
-    <form>
+    <form
+    (ngSubmit)="obtenerFormulario(formularioUsuario2)"
+    #formularioUsuario2="ngForm"
+  >
       <h4>Nombre</h4>
       <input
         class="input_field search_form_name"
@@ -249,19 +283,20 @@
         </mat-select>
       </mat-form-field>
       <div>
-        <mat-form-field>
+        <h4>Estado</h4>
 
+        <mat-form-field>
           <mat-label>Estado Operacional</mat-label>
           <mat-select [(ngModel)]="selectoperacional" name="selectoperacional">
             <mat-option value="1">Operativo</mat-option>
-            <mat-option value ="2">No Operativo</mat-option>
+            <mat-option value="2">No Operativo</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
-      <button type="submit" class="btn btn-primary" (click)="ingresar2()">
+      <button type="submit" class="btn btn-primary" (click)="ingresar2()" [disabled]="formularioUsuario2.invalid"
+      >
         Ingresar
       </button>
     </form>
-
   </mat-tab>
 </mat-tab-group>

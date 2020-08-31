@@ -111,5 +111,5 @@ return setTimeout('document.location.reload()',2200);
 
 
   }
-
+  obtenerFormulario(formulario) {}
 }

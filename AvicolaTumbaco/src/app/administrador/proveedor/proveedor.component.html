@@ -58,7 +58,12 @@
 
 <mat-tab-group mat-align-tabs="center">
   <mat-tab label="Editar/Eliminar">
-    <input type="text" placeholder="Search...." [(ngModel)]="filterPost" name="filterPost">
+    <input
+      type="text"
+      placeholder="Search...."
+      [(ngModel)]="filterPost"
+      name="filterPost"
+    />
     <table class="mat-elevation-z8">
       <thead>
         <tr>
@@ -68,7 +73,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let user of proveedores | filtro2:filterPost ">
+        <tr *ngFor="let user of proveedores | filtro2: filterPost">
           <td>{{ user.nombre }}</td>
           <td>{{ user.descripcion }}</td>
           <td>{{ user.telefono }}</td>
@@ -84,7 +89,8 @@
     </table>
 
     <div *ngIf="editOn">
-      <form>
+      <form  (ngSubmit)="obtenerFormulario(formularioUsuario)"
+      #formularioUsuario="ngForm">
         <h4>Nombre</h4>
         <input
           type="text"
@@ -93,6 +99,7 @@
           [(ngModel)]="selectedProveedor.nombre"
           name="nombre"
           value="{{ selectedProveedor.nombre }}"
+          required="required"
         />
 
         <h4>Descripcion</h4>
@@ -104,6 +111,7 @@
           [(ngModel)]="selectedProveedor.descripcion"
           name="descripcion"
           value="{{ selectedProveedor.descripcion }}"
+          required="required"
         />
         <h4>Telefono</h4>
         <input
@@ -113,11 +121,13 @@
           [(ngModel)]="selectedProveedor.telefono"
           name="telefono"
           value="{{ selectedProveedor.telefono }}"
+          required="required"
         />
         <button
           class="search_submit_button"
           (click)="actualizar()"
           class="btn btn-primary"
+          [disabled]="formularioUsuario.invalid"
         >
           Actualizar
         </button>
@@ -126,16 +136,22 @@
   </mat-tab>
   <mat-tab label="Insertar">
     <div>
-      <form>
+      <form
+        (ngSubmit)="obtenerFormulario(formularioUsuario)"
+        #formularioUsuario="ngForm"
+      >
         <h4>Nombre</h4>
         <input
           class="input_field search_form_name"
           type="text"
           placeholder="Nombres"
-          required="required"
           [(ngModel)]="nombre"
           name="nombre"
+          required="required"
+
         />
+
+ 
         <h4>Descripcion</h4>
         <input
           class="input_field search_form_name"
@@ -151,12 +167,33 @@
           class="input_field search_form_name"
           type="text"
           placeholder="Telefono"
-          required="required"
           [(ngModel)]="telefono"
           name="telefono"
+          minlength="10"
+          maxlength="10"
+          pattern="^[0-9]+$"
+          required="required"
+
+          #campoTelefono="ngModel"
         />
+        <div
+        class="alert alert-danger"
+        role="alert"
+        *ngIf="(campoTelefono.errors)
+        && campoTelefono.dirty === true">
+        <p *ngIf="campoTelefono.errors.minlength">Celular incorrecto</p>
+        <p *ngIf="campoTelefono.errors.pattern">El celular no puede contener letras</p>
+        <p *ngIf="campoTelefono.errors.required"> Campo Requerido</p>
+
+        </div>
         <div>
-          <button type="submit" class="btn btn-primary" (click)="ingresar()">
+          <button
+            type="submit"
+            class="btn btn-primary"
+            value="Submit"
+            (click)="ingresar()"
+            [disabled]="formularioUsuario.invalid"
+          >
             Ingresar
           </button>
         </div>

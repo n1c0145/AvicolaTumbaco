@@ -103,7 +103,8 @@
 
 
   <div *ngIf="editOn">
-    <form>
+    <form     (ngSubmit)="obtenerFormulario(formularioUsuario)"
+    #formularioUsuario="ngForm">
         <h4>Nombre</h4>
         <input
           type="text"
@@ -133,6 +134,8 @@
       <input
         class="input_field search_form_name"
         type="text"
+        required="required"
+
         [(ngModel)]="selectedDato.telefono"
         name="telefono"
         value="{{selectedDato.telefono}}"
@@ -141,6 +144,8 @@
       <input
         class="input_field search_form_name"
         type="text"
+        required="required"
+
         [(ngModel)]="selectedDato.telefono2"
         name="telefono2"
         value="{{selectedDato.telefono2}}"
@@ -151,6 +156,7 @@
         class="search_submit_button"
         (click)="actualizar()"
         class="btn btn-primary"
+        [disabled]="formularioUsuario.invalid"
       >
       Actualizar
       </button>

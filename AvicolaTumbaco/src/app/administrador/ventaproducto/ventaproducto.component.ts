@@ -13,7 +13,7 @@ export class VentaproductoComponent implements OnInit {
   descripcion;
   peso;
   precio;
-  stock;
+  stock=0;
   fecha = new Date();
   val;
   id;
@@ -35,36 +35,46 @@ productos;
     .subscribe((data) => {
       this.productos = data;
     });
+    console.log(this.peso);
+    
   }
   ingresar() {
+    console.log(this.peso);
+    
+   if(this.peso===undefined){
+    alert('Escoja peso');
+
+   }else{
+
    
     
-    if (this.stock === undefined) {
+    if (this.stock === 0) {
       alert('Coloque un numero de stock');
+      
     } else {
       if (this.date === undefined) {
         alert('Escoja una fecha');
-      } else {
         console.log(this.date);
-        this._AvicolaService
-          .crearVenta({
-            descripcion: 'pollos',
-            peso: this.peso,
-            precio: this.precio,
-            stock: this.stock,
-            fecha:this.date,
-            estado: 'activo',
-            fechaCreacion: this.fecha,
-            nombreUsuarioCreacion: this.user,
-            fechaActualizacion: this.fecha,
-            nombreUsuarioActualizacion: this.user,
+      } else {
+         this._AvicolaService
+           .crearVenta({
+             descripcion: 'pollos',
+             peso: this.peso,
+             precio: this.precio,
+             stock: this.stock,
+             fecha:this.date,
+             estado: 'activo',
+             fechaCreacion: this.fecha,
+             nombreUsuarioCreacion: this.user,
+             fechaActualizacion: this.fecha,
+             nombreUsuarioActualizacion: this.user,
    
-          })
-          .subscribe((registroCreado) => {
-            alert('Producto creado');
-            location.reload()
-          });
-      }
+           })
+           .subscribe((registroCreado) => {
+             alert('Producto creado');
+             location.reload()
+           });
+      }}
     }
   }
   editar(producto:Producto){
@@ -100,4 +110,5 @@ productos;
 
 
   }
+  obtenerFormulario(formulario) {}
 }

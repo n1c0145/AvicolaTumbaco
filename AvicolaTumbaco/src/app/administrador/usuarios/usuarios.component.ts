@@ -113,5 +113,5 @@ export class UsuariosComponent implements OnInit {
           });
       });
   }
-
+  obtenerFormulario(formulario) {}
 }

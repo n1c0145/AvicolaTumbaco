@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
 
   iniciarSesion() {
     this._AvicolaService
-      .metodoGet('http://localhost:1337/login/')
+      .metodoGet('http://localhost:1337/login?estado=activo')
       .subscribe((resultadoParametro) => {
         var rest = JSON.stringify(resultadoParametro);
         for (let key in resultadoParametro) {
@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
 
               this._AvicolaService
                 .metodoGet(
-                  'http://localhost:1337/login?usuario=' +
+                  'http://localhost:1337/login?estado=activo&&usuario=' +
                     this.usuario +
                     '&&clave=' +
                     this.pass
