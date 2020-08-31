@@ -11,6 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ToastModule} from 'primeng/toast';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import {ToastModule} from 'primeng/toast';
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule ,
-    ToastModule
+    ToastModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]

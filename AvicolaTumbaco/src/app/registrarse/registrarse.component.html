@@ -2,59 +2,97 @@
 
 <div>
   <form
- 
+    (ngSubmit)="obtenerFormulario(formularioUsuario)"
+    #formularioUsuario="ngForm"
   >
     <h4>Cedula</h4>
     <input
       class="input_field search_form_name"
       type="text"
+      pattern="^[0-9]+$"
+      maxlength="10"
+      minlength="10"
       placeholder="N° Cédula"
-      required="required"
       [(ngModel)]="cedula"
       name="cedula"
+      #campoCedula="ngModel"
     />
+    <div
+      class="alert alert-warning"
+      role="alert"
+      *ngIf="campoCedula.errors && campoCedula.dirty === true"
+    >
+      <p *ngIf="campoCedula.errors.minlength">Cédula no valida</p>
+      <p *ngIf="campoCedula.errors.pattern">No es cédula</p>
+    </div>
     <h4>Nombre</h4>
     <input
       class="input_field search_form_name"
       type="text"
       placeholder="Nombres"
-      required="required"
       [(ngModel)]="nombre"
       name="nombre"
+      pattern="^[a-zA-Z]+$"
+      #campoNombre="ngModel"
     />
+    <div
+    class="alert alert-warning"
+    role="alert"
+    *ngIf="campoNombre.errors && campoNombre.dirty === true"
+  >
+    <p *ngIf="campoNombre.errors.pattern">El nombre no puede contener numeros</p>
+  </div>
     <h4>Apellido</h4>
     <input
-    class="input_field search_form_name"
-    type="text"
-    placeholder="Apellido"
-    required="required"
-    [(ngModel)]="apellido"
-    name="apellido"
-  />
+      class="input_field search_form_name"
+      type="text"
+      placeholder="Apellido"
+      [(ngModel)]="apellido"
+      name="apellido"
+      pattern="^[a-zA-Z]+$"
+      #campoApellido="ngModel"
+    />
+    <div
+    class="alert alert-warning"
+    role="alert"
+    *ngIf="campoApellido.errors && campoApellido.dirty === true"
+  >
+    <p *ngIf="campoApellido.errors.pattern">El apellido no puede contener numeros</p>
+  </div>
     <h4>Direccion</h4>
     <input
-    class="input_field search_form_name"
-    type="text"
-    placeholder="Direccion"
-    required="required"
-    [(ngModel)]="direccion"
-    name="direccion"
-  />
+      class="input_field search_form_name"
+      type="text"
+      placeholder="Direccion"
+      [(ngModel)]="direccion"
+      name="direccion"
+    />
     <h4>Telefono</h4>
     <input
       class="input_field search_form_name"
       type="text"
       placeholder="Telefono"
-      required="required"
       [(ngModel)]="telefono"
       name="telefono"
+      minlength="10"
+      maxlength="10"
+      pattern="^[0-9]+$"
+      #campoTelefono="ngModel"
     />
+    <div
+    class="alert alert-danger"
+    role="alert"
+    *ngIf="(campoTelefono.errors)
+    && campoTelefono.dirty === true">
+    <p *ngIf="campoTelefono.errors.minlength">Celular incorrecto</p>
+    <p *ngIf="campoTelefono.errors.pattern">El celular no puede contener letras</p>
+
+    </div>
     <h4>Usuario</h4>
     <input
       class="input_field search_form_name"
       type="text"
       placeholder="Usuario"
-      required="required"
       [(ngModel)]="usuario"
       name="usuario"
     />
@@ -63,13 +101,37 @@
       class="input_field search_form_category"
       type="password"
       placeholder="Contraseña"
-      required="required"
       [(ngModel)]="pass"
       name="pass"
+      minlength="8"
+      #campoPass="ngModel"
     />
-<div>
-    <button  type="submit" class="btn btn-primary"  (click)='ingresar()'>REGISTRARSE</button>
-  </div>
+    <div
+    class="alert alert-danger"
+    role="alert"
+    *ngIf="(campoPass.errors)
+    && campoPass.dirty === true">
+    <p *ngIf="campoPass.errors.minlength">La contraseña debe contar con minimo 8 caracteres.</p>
+    </div>
+    <h4>confirmar password</h4>
+    <input
+      class="input_field search_form_category"
+      type="password"
+      placeholder="Contraseña"
+      required="required"
+      [(ngModel)]="pass2"
+      name="pass2"
+    />
+    <div>
+      <button
+        type="submit"
+        class="btn btn-primary"
+        (click)="ingresar()"
+        value="Submit"
+        [disabled]="formularioUsuario.invalid"
+      >
+        REGISTRARSE
+      </button>
+    </div>
   </form>
-
 </div>

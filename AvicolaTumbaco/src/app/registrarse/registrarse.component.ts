@@ -18,6 +18,7 @@ export class RegistrarseComponent implements OnInit {
   estado = '';
   usuario = '';
   pass = '';
+  pass2;
   idLogin = '';
   idTipoPerfil = '';
   fecha = new Date();
@@ -31,6 +32,10 @@ export class RegistrarseComponent implements OnInit {
   ngOnInit(): void {}
 
   ingresar() {
+
+
+
+
     this._AvicolaService
       .metodoGet('http://localhost:1337/registro?estado=activo')
       .subscribe((resultado) => {
@@ -55,40 +60,45 @@ export class RegistrarseComponent implements OnInit {
   
        
             if (this.band == false) {
-              this._AvicolaService
-                .crearLogin({
-                  usuario: this.usuario,
-                  clave: this.pass,
-                  estado: 'activo',
-                  fechaCreacion: this.fecha,
-                  nombreUsuarioCreacion: this.usuario,
-                  fechaActualizacion: this.fecha,
-                  nombreUsuarioActualizacion: this.usuario,
-                  idTipoPerfil: 1,
-                })
-                .subscribe((registroCreado) => {
-                  this.idLogin = JSON.stringify(registroCreado['id']);
-                  alert('Usuario Registrado');
-                  this._AvicolaService
-                    .crearRegistro({
-                      cedula: this.cedula,
-                      nombre: this.nombre,
-                      apellido: this.apellido,
-                      direccion: this.direccion,
-                      telefono: this.telefono,
-                      estado: 'activo',
-                      fechaCreacion: this.fecha,
-                      nombreUsuarioCreacion: this.usuario,
-                      fechaActualizacion: this.fecha,
-                      nombreUsuarioActualizacion: this.usuario,
-                      idLogin: this.idLogin + '',
-                    })
-                    .subscribe((registroCreado) => {});
-                });
-              this._router.navigate(['login']);
+              if(this.pass===this.pass2){
+               this._AvicolaService
+                 .crearLogin({
+                   usuario: this.usuario,
+                   clave: this.pass,
+                   estado: 'activo',
+                   fechaCreacion: this.fecha,
+                   nombreUsuarioCreacion: this.usuario,
+                   fechaActualizacion: this.fecha,
+                   nombreUsuarioActualizacion: this.usuario,
+                   idTipoPerfil: 1,
+                 })
+                 .subscribe((registroCreado) => {
+                   this.idLogin = JSON.stringify(registroCreado['id']);
+                   alert('Usuario Registrado');
+                   this._AvicolaService
+                     .crearRegistro({
+                       cedula: this.cedula,
+                       nombre: this.nombre,
+                       apellido: this.apellido,
+                       direccion: this.direccion,
+                       telefono: this.telefono,
+                       estado: 'activo',
+                       fechaCreacion: this.fecha,
+                       nombreUsuarioCreacion: this.usuario,
+                       fechaActualizacion: this.fecha,
+                       nombreUsuarioActualizacion: this.usuario,
+                       idLogin: this.idLogin + '',
+                     })
+                     .subscribe((registroCreado) => {});
+                 });
+               this._router.navigate(['login']);
+            }else{
+              alert('Las contraseñas no coinciden')
+            }
             }
           });
         });
     return (this.band = false);
   }
+  obtenerFormulario(formulario) {}
 }
