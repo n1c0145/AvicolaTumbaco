@@ -56,9 +56,13 @@ id;
         fechaActualizacion: this.fecha,
         nombreUsuarioActualizacion: this.user,
       }).subscribe(()=>{
-alert('Datos actualizados')
-location.reload();
+this.showSuccess()
       })
   }
   obtenerFormulario(formulario) {}
+  showSuccess() {
+    this.messageService.add({severity:'success', detail: 'Registro Actualizado'});
+    return setTimeout('document.location.reload()',2200);
+  
+  }
 }

@@ -46,8 +46,7 @@ this._AvicolaService
   nombreUsuarioActualizacion: this.user,
 })
 .subscribe(() => {
-  alert('Pedido entregado');
-  location.reload();
+this.showSuccess()
 });
 }
 eliminar(pedido:Factura){
@@ -58,8 +57,7 @@ eliminar(pedido:Factura){
     nombreUsuarioActualizacion: this.user,
   })
   .subscribe(() => {
-    alert('Pedido eliminado');
-    location.reload();
+ this.showError()
   });
   }
   facturar(pedido:Factura){
@@ -70,4 +68,17 @@ eliminar(pedido:Factura){
     this._router.navigate(['administrador/factura/']);
 
   }
+  showSuccess() {
+    this.messageService.add({severity:'success', detail: 'Pedido entreegado'});
+return setTimeout('document.location.reload()',2200);
+
+
+  }
+  showError() {
+    this.messageService.add({severity:'error', detail: 'Pedido eliminado'});
+return setTimeout('document.location.reload()',2200);
+
+
+  }
+
 }

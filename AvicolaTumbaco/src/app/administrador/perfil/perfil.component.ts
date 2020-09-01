@@ -70,11 +70,16 @@ export class PerfilComponent implements OnInit {
             nombreUsuarioActualizacion: this.user,
           })
           .subscribe(() => {
-            alert('Actualizado');
+            this.showSuccess()
             this.editOn = false;
-            location.reload();
+ 
           });
       });
   }
   obtenerFormulario(formulario) {}
+  showSuccess() {
+    this.messageService.add({severity:'success', detail: 'Registro Actualizado'});
+    return setTimeout('document.location.reload()',2200);
+  
+  }
 }

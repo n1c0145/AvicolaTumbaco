@@ -113,7 +113,7 @@ export class InventarioComponent implements OnInit {
   }
   ingreso() {
     if (this.val === undefined) {
-      alert('Escoja un valor a cambiar');
+     this.showWarn()
     } else {
       this.cantidad = this.stock + this.val;
 if(this.cantidad<=this.desabastecimiento){
@@ -126,8 +126,7 @@ if(this.cantidad<=this.desabastecimiento){
           nombreUsuarioActualizacion: this.user,
         })
         .subscribe((producto) => {
-          alert('Stock Actualizado');
-          location.reload();
+          this.showSuccess()
         });
     }
   }
@@ -135,7 +134,7 @@ if(this.cantidad<=this.desabastecimiento){
   ingreso2() {
     if (this.unidad == 'val1') {
       if (this.val === undefined) {
-        alert('Escoja un valor a cambiar');
+        this.showWarn()
       } else {
         this.cantidad = this.stock + this.val;
        
@@ -149,13 +148,12 @@ if(this.cantidad<=this.desabastecimiento){
             nombreUsuarioActualizacion: this.user,
           })
           .subscribe((producto) => {
-            alert('Stock Actualizado');
-            location.reload();
+            this.showSuccess()
           });
       }
     } else if (this.unidad == 'val2') {
       if (this.val === undefined) {
-        alert('Escoja un valor a cambiar');
+        this.showWarn()
       } else {
         this.cantidad = this.stock + this.val / 100;
         if(this.cantidad<=this.desabastecimiento){
@@ -168,17 +166,16 @@ if(this.cantidad<=this.desabastecimiento){
             nombreUsuarioActualizacion: this.user,
           })
           .subscribe((producto) => {
-            alert('Stock Actualizado');
-            location.reload();
+            this.showSuccess()
           });
       }
     } else {
-      alert('escoja una unidad');
+    this.showWarn2()
     }
   }
   ingresoactivo(){
     if (this.selectoperacional === undefined) {
-      alert('escoja un estado');
+      this.showWarn3()
     } else {
       if (this.selectoperacional == 1) {
         this.operacion = 'operativo';
@@ -192,10 +189,24 @@ if(this.cantidad<=this.desabastecimiento){
         nombreUsuarioActualizacion: this.user,
       })
       .subscribe((producto) => {
-        alert('Actualizado');
-        location.reload();
+     this.showSuccess()
       });
 
     }
   }
+  showSuccess() {
+    this.messageService.add({severity:'success', detail: 'Actualizado'});
+return setTimeout('document.location.reload()',2200);
+
+
+  }
+  showWarn() {
+    this.messageService.add({severity:'warn',  detail: 'Escoja un valor a cambiar'});
+}
+showWarn2() {
+  this.messageService.add({severity:'warn',  detail: 'Escoja una unidad'});
+}
+showWarn3() {
+  this.messageService.add({severity:'warn',  detail: 'Escoja un estado'});
+}
 }

@@ -88,9 +88,9 @@ export class UsuariosComponent implements OnInit {
             idTipoPerfil: this.idTipoPerfil,
           })
           .subscribe(() => {
-            alert('Actualizado');
+         this.showSuccess()
             this.editOn = false;
-            location.reload();
+            
           });
       });
   }
@@ -110,10 +110,19 @@ export class UsuariosComponent implements OnInit {
             nombreUsuarioActualizacion: this.user,
           })
           .subscribe(() => {
-            alert('Usuario eliminado');
-            location.reload();
+      this.showSuccess2()
           });
       });
   }
   obtenerFormulario(formulario) {}
+  showSuccess() {
+    this.messageService.add({severity:'success', summary: 'Success', detail: 'Registro Actualizado'});
+    return setTimeout('document.location.reload()',2200);
+  
+  }
+  showSuccess2() {
+    this.messageService.add({severity:'success', summary: 'Success', detail: 'Usuario Eliminado'});
+    return setTimeout('document.location.reload()',2200);
+  
+  }
 }

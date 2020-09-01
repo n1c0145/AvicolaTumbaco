@@ -3,12 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Inventario } from '../../modelos/inventario.interface';
-import {MessageService} from 'primeng/api';
+import { MessageService } from 'primeng/api';
 @Component({
   selector: 'app-productos',
   templateUrl: './productos.component.html',
   styleUrls: ['./productos.component.css'],
-  providers: [MessageService]
+  providers: [MessageService],
 })
 export class ProductosComponent implements OnInit {
   nombre: '';
@@ -68,18 +68,17 @@ export class ProductosComponent implements OnInit {
         for (let key in resultadoParametro) {
           if (this.nombre === resultadoParametro[key]['nombre']) {
             this.band = true;
-            alert('Este producto ya se encuetra registrado');
+            this.showInfo();
           }
         }
       });
 
-
     if (this.band == false) {
       if (this.select2 === undefined) {
-        alert('escoja una categoria');
+        this.showWarn();
       } else {
         if (this.select === undefined) {
-          alert('escoja un proveedor ');
+          this.showWar2();
         } else {
           this._AvicolaService
             .metodoGet(
@@ -110,7 +109,7 @@ export class ProductosComponent implements OnInit {
                       idProveedor: this.idproveedor,
                     })
                     .subscribe((registroCreado) => {
-                      alert('Producto creado');
+                      this.showSuccess();
                     });
                 });
             });
@@ -127,17 +126,17 @@ export class ProductosComponent implements OnInit {
         for (let key in resultadoParametro) {
           if (this.nombre === resultadoParametro[key]['nombre']) {
             this.band = true;
-            alert('Este producto ya se encuetra registrado');
+            this.showInfo();
           }
         }
       });
-      console.log(this.band);
+    console.log(this.band);
     if (this.band == false) {
       if (this.selectoperacional === undefined) {
-        alert('escoja un estado');
+        this.showWar3();
       } else {
         if (this.select3 === undefined) {
-          alert('escoja un proveedor ');
+          this.showWar2();
         } else {
           this._AvicolaService
             .metodoGet(
@@ -153,22 +152,22 @@ export class ProductosComponent implements OnInit {
                 this.operacion = 'no operativo';
               }
 
-               this._AvicolaService
-                 .crearProducto({
-                   nombre: this.nombre,
-                   descripcion: this.descripcion,
-                   operativo: this.operacion,
-                   estado: 'activo',
-                   fechaCreacion: this.fecha,
-                   nombreUsuarioCreacion: this.user,
-                   fechaActualizacion: this.fecha,
-                   nombreUsuarioActualizacion: this.user,
-                   idCategoria: 1,
-                   idProveedor: this.idproveedor,
-                 })
-                 .subscribe((registroCreado) => {
-                   alert('Producto creado');
-                 });
+              this._AvicolaService
+                .crearProducto({
+                  nombre: this.nombre,
+                  descripcion: this.descripcion,
+                  operativo: this.operacion,
+                  estado: 'activo',
+                  fechaCreacion: this.fecha,
+                  nombreUsuarioCreacion: this.user,
+                  fechaActualizacion: this.fecha,
+                  nombreUsuarioActualizacion: this.user,
+                  idCategoria: 1,
+                  idProveedor: this.idproveedor,
+                })
+                .subscribe((registroCreado) => {
+                  this.showSuccess();
+                });
             });
         }
       }
@@ -181,14 +180,6 @@ export class ProductosComponent implements OnInit {
     this.id = producto.id;
   }
   actualizar() {
-    if (this.select2 === undefined) {
-      alert('escoja una categoria');
-    } else {
-      if (this.select === undefined) {
-        alert('escoja un proveedor ');
-      } else {
-      }
-    }
     this._AvicolaService
       .metodoGet('http://localhost:1337/categoria?categoria=' + this.select2)
       .subscribe((data5) => {
@@ -211,8 +202,7 @@ export class ProductosComponent implements OnInit {
                 idProveedor: this.idproveedor,
               })
               .subscribe((producto) => {
-                alert('Producto Actualizado');
-                location.reload();
+                this.showSuccess2();
               });
           });
       });
@@ -226,9 +216,50 @@ export class ProductosComponent implements OnInit {
         nombreUsuarioActualizacion: this.user,
       })
       .subscribe(() => {
-        alert('Producto eliminado');
-        location.reload();
+        this.showSuccess3();
       });
   }
   obtenerFormulario(formulario) {}
+  showInfo() {
+    this.messageService.add({
+      severity: 'info',
+      detail: 'Este producto ya se encuentra registro',
+    });
+  }
+  showWarn() {
+    this.messageService.add({
+      severity: 'warn',
+      detail: 'Escoja una categoria',
+    });
+  }
+  showWar2() {
+    this.messageService.add({
+      severity: 'warn',
+      detail: 'Escoja un proveedor',
+    });
+  }
+  showWar3() {
+    this.messageService.add({
+      severity: 'warn',
+      detail: 'Escoja un estado',
+    });
+  }
+  showSuccess() {
+    this.messageService.add({ severity: 'success', detail: 'Producto Creado' });
+    return setTimeout('document.location.reload()', 2200);
+  }
+  showSuccess2() {
+    this.messageService.add({
+      severity: 'success',
+      detail: 'Producto Actualizado',
+    });
+    return setTimeout('document.location.reload()', 2200);
+  }
+  showSuccess3() {
+    this.messageService.add({
+      severity: 'success',
+      detail: 'Producto Eliminado',
+    });
+    return setTimeout('document.location.reload()', 2200);
+  }
 }
