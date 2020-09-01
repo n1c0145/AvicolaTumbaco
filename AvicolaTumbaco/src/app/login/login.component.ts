@@ -1,12 +1,12 @@
 import { AvicolaService } from './../servicios/avicola.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import {MessageService} from 'primeng/api';
+import { MessageService } from 'primeng/api';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  providers: [MessageService]
+  providers: [MessageService],
 })
 export class LoginComponent implements OnInit {
   usuario = '';
@@ -34,7 +34,6 @@ export class LoginComponent implements OnInit {
           if (this.usuario === resultadoParametro[key]['usuario']) {
             if (this.pass === resultadoParametro[key]['clave']) {
               this.band = true;
-      
 
               this._AvicolaService
                 .metodoGet(
@@ -44,21 +43,15 @@ export class LoginComponent implements OnInit {
                     this.pass
                 )
                 .subscribe((resultadoMetodoGet) => {
-                  
                   this.idd = resultadoMetodoGet[0].idTipoPerfil.id;
                   this.idstoge = resultadoMetodoGet[0].id;
-                  this.user = resultadoMetodoGet[0].usuario
+                  this.user = resultadoMetodoGet[0].usuario;
                   localStorage.setItem('id', JSON.stringify(this.idstoge));
                   localStorage.setItem('user', JSON.stringify(this.user));
                   if (this.idd == 1) {
-                 
-                    this._router.navigate(['usuario/iniciousuario/']);
-                  }
+this.showSuccess()                  }
                   if (this.idd == 2) {
-                    this.showSuccess()
-                    this._router.navigate([
-                      'administrador/inicioadministrador/',
-                    ]);
+                  this.showSuccess2()
                   }
                 });
             }
@@ -66,16 +59,31 @@ export class LoginComponent implements OnInit {
         }
 
         if (this.band == false) {
-          this.showError()
+          this.showError();
         }
       });
   }
   showError() {
-    this.messageService.add({severity:'error', summary: 'Error', detail: 'Usuario o Contraseña incorrectos'});
-}  
-showSuccess() {
-  this.messageService.add({severity:'success', summary: 'Success', detail: 'Login exitoso', sticky: true});
-}
+    this.messageService.add({
+      severity: 'error',
+      summary: 'Error',
+      detail: 'Usuario o Contraseña incorrectos',
+    });
+  }
+  showSuccess() {
+    this.messageService.add({
+      severity: 'success',
+      detail: 'Login Exitoso , Bienvenido',
+    });
+    return setTimeout(()=>this._router.navigate(['usuario/iniciousuario/']),2200);
+  }
+  showSuccess2() {
+    this.messageService.add({
+      severity: 'success',
+      detail: 'Login Exitoso , Bienvenido',
+    });
+    return setTimeout(()=>this._router.navigate(['administrador/inicioadministrador/']),2200);
+  }
 }
 
 //localStorage.clear();

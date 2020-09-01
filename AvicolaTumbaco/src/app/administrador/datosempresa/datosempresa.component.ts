@@ -3,11 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Datosempresa } from '../../modelos/datosempresa.interface';
-
+import {MessageService} from 'primeng/api';
 @Component({
   selector: 'app-datosempresa',
   templateUrl: './datosempresa.component.html',
   styleUrls: ['./datosempresa.component.css'],
+  providers: [MessageService]
 })
 export class DatosempresaComponent implements OnInit {
   nombre;
@@ -25,7 +26,8 @@ id;
   datos;
   constructor(
     private readonly _router: Router,
-    private readonly _AvicolaService: AvicolaService
+    private readonly _AvicolaService: AvicolaService,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {

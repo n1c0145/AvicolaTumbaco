@@ -3,11 +3,12 @@ import { AvicolaService } from './../../servicios/avicola.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-
+import {MessageService} from 'primeng/api';
 @Component({
   selector: 'app-ventaproducto',
   templateUrl: './ventaproducto.component.html',
   styleUrls: ['./ventaproducto.component.css'],
+  providers: [MessageService]
 })
 export class VentaproductoComponent implements OnInit {
   descripcion;
@@ -25,7 +26,8 @@ export class VentaproductoComponent implements OnInit {
 productos;
   constructor(
     private readonly _router: Router,
-    private readonly _AvicolaService: AvicolaService
+    private readonly _AvicolaService: AvicolaService,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {

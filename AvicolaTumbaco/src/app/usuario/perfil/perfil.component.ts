@@ -73,14 +73,13 @@ export class PerfilComponent implements OnInit {
           })
           .subscribe(() => {
             this.showSuccess()
-              // location.reload();
             this.editOn = false;
           });
       });
   }
   showSuccess() {
     this.messageService.add({severity:'success', summary: 'Success', detail: 'Registro Actualizado'});
-
+    return setTimeout('document.location.reload()',2200);
   
   }
   obtenerFormulario(formulario) {}

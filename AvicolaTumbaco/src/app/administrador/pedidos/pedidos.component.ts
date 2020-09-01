@@ -2,10 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { AvicolaService } from './../../servicios/avicola.service';
 import { Router } from '@angular/router';
 import { Factura } from "../../modelos/factura.interface";
+import {MessageService} from 'primeng/api';
 @Component({
   selector: 'app-pedidos',
   templateUrl: './pedidos.component.html',
-  styleUrls: ['./pedidos.component.css']
+  styleUrls: ['./pedidos.component.css'],
+  providers: [MessageService]
 })
 export class PedidosComponent implements OnInit {
 facturas;
@@ -16,7 +18,8 @@ filterPost ='';
 filterPost2 ='';
   constructor(
     private readonly _router: Router,
-    private readonly _AvicolaService: AvicolaService
+    private readonly _AvicolaService: AvicolaService,
+    private messageService: MessageService
   ) { }
 
   ngOnInit(): void {

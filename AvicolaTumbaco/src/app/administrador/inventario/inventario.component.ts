@@ -3,10 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Inventario } from '../../modelos/inventario.interface';
+import {MessageService} from 'primeng/api';
 @Component({
   selector: 'app-inventario',
   templateUrl: './inventario.component.html',
   styleUrls: ['./inventario.component.css'],
+  providers: [MessageService]
 })
 export class InventarioComponent implements OnInit {
   val;
@@ -30,7 +32,8 @@ export class InventarioComponent implements OnInit {
   operacion;
   constructor(
     private readonly _router: Router,
-    private readonly _AvicolaService: AvicolaService
+    private readonly _AvicolaService: AvicolaService,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {

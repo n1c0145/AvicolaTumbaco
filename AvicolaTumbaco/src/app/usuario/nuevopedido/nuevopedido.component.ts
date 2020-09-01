@@ -3,11 +3,12 @@ import { Producto } from './../../modelos/producto.interface';
 import { Component, OnInit } from '@angular/core';
 import { AvicolaService } from './../../servicios/avicola.service';
 import { Router } from '@angular/router';
-
+import {MessageService} from 'primeng/api';
 @Component({
   selector: 'app-nuevopedido',
   templateUrl: './nuevopedido.component.html',
   styleUrls: ['./nuevopedido.component.css'],
+  providers: [MessageService]
 })
 export class NuevopedidoComponent implements OnInit {
   user;
@@ -45,7 +46,8 @@ export class NuevopedidoComponent implements OnInit {
 
   constructor(
     private readonly _router: Router,
-    private readonly _AvicolaService: AvicolaService
+    private readonly _AvicolaService: AvicolaService,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
@@ -71,12 +73,12 @@ export class NuevopedidoComponent implements OnInit {
   }
   agregar2() {
     if (this.val === undefined) {
-      alert('escoja un valor a comprar');
+      this.showWarn()
     } else {
       if (this.val > this.stock) {
-        alert('No se puede sobrepasar');
+        this.showWarn2()
       } else {
-        alert('Elemento añadido');
+        this.showInfo()
         this.arraydescripcion.push(this.descripcion);
         this.arraypeso.push(this.peso);
         this.arrayprecio.push(this.precio);
@@ -110,7 +112,7 @@ export class NuevopedidoComponent implements OnInit {
         stock: this.stock,
       })
       .subscribe(() => {
-        alert('elemento borrado');
+       this.showInfo2()
       });
   }
   pedir() {
@@ -128,17 +130,15 @@ export class NuevopedidoComponent implements OnInit {
           }
         });
     } else {
-      alert('Aun no compra nada');
+      this.showWarn3()
+      
     }
   }
   comprar() {
-    if(this.direccion==""){
-alert('Direccion no valida')
-    }else{
 
    
     if (this.date === undefined) {
-      alert('Escoja una fecha');
+      this.showWarn5()
     } else {
       this.finaldate = this.date.toISOString().slice(0, 10);
 
@@ -204,8 +204,7 @@ alert('Direccion no valida')
                       'idFactura',
                       JSON.stringify(this.idFactura)
                     );
-                    alert('todo creado' + this.idFactura);
-                    this._router.navigate(['usuario/factura/']);
+                   this.showSuccess()
                   });
               });
           });
@@ -213,7 +212,32 @@ alert('Direccion no valida')
         alert('fecha no valida');
       }
     }
+  
   }
-  }
- 
+  showWarn() {
+    this.messageService.add({severity:'warn',  detail: 'Escoja un valor a comprar'});
+}
+showWarn2() {
+  this.messageService.add({severity:'warn',  detail: 'No se puede sobrepasar'});
+}
+showWarn3() {
+  this.messageService.add({severity:'warn',  detail: 'Aun no compra nada'});
+}
+
+showWarn5() {
+  this.messageService.add({severity:'warn',  detail: 'Escoja una fecha'});
+}
+showInfo() {
+  this.messageService.add({severity:'info',  detail: 'Elemento añadido'});
+}
+showInfo2() {
+  this.messageService.add({severity:'info',  detail: 'Elemento borrado'});
+}
+showSuccess() {
+  this.messageService.add({severity:'success', detail: 'Pedido Realizado'});
+  return setTimeout(()=>this._router.navigate(['usuario/factura/']),2200);
+
+
+}
+obtenerFormulario(formulario) {}
 }

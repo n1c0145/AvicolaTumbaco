@@ -3,11 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Login } from '../../modelos/login.interface';
-
+import {MessageService} from 'primeng/api';
 @Component({
   selector: 'app-usuarios',
   templateUrl: './usuarios.component.html',
   styleUrls: ['./usuarios.component.css'],
+  providers: [MessageService]
 })
 export class UsuariosComponent implements OnInit {
   nombre = '';
@@ -35,7 +36,8 @@ export class UsuariosComponent implements OnInit {
 
   constructor(
     private readonly _router: Router,
-    private readonly _AvicolaService: AvicolaService
+    private readonly _AvicolaService: AvicolaService,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
