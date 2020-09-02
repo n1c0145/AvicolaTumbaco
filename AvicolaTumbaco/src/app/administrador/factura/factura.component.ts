@@ -19,6 +19,9 @@ export class FacturaComponent implements OnInit {
   subtotalpedido;
   iddetalle;
   detallefactura;
+  subtotal;
+  total;
+  iva;
   constructor(
     private readonly _router: Router,
     private readonly _AvicolaService: AvicolaService
@@ -45,7 +48,10 @@ export class FacturaComponent implements OnInit {
             this.preciolibra=this.array[i]['precioPorLibra']
             this.cantidad=this.array[i]['cantidad']
             this.subtotalpedido=this.array[i]['subtotalPorPedido']
+            this.subtotal=this.array[i]['subtotal']
+            this.total=this.array[i]['total']
          }
+         this.iva=this.total-this.subtotal
         });
    
       });

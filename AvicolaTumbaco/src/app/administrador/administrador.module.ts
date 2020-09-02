@@ -4,7 +4,7 @@ import { AdministradorRoutingModule } from './administrador-routing.module';
 import { InicioadministradorComponent } from './inicioadministrador/inicioadministrador.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { InventarioComponent } from './inventario/inventario.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import {MatTabsModule} from '@angular/material/tabs';
@@ -23,7 +23,7 @@ import { VentaproductoComponent } from './ventaproducto/ventaproducto.component'
 import { FiltroPipe } from '../pipes/filtro.pipe';
 import { Filtro2Pipe } from '../pipes/filtro2.pipe';
 import {ToastModule} from 'primeng/toast';
-
+import { FlexLayoutModule } from "@angular/flex-layout";
 @NgModule({
   declarations: [
     InicioadministradorComponent,
@@ -42,6 +42,7 @@ import {ToastModule} from 'primeng/toast';
   imports: [CommonModule, 
     AdministradorRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     MatTabsModule,
     MatDialogModule,
@@ -50,7 +51,8 @@ import {ToastModule} from 'primeng/toast';
     InputNumberModule,
     RadioButtonModule,
     CalendarModule,
-    ToastModule
+    ToastModule,
+    FlexLayoutModule,
   ],
 })
 export class AdministradorModule {}

@@ -1,53 +1,156 @@
-<h1>factura</h1>
-
-
-<div *ngFor="let user of factura">
-    <div>Numero Factura: 000{{user.id}}</div>
-<div>{{user.fechaEmision}}</div>
-<div>{{user.idDatosEmpresa.nombre}}</div>
-<div>{{user.idDatosEmpresa.direccion}}</div>
-<div>{{user.idDatosEmpresa.ruc}}</div>
-<div>{{user.idDatosEmpresa.telefono}}</div>
-<div>{{user.idDatosEmpresa.telefono2}}</div>
-<div>{{user.idRegistro.cedula}}</div>
-<div>{{user.idRegistro.nombre}}</div>
-<div>{{user.idRegistro.apellido}}</div>
-<div>{{user.idRegistro.direccion}}</div>
-<div>{{user.idRegistro.telefono}}</div>
-<div>{{user.idDetalleFactura.subtotal}}</div>
-<div>{{user.idDetalleFactura.total}}</div>
-<div>{{user.idDetalleFactura.fechaEntrega}}</div>
-
------------------------------
-<div *ngFor="let user of descripcion">
-    <div>
-{{user}}
+<div class="contenedor mat-elevation-z12" *ngFor="let user of factura">
+  <div fxLayout="row">
+    <div fxFlex="25">
+      <img src="../../../assets/img/Sin título.png" alt="" width="100%" />
     </div>
-</div>
 
-<div *ngFor="let user of peso">
-    <div>
-{{user}}
+    <div fxLayout="column" fxLayoutAlign=" center" fxFlex="40">
+      <div>AMAGUAÑA CORREA WILSON SALVADOR</div>
+      <div>{{ user.idDatosEmpresa.nombre }}</div>
+      <div>Ruc: {{ user.idDatosEmpresa.ruc }}</div>
+      <div>Direccion: {{ user.idDatosEmpresa.direccion }}</div>
+      <div>Telefonos: {{ user.idDatosEmpresa.telefono }}</div>
+      <div>{{ user.idDatosEmpresa.telefono2 }}</div>
+      <div>Quito-Ecuador</div>
     </div>
-</div>
 
-<div *ngFor="let user of preciolibra">
-    <div>
-{{user}}
+    <div fxLayout="column" fxLayoutAlign=" center" class="secciona3">
+      <div>FACTURA 001-001-</div>
+      <div>N= 000{{ user.id }}</div>
+      <div>AUTORIZACIÓN SRI No. 1126393390</div>
+      <div>FECHA DE AUTORIZACIÓN E IMP 10/MARZO/2021</div>
+      <div>DOCUEMENTO NO CATEGORIZADO</div>
     </div>
-</div>
-
-<div *ngFor="let user of cantidad">
-    <div>
-{{user}}
+  </div>
+  <div fxLayout="row">
+    <div fxLayout="column" fxLayoutAlign="start start" fxFlex="50">
+      <div>
+        Cliente: {{ user.idRegistro.nombre }} {{ user.idRegistro.apellido }}
+      </div>
+      <div>Direccion: {{ user.idRegistro.direccion }}</div>
+      <div>Telefono: 0{{ user.idRegistro.telefono }}</div>
+      <div>Ci/Ruc: {{ user.idRegistro.cedula }}</div>
     </div>
-</div>
 
-<div *ngFor="let user of subtotalpedido">
-    <div>
-{{user}}
+    <div fxLayout="column" fxLayoutAlign="start end" fxFlex="40">
+      <div>Fecha emisión: {{ user.fechaEmision | date }}</div>
+      <div>
+        Fecha de Pago y entrega: {{ user.idDetalleFactura.fechaEntrega | date }}
+      </div>
+      <div>Producción: Avícola</div>
+      <div>Guía Remesión No. xxxx</div>
     </div>
+  </div>
+  <div fxLayout="row">
+    <div fxFlex="10" fxLayout="column">
+      <div>cantidad</div>
+      <div *ngFor="let user of cantidad">
+        <div>
+          {{ user }}
+        </div>
+      </div>
+    </div>
+    <div fxFlex="10" fxLayout="column">
+      <div>Descripción</div>
+      <div *ngFor="let user of descripcion">
+        <div>
+          {{ user }}
+        </div>
+      </div>
+    </div>
+    <div fxFlex="10" fxLayout="column">
+      <div>Peso</div>
+      <div *ngFor="let user of peso">
+        <div>
+          {{ user }}
+        </div>
+      </div>
+    </div>
+    <div fxFlex="15" fxLayout="column">
+      <div>Precio por libra</div>
+      <div *ngFor="let user of preciolibra">
+        <div>
+          {{ user }}
+        </div>
+      </div>
+    </div>
+    <div fxFlex="10" fxLayout="column">
+      <div>Valor Venta</div>
+      <div *ngFor="let user of subtotalpedido">
+        <div>
+          {{ user }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div fxLayout="row">
+    <div fxFlex="60">Debo y pagare .....</div>
+    <div fxLayout="row">
+      <div>
+        <div>SUB TOTAL 12%</div>
+        <div>SUBTOTAL 0%</div>
+        <div>DESCUENTO</div>
+        <div>SUBTOTAL</div>
+        <div>IVA 12%</div>
+        <div>VALOR TOTAL $</div>
+      </div>
+      <div>
+        <table>
+          <tr>
+            {{
+              user.idDetalleFactura.subtotal
+            }}
+          </tr>
+          <tr>
+            0
+          </tr>
+          <tr>
+            0
+          </tr>
+          <tr>
+            {{
+              user.idDetalleFactura.subtotal
+            }}
+          </tr>
+          <tr>
+            {{
+              iva
+            }}
+          </tr>
+          <tr>
+            {{
+              user.idDetalleFactura.total
+            }}
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div  fxLayout="row">
+
+<div fxFlex="15">
+  <div>Forma de Pago</div>
+  <table>
+    <tr>Efectivo</tr>
+    <tr>Dinero Electrónico</tr>
+    <tr>Tarjeta de Crédito</tr>
+    <tr>Otro</tr>
+  </table>
+  </div>
+<div fxFlex="15">
+  <div>Forma de Pago</div>
+  <table>
+    <tr>Efectivo</tr>
+    <tr>Dinero Electrónico</tr>
+    <tr>Tarjeta de Crédito</tr>
+    <tr>Otro</tr>
+  </table>
+</div>
+<div fxFlex="30">Entregado</div>
+<div fxFlex="30">Recibi</div>
+
+
+  </div>
 </div>
 
 
-</div>
