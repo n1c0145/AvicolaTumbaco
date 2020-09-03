@@ -10,10 +10,12 @@ import { InicioadministradorComponent } from './inicioadministrador/inicioadmini
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { UsuariosComponent } from "../administrador/usuarios/usuarios.component";
+import { ProtectGuard } from "../../app/servicios/protect.guard";
 const routes: Routes = [
   {
     path: 'inicioadministrador',
     component: InicioadministradorComponent,
+    canActivate: [ProtectGuard]
   },
   {
     path: 'perfil',

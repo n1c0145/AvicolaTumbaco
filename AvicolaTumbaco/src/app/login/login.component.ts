@@ -46,9 +46,10 @@ export class LoginComponent implements OnInit {
                   this.idd = resultadoMetodoGet[0].idTipoPerfil.id;
                   this.idstoge = resultadoMetodoGet[0].id;
                   this.user = resultadoMetodoGet[0].usuario;
+                  localStorage.clear()
                   localStorage.setItem('id', JSON.stringify(this.idstoge));
                   localStorage.setItem('user', JSON.stringify(this.user));
-                  localStorage.setItem('log', JSON.stringify('log'));
+                  localStorage.setItem('log', JSON.stringify('login'));
                   if (this.idd == 1) {
 this.showSuccess()                  }
                   if (this.idd == 2) {

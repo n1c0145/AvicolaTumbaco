@@ -1,6 +1,5 @@
-.alerta{
-    width: 500px;
-    background-color: blue;
-    width: 100%;
-    height: 100%;
+
+.button:hover{
+    background: rgb(45, 45, 255);
+border-radius: 15px;
 }
