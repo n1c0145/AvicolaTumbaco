@@ -30,6 +30,11 @@ export class InventarioComponent implements OnInit {
   filterPost ='';
   selectoperacional;
   operacion;
+  displayModal: boolean;
+  displayModal2: boolean;
+  displayModal3: boolean;
+  displayModal4: boolean;
+  displayModal5: boolean;
   constructor(
     private readonly _router: Router,
     private readonly _AvicolaService: AvicolaService,
@@ -76,12 +81,14 @@ export class InventarioComponent implements OnInit {
   }
   editar(cat1: Inventario) {
     this.editOn = true;
+    this.displayModal = true;
     this.selectedProducto = cat1;
     this.id = cat1.id;
     this.operativo = cat1.operativo;
   }
   editar2(cat2: Inventario) {
     this.editOn = true;
+    this.displayModal2 = true;
     this.selectedProducto = cat2;
     this.id = cat2.id;
     this.stock = cat2.stock;
@@ -89,6 +96,7 @@ export class InventarioComponent implements OnInit {
   }
   editar3(cat3: Inventario) {
     this.editOn = true;
+    this.displayModal3 = true;
     this.selectedProducto = cat3;
     this.id = cat3.id;
     this.stock = cat3.stock;
@@ -97,6 +105,7 @@ export class InventarioComponent implements OnInit {
   }
   editar4(cat4: Inventario) {
     this.editOn = true;
+    this.displayModal4 = true;
     this.selectedProducto = cat4;
     this.id = cat4.id;
     this.stock = cat4.stock;
@@ -105,6 +114,7 @@ export class InventarioComponent implements OnInit {
   }
   editar5(cat5: Inventario) {
     this.editOn = true;
+    this.displayModal5 = true;
     this.selectedProducto = cat5;
     this.id = cat5.id;
     this.stock = cat5.stock;
@@ -127,6 +137,10 @@ if(this.cantidad<=this.desabastecimiento){
         })
         .subscribe((producto) => {
           this.showSuccess()
+          this.displayModal2 = false
+          this.displayModal4 = false
+          this.displayModal5 = false
+
         });
     }
   }
@@ -167,6 +181,7 @@ if(this.cantidad<=this.desabastecimiento){
           })
           .subscribe((producto) => {
             this.showSuccess()
+            this.displayModal3 = false
           });
       }
     } else {
@@ -189,6 +204,7 @@ if(this.cantidad<=this.desabastecimiento){
         nombreUsuarioActualizacion: this.user,
       })
       .subscribe((producto) => {
+        this.displayModal = false
      this.showSuccess()
       });
 

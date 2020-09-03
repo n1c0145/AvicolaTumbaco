@@ -8,9 +8,11 @@ import { NuevopedidoComponent } from './nuevopedido/nuevopedido.component';
 import { FacturaComponent } from './factura/factura.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import {InputNumberModule} from 'primeng/inputnumber';
-import {CalendarModule} from 'primeng/calendar';
-import {ToastModule} from 'primeng/toast';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { CalendarModule } from 'primeng/calendar';
+import { ToastModule } from 'primeng/toast';
+import {DialogModule} from 'primeng/dialog';
+
 @NgModule({
   declarations: [
     IniciousuarioComponent,
@@ -18,9 +20,17 @@ import {ToastModule} from 'primeng/toast';
     PedidosComponent,
     NuevopedidoComponent,
     FacturaComponent,
-    
   ],
   providers: [],
-  imports: [CommonModule, UsuarioRoutingModule, FormsModule, HttpClientModule, InputNumberModule, CalendarModule, ToastModule],
+  imports: [
+    CommonModule,
+    UsuarioRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    InputNumberModule,
+    CalendarModule,
+    ToastModule,
+    DialogModule,
+  ],
 })
 export class UsuarioModule {}

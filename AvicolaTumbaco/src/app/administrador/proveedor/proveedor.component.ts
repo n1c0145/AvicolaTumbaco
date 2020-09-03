@@ -24,6 +24,7 @@ export class ProveedorComponent implements OnInit {
   id;
   band = false;
   filterPost = '';
+  displayModal: boolean;
   constructor(
     private readonly _router: Router,
     private readonly _AvicolaService: AvicolaService,
@@ -75,6 +76,7 @@ export class ProveedorComponent implements OnInit {
     this.editOn = true;
     this.selectedProveedor = proveedor;
     this.id = proveedor.id;
+    this.displayModal = true;
   }
   actualizar() {
     this._AvicolaService
@@ -87,6 +89,7 @@ export class ProveedorComponent implements OnInit {
       })
       .subscribe(() => {
         this.showSuccess2();
+        this.displayModal = false
       });
   }
   eliminar(proveedor: Proveedor) {
@@ -103,7 +106,7 @@ export class ProveedorComponent implements OnInit {
   }
   showSuccess() {
     this.messageService.add({
-      key: 'tc',
+      
       severity: 'success',
       detail: 'Proveedor ingresado',
     });

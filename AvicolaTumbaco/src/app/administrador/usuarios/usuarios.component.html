@@ -105,7 +105,8 @@
       </table>
 
 </div> 
-
+<p-dialog header="Header" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
+    [draggable]="false" [resizable]="false">
 <div *ngIf="editOn">
   <form
     (ngSubmit)="obtenerFormulario(formularioUsuario)"
@@ -204,7 +205,7 @@
   </div>
   </form>
 </div> 
-
+</p-dialog>
 
 
 

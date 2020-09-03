@@ -65,7 +65,8 @@
       </tr>
     </tbody>
   </table>
-
+  <p-dialog header="Header" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
+  [draggable]="false" [resizable]="false">
   <div *ngIf="editOn">
     <p-inputNumber
       [(ngModel)]="val"
@@ -85,8 +86,25 @@
       </button>
     </div>
   </div>
-
+</p-dialog>
+<p-dialog header="Header" [(visible)]="displayModal2" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
+    [draggable]="false" [resizable]="false">
   <div *ngIf="editOn2">
+    <div>h</div>
+    <div>h</div>
+    <div>h</div>
+    <div>h</div>
+    <div>h</div>
+    <div>h</div>
+    <div>h</div>
+    <div>h</div>
+    <div>h</div>
+    <div>h</div>
+    <div>h</div>
+    <div>h</div>
+    <div>h</div>
+    <div>h</div>
+    <div>h</div>
     <form
     (ngSubmit)="obtenerFormulario(formularioUsuario)"
     #formularioUsuario="ngForm"
@@ -121,6 +139,7 @@
       </button>
     </div>
   </div>
+</p-dialog>
 
   <div *ngFor="let user of arraydescripcion">
     <div>

@@ -24,6 +24,7 @@ export class VentaproductoComponent implements OnInit {
   producto: Producto[];
   editOn = false;
   productos;
+  displayModal: boolean;
   constructor(
     private readonly _router: Router,
     private readonly _AvicolaService: AvicolaService,
@@ -76,6 +77,7 @@ export class VentaproductoComponent implements OnInit {
     this.editOn = true;
     this.selectedProducto = producto;
     this.id = producto.id;
+    this.displayModal = true;
   }
   eliminar(producto: Producto) {
     this.selectedProducto = producto;
@@ -102,6 +104,7 @@ export class VentaproductoComponent implements OnInit {
       })
       .subscribe(() => {
         this.showSuccess2();
+        this.displayModal = false
       });
   }
   obtenerFormulario(formulario) {}

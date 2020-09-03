@@ -93,7 +93,8 @@
         </tr>
       </tbody>
     </table>
-
+    <p-dialog header="Header" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
+    [draggable]="false" [resizable]="false">
     <div *ngIf="editOn">
 <h4>Operatividad</h4>
 {{operativo}}
@@ -113,6 +114,7 @@
 
 </div>
 
+</p-dialog>
 
   </mat-tab>
   <mat-tab label="Equipos de Proteccion Personal"> 
@@ -136,7 +138,8 @@
         </tr>
       </tbody>
     </table>
-  
+    <p-dialog header="Header" [(visible)]="displayModal2" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
+    [draggable]="false" [resizable]="false">
     <div *ngIf="editOn">
       <p-inputNumber
       [(ngModel)]="val"
@@ -154,7 +157,7 @@
       </button>
  
   </div>
-
+</p-dialog>
   </mat-tab>
   <mat-tab label="Alimento-Balanceado">
     <input type="text" placeholder="Search...." [(ngModel)]="filterPost" name="filterPost">
@@ -177,6 +180,8 @@
         </tr>
       </tbody>
     </table>
+    <p-dialog header="Header" [(visible)]="displayModal3" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
+    [draggable]="false" [resizable]="false">
     <div *ngIf="editOn">
       <p-inputNumber
       [(ngModel)]="val"
@@ -208,6 +213,7 @@
       </button>
   
   </div>
+</p-dialog>
   </mat-tab>
   <mat-tab label="Vacunas">
     <input type="text" placeholder="Search...." [(ngModel)]="filterPost" name="filterPost">
@@ -230,6 +236,8 @@
         </tr>
       </tbody>
     </table>
+    <p-dialog header="Header" [(visible)]="displayModal4" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
+    [draggable]="false" [resizable]="false">
     <div *ngIf="editOn">
       <p-inputNumber
       [(ngModel)]="val"
@@ -247,6 +255,7 @@
       </button>
   
   </div>
+</p-dialog>
   </mat-tab>
   <mat-tab label="Implementos Operacion">
     <input type="text" placeholder="Search...." [(ngModel)]="filterPost" name="filterPost">
@@ -269,7 +278,8 @@
         </tr>
       </tbody>
     </table>
-  
+    <p-dialog header="Header" [(visible)]="displayModal5" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
+    [draggable]="false" [resizable]="false">
     <div *ngIf="editOn">
       <p-inputNumber
       [(ngModel)]="val"
@@ -287,7 +297,7 @@
       </button>
 
   </div>
-
+</p-dialog>
 
 
   </mat-tab>

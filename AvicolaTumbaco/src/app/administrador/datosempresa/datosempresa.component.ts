@@ -3,12 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Datosempresa } from '../../modelos/datosempresa.interface';
-import {MessageService} from 'primeng/api';
+import { MessageService } from 'primeng/api';
 @Component({
   selector: 'app-datosempresa',
   templateUrl: './datosempresa.component.html',
   styleUrls: ['./datosempresa.component.css'],
-  providers: [MessageService]
+  providers: [MessageService],
 })
 export class DatosempresaComponent implements OnInit {
   nombre;
@@ -16,7 +16,7 @@ export class DatosempresaComponent implements OnInit {
   ruc;
   telefono;
   telefono2;
-id;
+  id;
   user;
 
   dato: Datosempresa[];
@@ -24,6 +24,7 @@ id;
   selectedDato: Datosempresa;
   fecha = new Date();
   datos;
+  displayModal: boolean;
   constructor(
     private readonly _router: Router,
     private readonly _AvicolaService: AvicolaService,
@@ -43,6 +44,7 @@ id;
     this.editOn = true;
     this.selectedDato = dato;
     this.id = dato.id;
+    this.displayModal = true
   }
 
   actualizar() {
@@ -55,19 +57,22 @@ id;
         telefono2: this.selectedDato.telefono2,
         fechaActualizacion: this.fecha,
         nombreUsuarioActualizacion: this.user,
-      }).subscribe(()=>{
-this.showSuccess()
       })
+      .subscribe(() => {
+        this.showSuccess();
+        this.displayModal = false
+      });
   }
   obtenerFormulario(formulario) {}
   showSuccess() {
-    this.messageService.add({severity:'success', detail: 'Registro Actualizado'});
-    return setTimeout('document.location.reload()',2200);
-  
+    this.messageService.add({
+      severity: 'success',
+      detail: 'Registro Actualizado',
+    });
+    return setTimeout('document.location.reload()', 2200);
   }
-  cerrarSesion(){
+  cerrarSesion() {
     this._router.navigate(['inicio/']);
-    localStorage.clear()
-
+    localStorage.clear();
   }
 }

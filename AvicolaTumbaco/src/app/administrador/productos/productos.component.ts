@@ -34,7 +34,7 @@ export class ProductosComponent implements OnInit {
   editOn = false;
   selectedProducto: Inventario;
   filterPost = '';
-
+  displayModal: boolean;
   constructor(
     private readonly _router: Router,
     private readonly _AvicolaService: AvicolaService,
@@ -178,6 +178,7 @@ export class ProductosComponent implements OnInit {
     this.editOn = true;
     this.selectedProducto = producto;
     this.id = producto.id;
+    this.displayModal = true;
   }
   actualizar() {
     this._AvicolaService
@@ -203,6 +204,7 @@ export class ProductosComponent implements OnInit {
               })
               .subscribe((producto) => {
                 this.showSuccess2();
+                this.displayModal = false
               });
           });
       });

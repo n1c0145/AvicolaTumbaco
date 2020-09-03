@@ -42,8 +42,9 @@ export class NuevopedidoComponent implements OnInit {
   arraysubtotal2 = [];
   total;
   persona;
-  prueba;
 
+  displayModal: boolean;
+  displayModal2: boolean;
   constructor(
     private readonly _router: Router,
     private readonly _AvicolaService: AvicolaService,
@@ -63,6 +64,7 @@ export class NuevopedidoComponent implements OnInit {
 
   agregar(dato: Producto) {
     this.editOn = true;
+    this.displayModal = true;
     this.datos = dato;
     this.idd = this.datos.id;
     this.descripcion = this.datos.descripcion;
@@ -90,6 +92,7 @@ export class NuevopedidoComponent implements OnInit {
         this.arrayfechas.push(this.fecha);
         this.cambiostock.push(this.val);
         this.editOn = false;
+        this.displayModal = false
         this._AvicolaService
           .metodoPut('http://localhost:1337/producto/' + this.idd, {
             stock: this.stock - this.val,
@@ -118,6 +121,7 @@ export class NuevopedidoComponent implements OnInit {
   pedir() {
     if (this.arraydescripcion.length > 0) {
       this.editOn2 = true;
+      this.displayModal2 = true;
       this._AvicolaService
         .metodoGet(
           'http://localhost:1337/registro?estado=activo&&id=' + this.id
@@ -197,6 +201,7 @@ export class NuevopedidoComponent implements OnInit {
                     idDatosEmpresa: 1,
                   })
                   .subscribe((registroCreado) => {
+                    this.displayModal2 = false;
                     this.idFactura = JSON.stringify(registroCreado['id']);
                     
                     localStorage.removeItem('idFactura');

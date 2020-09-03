@@ -27,6 +27,7 @@ export class PerfilComponent implements OnInit {
   selectedPerfil: Login;
   datos;
   fecha = new Date();
+  displayModal: boolean;
   constructor(
     private readonly _router: Router,
     private readonly _AvicolaService: AvicolaService,
@@ -48,6 +49,7 @@ export class PerfilComponent implements OnInit {
     this.datos = perfil.idLogin;
     this.usuario = this.datos.usuario;
     this.clave = this.datos.clave;
+    this.displayModal = true;
   }
 
   actualizar(perfil: Login) {
@@ -72,7 +74,7 @@ export class PerfilComponent implements OnInit {
           .subscribe(() => {
             this.showSuccess()
             this.editOn = false;
- 
+            this.displayModal = false;
           });
       });
   }

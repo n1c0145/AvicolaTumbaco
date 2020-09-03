@@ -33,7 +33,7 @@ export class UsuariosComponent implements OnInit {
   user;
   select;
   filterPost ='';
-
+  displayModal: boolean;
   constructor(
     private readonly _router: Router,
     private readonly _AvicolaService: AvicolaService,
@@ -57,6 +57,7 @@ export class UsuariosComponent implements OnInit {
     this.datos = perfil.idLogin;
     this.usuario = this.datos.usuario;
     this.clave = this.datos.clave;
+    this.displayModal = true;
   }
   seleccionUsuario() {
     if (this.select == 1) {
@@ -90,7 +91,7 @@ export class UsuariosComponent implements OnInit {
           .subscribe(() => {
          this.showSuccess()
             this.editOn = false;
-            
+            this.displayModal = false
           });
       });
   }
