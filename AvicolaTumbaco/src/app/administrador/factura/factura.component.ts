@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { AvicolaService } from './../../servicios/avicola.service';
 import { Router } from '@angular/router';
-
+import * as html2pdf from 'html2pdf.js'
 @Component({
   selector: 'app-factura',
   templateUrl: './factura.component.html',
   styleUrls: ['./factura.component.css']
 })
 export class FacturaComponent implements OnInit {
+  
+
   idfactura;
   factura;
   array;
@@ -57,5 +59,19 @@ export class FacturaComponent implements OnInit {
       });
 
  
+  }
+  generar(){
+
+      const options = {
+      
+        filename: 'factura.pdf',
+        image: {type: 'jpeg'},
+
+       jsPDF: {  format: 'a4',orientation: 'landscape'}
+      };
+      const content: Element = document.getElementById('element');
+      html2pdf().from(content).set(options).save();
+   
+    
   }
 }
