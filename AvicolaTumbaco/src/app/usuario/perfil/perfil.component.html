@@ -1,9 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <img
-      src=""
-      width="10%"
-      alt=""
-    />
+  <img src="../../../assets/img/avicola.png" width="12%" alt="" />
     <button
       class="navbar-toggler"
       type="button"
@@ -17,23 +13,32 @@
     </button>
   
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul></ul>
+      <ul></ul>
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/usuario/perfil']">Perfil</a>
+          <a class="nav-link button" [routerLink]="['/usuario/iniciousuario']">Inicio</a>
         </li>
-       
+        <li class="nav-item">
+          <a class="nav-link button" [routerLink]="['/usuario/perfil']">Perfil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link button" [routerLink]="['/usuario/pedidos']">Pedidos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link button" [routerLink]="['/usuario/nuevopedido']">Nuevo Pedido</a>
+        </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
         <button
-          class="btn btn-outline-danger my-2 my-sm-0"
-          [routerLink]="['/inicio']"
-        >
+        class="btn btn-outline-danger my-2 my-sm-0"
+        (click)="cerrarSesion()"
+      >
           Cerrar Sesion
         </button>
       </form>
     </div>
   </nav>
-
 
 
   <div>

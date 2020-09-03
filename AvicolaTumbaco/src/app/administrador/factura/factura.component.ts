@@ -53,7 +53,7 @@ export class FacturaComponent implements OnInit {
             this.subtotal=this.array[i]['subtotal']
             this.total=this.array[i]['total']
          }
-         this.iva=this.total-this.subtotal
+         this.iva=(this.total-this.subtotal).toFixed(2)
         });
    
       });

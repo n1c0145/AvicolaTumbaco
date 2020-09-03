@@ -135,4 +135,9 @@ export class VentaproductoComponent implements OnInit {
   showWarn3() {
     this.messageService.add({ severity: 'warn', detail: 'Escoja una fecha' });
   }
+  cerrarSesion(){
+    this._router.navigate(['inicio/']);
+    localStorage.clear()
+
+  }
 }

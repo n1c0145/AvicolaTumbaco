@@ -209,4 +209,9 @@ showWarn2() {
 showWarn3() {
   this.messageService.add({severity:'warn',  detail: 'Escoja un estado'});
 }
+cerrarSesion(){
+  this._router.navigate(['inicio/']);
+  localStorage.clear()
+
+}
 }

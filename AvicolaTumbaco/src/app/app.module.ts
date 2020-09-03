@@ -11,6 +11,10 @@ import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ToastModule} from 'primeng/toast';
+import { MisionComponent } from './mision/mision.component';
+import { VisionComponent } from './vision/vision.component';
+import { ContactosComponent } from './contactos/contactos.component';
+import { ServiciosempresaComponent } from './serviciosempresa/serviciosempresa.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +22,10 @@ import {ToastModule} from 'primeng/toast';
     InicioComponent,
     RegistrarseComponent,
     LoginComponent,
+    MisionComponent,
+    VisionComponent,
+    ContactosComponent,
+    ServiciosempresaComponent,
 
     
   ],

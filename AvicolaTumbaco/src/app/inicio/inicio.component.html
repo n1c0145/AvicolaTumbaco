@@ -1,9 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <img
-      src=""
-      width="10%"
-      alt=""
-    />
+  <img src="../../../assets/img/avicola.png" width="10%"/>
     <button
       class="navbar-toggler"
       type="button"
@@ -17,15 +13,17 @@
     </button>
   
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+<ul></ul>
+<ul></ul>
       <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-              <a class="nav-link" href="#">Inicio</a>
+              <a class="nav-link button" [routerLink]="['/inicio']">Inicio</a>
             </li>
   
         <li class="nav-item dropdown">
           <a
-            class="nav-link dropdown-toggle"
-            href="#"
+            class="nav-link dropdown-toggle button"
+            
             id="navbarDropdown"
             role="button"
             data-toggle="dropdown"
@@ -35,17 +33,17 @@
             Quiénes Somos
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Misión</a>
+            <a class="dropdown-item" [routerLink]="['/mision']">Misión</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Visión</a>
+            <a class="dropdown-item" [routerLink]="['/vision']">Visión</a>
           </div>
         </li>
         
         <li class="nav-item">
-          <a class="nav-link" href="#">Nuestros Servicios</a>
+          <a class="nav-link button" [routerLink]="['/servicios']">Nuestros Servicios</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Contactos</a>
+          <a class="nav-link button" [routerLink]="['/contactos']">Contactos</a>
         </li>
     
       </ul>

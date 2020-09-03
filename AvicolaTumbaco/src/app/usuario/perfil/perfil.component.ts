@@ -83,4 +83,9 @@ export class PerfilComponent implements OnInit {
   
   }
   obtenerFormulario(formulario) {}
+  cerrarSesion(){
+    this._router.navigate(['inicio/']);
+    localStorage.clear()
+
+  }
 }

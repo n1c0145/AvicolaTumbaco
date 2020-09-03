@@ -36,4 +36,9 @@ export class PedidosComponent implements OnInit {
     this._router.navigate(['usuario/factura/']);
 
   }
+  cerrarSesion(){
+    this._router.navigate(['inicio/']);
+    localStorage.clear()
+
+  }
 }

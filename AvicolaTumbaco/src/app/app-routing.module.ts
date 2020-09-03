@@ -1,3 +1,7 @@
+import { ContactosComponent } from './contactos/contactos.component';
+import { ServiciosempresaComponent } from './serviciosempresa/serviciosempresa.component';
+import { VisionComponent } from './vision/vision.component';
+import { MisionComponent } from './mision/mision.component';
 import { RegistrarseComponent } from './registrarse/registrarse.component';
 import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
@@ -15,6 +19,22 @@ const routes: Routes = [
   {
     path: 'registrarse',
     component: RegistrarseComponent,
+  },
+  {
+    path: 'mision',
+    component: MisionComponent,
+  },
+  {
+    path: 'vision',
+    component: VisionComponent,
+  },
+  {
+    path: 'servicios',
+    component: ServiciosempresaComponent,
+  },
+  {
+    path: 'contactos',
+    component: ContactosComponent,
   },
   {
     path: '',

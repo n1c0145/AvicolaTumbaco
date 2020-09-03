@@ -82,4 +82,9 @@ export class PerfilComponent implements OnInit {
     return setTimeout('document.location.reload()',2200);
   
   }
+  cerrarSesion(){
+    this._router.navigate(['inicio/']);
+    localStorage.clear()
+
+  }
 }
