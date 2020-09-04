@@ -151,6 +151,7 @@
   </mat-tab>
   <mat-tab label="Insertar">
     <div>
+      <div class="contenedor">
       <form
         (ngSubmit)="obtenerFormulario(formularioUsuario)"
         #formularioUsuario="ngForm"
@@ -163,6 +164,7 @@
           [(ngModel)]="nombre"
           name="nombre"
           required="required"
+          class="form-control"
 
         />
 
@@ -175,6 +177,8 @@
           required="required"
           [(ngModel)]="descripcion"
           name="descripcion"
+          class="form-control"
+
         />
 
         <h4>Telefono</h4>
@@ -188,6 +192,7 @@
           maxlength="10"
           pattern="^[0-9]+$"
           required="required"
+          class="form-control"
 
           #campoTelefono="ngModel"
         />
@@ -201,6 +206,7 @@
         <p *ngIf="campoTelefono.errors.required"> Campo Requerido</p>
 
         </div>
+        <ul></ul>
         <div>
           <button
             type="submit"
@@ -213,6 +219,7 @@
           </button>
         </div>
       </form>
+      </div>
     </div>
   </mat-tab>
 </mat-tab-group>

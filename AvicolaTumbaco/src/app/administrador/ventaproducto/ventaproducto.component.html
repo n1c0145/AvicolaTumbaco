@@ -114,6 +114,7 @@
           [(ngModel)]="selectedProducto.descripcion"
           name="descripcion"
           value="{{ selectedProducto.descripcion }}"
+
         />
 
         <h4>Precio por libra</h4>
@@ -125,6 +126,7 @@
           [(ngModel)]="selectedProducto.precio"
           name="precio"
           value="{{ selectedProducto.precio }}"
+
         />
         <div>Peso: {{ selectedProducto.peso }}</div>
         <mat-form-field>
@@ -137,7 +139,7 @@
           </mat-select>
         </mat-form-field>
         <div>Stock: {{ selectedProducto.stock }}</div>
-
+      </form>
         <p-inputNumber
           [(ngModel)]="stock"
           [showButtons]="true"
@@ -166,13 +168,14 @@
         >
           Actualizar
         </button>
-      </form>
+    
     </div>
     
 </p-dialog>
   </mat-tab>
   <mat-tab label="Insertar">
     <div>
+      <div class="contenedor">
       <form
         (ngSubmit)="obtenerFormulario(formularioUsuario)"
         #formularioUsuario="ngForm"
@@ -185,6 +188,8 @@
           required="required"
           [(ngModel)]="descripcion"
           name="descripcion"
+          class="form-control"
+
         />
 
         <h4>Precio por libra</h4>
@@ -195,6 +200,8 @@
           required="required"
           [(ngModel)]="precio"
           name="precio"
+          class="form-control"
+
         />
       </form>
       <h4>Peso</h4>
@@ -240,6 +247,7 @@
       >
         Ingresar
       </button>
+      </div>
     </div>
   </mat-tab>
 </mat-tab-group>

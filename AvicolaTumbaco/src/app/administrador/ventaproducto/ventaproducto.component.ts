@@ -51,7 +51,6 @@ export class VentaproductoComponent implements OnInit {
       } else {
         if (this.date === undefined) {
           this.showWarn3();
-          console.log(this.date);
         } else {
           this._AvicolaService
             .crearVenta({
@@ -74,10 +73,12 @@ export class VentaproductoComponent implements OnInit {
     }
   }
   editar(producto: Producto) {
+    this.displayModal = true;
     this.editOn = true;
+
     this.selectedProducto = producto;
     this.id = producto.id;
-    this.displayModal = true;
+  
   }
   eliminar(producto: Producto) {
     this.selectedProducto = producto;
@@ -92,6 +93,8 @@ export class VentaproductoComponent implements OnInit {
       });
   }
   actualizar() {
+    console.log(this.stock);
+    
     this._AvicolaService
       .metodoPut('http://localhost:1337/producto/' + this.id, {
         descripcion: this.selectedProducto.descripcion,

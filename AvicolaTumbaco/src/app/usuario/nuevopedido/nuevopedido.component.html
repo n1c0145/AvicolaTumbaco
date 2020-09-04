@@ -1,44 +1,50 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <img src="../../../assets/img/avicola.png" width="12%" alt="" />
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul></ul>
-      <ul></ul>
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link button" [routerLink]="['/usuario/iniciousuario']">Inicio</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link button" [routerLink]="['/usuario/perfil']">Perfil</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link button" [routerLink]="['/usuario/pedidos']">Pedidos</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link button" [routerLink]="['/usuario/nuevopedido']">Nuevo Pedido</a>
-        </li>
-      </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <button
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul></ul>
+    <ul></ul>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link button" [routerLink]="['/usuario/iniciousuario']"
+          >Inicio</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link button" [routerLink]="['/usuario/perfil']">Perfil</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link button" [routerLink]="['/usuario/pedidos']"
+          >Pedidos</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link button" [routerLink]="['/usuario/nuevopedido']"
+          >Nuevo Pedido</a
+        >
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <button
         class="btn btn-outline-danger my-2 my-sm-0"
         (click)="cerrarSesion()"
       >
-          Cerrar Sesion
-        </button>
-      </form>
-    </div>
-  </nav>
+        Cerrar Sesion
+      </button>
+    </form>
+  </div>
+</nav>
 
 <div>
   <table class="table table-condensed">
@@ -65,114 +71,143 @@
       </tr>
     </tbody>
   </table>
-  <p-dialog header="Header" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
-  [draggable]="false" [resizable]="false">
-  <div *ngIf="editOn">
-    <p-inputNumber
-      [(ngModel)]="val"
-      mode="decimal"
-      [showButtons]="true"
-      buttonLayout="vertical"
-      spinnerMode="vertical"
-      decrementButtonClass="p-button-secondary"
-      incrementButtonClass="p-button-secondary"
-      incrementButtonIcon="pi pi-plus"
-      decrementButtonIcon="pi pi-minus"
-      min="1"
-    ></p-inputNumber>
-    <div>
-      <button type="button" class="btn btn-primary" (click)="agregar2()">
-        Agregar
-      </button>
+  <p-dialog
+    header="Header"
+    [(visible)]="displayModal"
+    [modal]="true"
+    [style]="{ width: '50vw' }"
+    [baseZIndex]="10000"
+    [draggable]="false"
+    [resizable]="false"
+  >
+    <div *ngIf="editOn">
+      <p-inputNumber
+        [(ngModel)]="val"
+        mode="decimal"
+        [showButtons]="true"
+        buttonLayout="vertical"
+        spinnerMode="vertical"
+        decrementButtonClass="p-button-secondary"
+        incrementButtonClass="p-button-secondary"
+        incrementButtonIcon="pi pi-plus"
+        decrementButtonIcon="pi pi-minus"
+        min="1"
+      ></p-inputNumber>
+      <div>
+        <button type="button" class="btn btn-primary" (click)="agregar2()">
+          Agregar
+        </button>
+      </div>
     </div>
-  </div>
-</p-dialog>
-<p-dialog header="Header" [(visible)]="displayModal2" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
-    [draggable]="false" [resizable]="false">
-  <div *ngIf="editOn2">
-    <div>h</div>
-    <div>h</div>
-    <div>h</div>
-    <div>h</div>
-    <div>h</div>
-    <div>h</div>
-    <div>h</div>
-    <div>h</div>
-    <div>h</div>
-    <div>h</div>
-    <div>h</div>
-    <div>h</div>
-    <div>h</div>
-    <div>h</div>
-    <div>h</div>
-    <form
-    (ngSubmit)="obtenerFormulario(formularioUsuario)"
-    #formularioUsuario="ngForm"
-    > 
-    <h4>Actualizar Direccion</h4>
-    <input
-    class="input_field search_form_name"
-    type="text"
-    placeholder="Direccion actualizada"
-    required="required"
-    [(ngModel)]="direccion"
-    name="direccion"
-    value="{{direc}}"
-    />
-  </form>
-    <h2>Recuerde realizar el pedido en estas fechas</h2>
-    <div  *ngFor="let user of arrayfechas">
-      <div>{{ user |date}}</div>
+  </p-dialog>
+  <p-dialog
+    header="Header"
+    [(visible)]="displayModal2"
+    [modal]="true"
+    [style]="{ width: '50vw' }"
+    [baseZIndex]="10000"
+    [draggable]="false"
+    [resizable]="false"
+  >
+    <div *ngIf="editOn2">
+      <div>
+<img src="https://lh3.googleusercontent.com/proxy/WP4lszAs3cqaiH3o-82Ss3IfPIIf_FD44oq7fKF_hyvI0sNwV_uvm_OpTLZepogDxMj_iF2SXSOmuqTrVyziWj6hLNfamw6wIz85ZFpYQljC3lfeHw" width="40%">
 
-    </div>
-    <div class="p-field p-col-12 p-md-4">
-      <p-calendar
-        [(ngModel)]="date"
-        [showIcon]="true"
-        inputId="icon"
-      ></p-calendar>
-    </div>
-    <div>
-      <button type="button" class="btn btn-primary" (click)="comprar()" 
-      [disabled]="formularioUsuario.invalid">
-    Pedir
-      </button>
-    </div>
-  </div>
-</p-dialog>
+      </div>
 
-  <div *ngFor="let user of arraydescripcion">
-    <div>
-      <div>{{ user }}</div>
+      <form
+        (ngSubmit)="obtenerFormulario(formularioUsuario)"
+        #formularioUsuario="ngForm"
+      >
+        <h4>Actualizar Direccion</h4>
+        <input
+          class="input_field search_form_name"
+          type="text"
+          placeholder="Direccion actualizada"
+          required="required"
+          [(ngModel)]="direccion"
+          name="direccion"
+          value="{{ direc }}"
+        />
+      </form>
+      <h2>Recuerde realizar el pedido en estas fechas</h2>
+      <div *ngFor="let user of arrayfechas">
+        <div>{{ user | date }}</div>
+      </div>
+      <div class="p-field p-col-12 p-md-4">
+        <p-calendar
+          [(ngModel)]="date"
+          [showIcon]="true"
+          inputId="icon"
+        ></p-calendar>
+      </div>
+      <div>
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="comprar()"
+          [disabled]="formularioUsuario.invalid"
+        >
+          Pedir
+        </button>
+      </div>
     </div>
+  </p-dialog>
+  <div class="container">
+    <h1>Pedidos</h1>
+    <table class="table table-condensed">
+      <thead>
+        <tr>
+          <th>Descripcion</th>
+          <th>Peso</th>
+          <th>Precio por libra</th>
+          <th>Pollos</th>
+          <th>Subtotal</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div *ngFor="let user of arraydescripcion">
+              <td>{{ user }}</td>
+            </div>
+          </td>
+
+          <td>
+            <div *ngFor="let user of arraypeso">
+              <td>{{ user }}</td>
+            </div>
+          </td>
+
+          <td>
+            <div *ngFor="let user of arrayprecio">
+              <td>{{ user }}</td>
+            </div>
+          </td>
+          <td>
+            <div *ngFor="let user of arraystock">
+              <td>{{ user }}</td>
+            </div>
+          </td>
+          <td>
+            <div *ngFor="let user of arraysubtotal2; let i = index">
+              <td>
+                <div>{{ user }}</div>
+                
+                  
+                
+              </td>
+              <td><button (click)="eliminar(i)" class="boton">x</button></td>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-  <div *ngFor="let user of arraypeso">
-    <div>
-      <div>{{ user }}</div>
-    </div>
-  </div>
-  <div *ngFor="let user of arrayprecio">
-    <div>
-      <div>{{ user }}</div>
-    </div>
-  </div>
-  <div *ngFor="let user of arraystock">
-    <div>
-      <div>{{ user }}</div>
-    </div>
-  </div>
-  <div *ngFor="let user of arraysubtotal; let i = index">
-    <div>
-      <div>{{ user }}</div>
-      <button (click)="eliminar(i)">x</button>
-    </div>
-  </div>
-  <div>
+  <div class="pedido">
     <button (click)="pedir()">Realizar pedido</button>
   </div>
 </div>
 
-
 <p-toast></p-toast>
-
-

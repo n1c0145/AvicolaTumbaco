@@ -181,6 +181,14 @@ export class ProductosComponent implements OnInit {
     this.displayModal = true;
   }
   actualizar() {
+if(this.select===undefined){
+this.showWar2()
+}else{
+  if(this.select2===undefined){
+    this.showWarn()
+
+  }else{
+
     this._AvicolaService
       .metodoGet('http://localhost:1337/categoria?categoria=' + this.select2)
       .subscribe((data5) => {
@@ -208,6 +216,13 @@ export class ProductosComponent implements OnInit {
               });
           });
       });
+  }
+
+}
+
+
+      
+      
   }
   eliminar(producto: Inventario) {
     this.selectedProducto = producto;
