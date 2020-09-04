@@ -73,34 +73,35 @@
 
 
 
-  <div>
+<div class="registro">
+  <div class="container" *ngFor="let user of datos">">
+    <div><h1 class="titulo">Datos de la Empresa</h1></div>
 
-    <table class="mat-elevation-z8">
-          <thead>
-            <tr>
-           
-              <th>Nombre</th>
-              <th>Direccion</th>
-              <th>Ruc</th>
-              <th>Telefono</th>
-              <th>Telefono 2</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let user of datos">
-                <td>{{ user.nombre }}</td>
-              <td>{{ user.ruc }}</td>         
-              <td>{{ user.direccion }}</td>
-              <td>0{{ user.telefono }}</td>
-              <td>0{{ user.telefono2 }}</td>
-              
-               <button type="button" class="btn btn-primary" (click)="editar(user)">Editar</button> 
-  
-            </tr>
-          </tbody>
-        </table>
-  
-  </div> 
+    <div fxLayout="row" fxLayoutAlign=" center" class="div">
+      <div class="titulo">Nombre:</div>
+      <div class="texto">{{ user.nombre }}</div>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign=" center" class="div">
+      <div class="titulo">Direccion:</div>
+      <div class="texto">{{ user.direccion }}</div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign=" center" class="div">
+      <div class="titulo">Ruc:</div>
+      <div class="texto">{{ user.ruc }}</div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign=" center" class="div">
+      <div class="titulo">Telefono:</div>
+      <div class="texto">0{{ user.telefono }}</div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign=" center" class="div">
+      <div class="titulo">Telefono 2:</div>
+      <div class="texto">0{{ user.telefono2 }}</div>
+    </div>
+
+    <button type="button" class="btn btn-primary" (click)="editar(user)">Editar</button> 
+  </div>
+</div>
 
 
   <p-dialog header="Header" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"

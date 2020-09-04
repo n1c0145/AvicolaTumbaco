@@ -73,12 +73,10 @@
 
 <mat-tab-group mat-align-tabs="center">
   <mat-tab label="Editar/Eliminar">
-    <input
-      type="text"
-      placeholder="Search...."
-      [(ngModel)]="filterPost"
-      name="filterPost"
-    />
+    <ul></ul>
+    <div class="container">
+    <input type="text" placeholder="Buscar..." class="form-control" [(ngModel)]="filterPost" name="filterPost">
+    </div>
     <table class="table table-condensed">
       <thead>
         <tr>

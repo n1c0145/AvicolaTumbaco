@@ -1,83 +1,107 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <img src="../../../assets/img/avicola.png" width="12%" alt="" />
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul></ul>
-      <ul></ul>
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link button" [routerLink]="['/usuario/iniciousuario']">Inicio</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link button" [routerLink]="['/usuario/perfil']">Perfil</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link button" [routerLink]="['/usuario/pedidos']">Pedidos</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link button" [routerLink]="['/usuario/nuevopedido']">Nuevo Pedido</a>
-        </li>
-      </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <button
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul></ul>
+    <ul></ul>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link button" [routerLink]="['/usuario/iniciousuario']"
+          >Inicio</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link button" [routerLink]="['/usuario/perfil']">Perfil</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link button" [routerLink]="['/usuario/pedidos']"
+          >Pedidos</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link button" [routerLink]="['/usuario/nuevopedido']"
+          >Nuevo Pedido</a
+        >
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <button
         class="btn btn-outline-danger my-2 my-sm-0"
         (click)="cerrarSesion()"
       >
-          Cerrar Sesion
-        </button>
-      </form>
-    </div>
-  </nav>
-
-
-  <div>
-    <table class="mat-elevation-z8">
-      <thead>
-        <tr>
-          <th>Cedula</th>
-          <th>Nombre</th>
-          <th>Apellido</th>
-          <th>Direccion</th>
-          <th>Telefono</th>
-          <th>Usuario</th>
-          <th>Clave</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let user of usuarios">
-          <td>{{ user.cedula }}</td>
-          <td>{{ user.nombre }}</td>
-          <td>{{ user.apellido }}</td>
-          <td>{{ user.direccion }}</td>
-          <td>0{{ user.telefono }}</td>
-          <td>{{ user.idLogin.usuario }}</td>
-          <td>********</td>
-          <button type="button" class="btn btn-primary" (click)="editar(user)">
-            Editar
-          </button>
-        </tr>
-      </tbody>
-    </table>
+        Cerrar Sesion
+      </button>
+    </form>
   </div>
-  
-  <p-dialog header="Header" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
-    [draggable]="false" [resizable]="false">
+</nav>
+
+<div class="registro">
+  <div class="container" *ngFor="let user of usuarios">
+    <div><h1 class="titulo">Datos del Usuario</h1></div>
+    <div fxLayout="row" fxLayoutAlign=" center" class="div">
+      <div class="titulo">Cédula:</div>
+      <div class="texto">{{ user.cedula }}</div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign=" center" class="div">
+      <div class="titulo">Nombre:</div>
+      <div class="texto">{{ user.nombre }}</div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign=" center" class="div">
+      <div class="titulo">Apellido:</div>
+      <div class="texto">{{ user.apellido }}</div>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign=" center" class="div">
+      <div class="titulo">Direccion:</div>
+      <div class="texto">{{ user.direccion }}</div>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign=" center" class="div">
+      <div class="titulo">Telefono:</div>
+      <div class="texto">0{{ user.telefono }}</div>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign=" center" class="div">
+      <div class="titulo">Usuario:</div>
+      <div class="texto">{{ user.idLogin.usuario }}</div>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign=" center" class="div">
+      <div class="titulo">Clave:</div>
+      <div class="texto">*****</div>
+    </div>
+
+    <button type="button" class="btn btn-primary" (click)="editar(user)">
+      Editar
+    </button>
+  </div>
+</div>
+
+<p-dialog
+  header="Header"
+  [(visible)]="displayModal"
+  [modal]="true"
+  [style]="{ width: '50vw' }"
+  [baseZIndex]="10000"
+  [draggable]="false"
+  [resizable]="false"
+>
   <div *ngIf="editOn">
     <form
-    (ngSubmit)="obtenerFormulario(formularioUsuario)"
-    #formularioUsuario="ngForm"
-  >
+      (ngSubmit)="obtenerFormulario(formularioUsuario)"
+      #formularioUsuario="ngForm"
+    >
       <h4>Cedula</h4>
       <input
         type="text"
@@ -121,7 +145,6 @@
         class="input_field search_form_name"
         type="text"
         required="required"
-
         placeholder="Telefono"
         [(ngModel)]="selectedPerfil.telefono"
         name="telefono"
@@ -136,7 +159,6 @@
         name="usuario"
         value="usuario"
         required="required"
-
       />
       <h4>Clave</h4>
       <input
@@ -147,12 +169,15 @@
         name="clave"
         value="clave"
         required="required"
-
       />
-      <button class="search_submit_button" (click)="actualizar(selectedPerfil)"  [disabled]="formularioUsuario.invalid">
+      <button
+        class="search_submit_button"
+        (click)="actualizar(selectedPerfil)"
+        [disabled]="formularioUsuario.invalid"
+      >
         Actualizar
       </button>
     </form>
   </div>
 </p-dialog>
-  <p-toast></p-toast>
+<p-toast></p-toast>

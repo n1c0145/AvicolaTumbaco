@@ -73,12 +73,10 @@
 
 <mat-tab-group mat-align-tabs="center">
   <mat-tab label="Editar/Eliminar">
-    <input
-      type="text"
-      placeholder="Search...."
-      [(ngModel)]="filterPost"
-      name="filterPost"
-    />
+    <ul></ul>
+    <div class="container">
+    <input type="text" placeholder="Buscar..." class="form-control" [(ngModel)]="filterPost" name="filterPost">
+    </div>
     <table class="table table-condensed">
       <thead>
         <tr>
@@ -172,6 +170,8 @@
 </p-dialog>
   </mat-tab>
   <mat-tab label="Insertar Producto">
+   
+      <div class="contenedor">
     <form
       (ngSubmit)="obtenerFormulario(formularioUsuario)"
       #formularioUsuario="ngForm"
@@ -185,6 +185,7 @@
         required="required"
         [(ngModel)]="nombre"
         name="nombre"
+        class="form-control"
       />
     
    
@@ -196,6 +197,8 @@
         required="required"
         [(ngModel)]="descripcion"
         name="descripcion"
+        class="form-control"
+
       />
    
       <h4>Categoria</h4>
@@ -220,6 +223,8 @@
         required="required"
         pattern="^[0-9]+$"
         #campoStock="ngModel"
+        class="form-control"
+
       />
       <div
       class="alert alert-danger"
@@ -238,6 +243,7 @@
         required="required"
         pattern="^[0-9]+$"
         #campodesabastecimiento="ngModel"
+        class="form-control"
 
       />
       <div
@@ -256,7 +262,7 @@
           >
         </mat-select>
       </mat-form-field>
-
+<div>
       <button
         type="submit"
         class="btn btn-primary"
@@ -265,9 +271,13 @@
       >
         Ingresar
       </button>
+    </div>
     </form>
+  </div>
+
   </mat-tab>
   <mat-tab label="Insertar Activo">
+    <div class="contenedor">
     <form
     (ngSubmit)="obtenerFormulario(formularioUsuario2)"
     #formularioUsuario2="ngForm"
@@ -280,6 +290,8 @@
         required="required"
         [(ngModel)]="nombre"
         name="nombre"
+        class="form-control"
+
       />
 
       <h4>Descripcion</h4>
@@ -290,6 +302,8 @@
         required="required"
         [(ngModel)]="descripcion"
         name="descripcion"
+        class="form-control"
+
       />
 
       <h4>Categoria : Activo</h4>
@@ -318,6 +332,7 @@
         Ingresar
       </button>
     </form>
+    </div>
   </mat-tab>
 </mat-tab-group>
 
