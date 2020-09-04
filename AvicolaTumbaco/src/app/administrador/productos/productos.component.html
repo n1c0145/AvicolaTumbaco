@@ -79,7 +79,7 @@
       [(ngModel)]="filterPost"
       name="filterPost"
     />
-    <table class="mat-elevation-z8">
+    <table class="table table-condensed">
       <thead>
         <tr>
           <th>Nombre</th>
@@ -176,8 +176,9 @@
       (ngSubmit)="obtenerFormulario(formularioUsuario)"
       #formularioUsuario="ngForm"
     >
+  
       <h4>Nombre</h4>
-      <input
+      <input  
         class="input_field search_form_name"
         type="text"
         placeholder="Nombres"
@@ -185,9 +186,10 @@
         [(ngModel)]="nombre"
         name="nombre"
       />
-
+    
+   
       <h4>Descripcion</h4>
-      <input
+      <input  
         class="input_field search_form_name"
         type="text"
         placeholder="Descripcion"
@@ -195,7 +197,7 @@
         [(ngModel)]="descripcion"
         name="descripcion"
       />
-
+   
       <h4>Categoria</h4>
       <mat-form-field>
         <mat-label>Escoja una categoria</mat-label>
@@ -209,7 +211,7 @@
         </mat-select>
       </mat-form-field>
       <h4>Stock</h4>
-      <input
+      <input  matInput
         class="input_field search_form_name"
         type="number"
         placeholder="stock"
@@ -227,7 +229,7 @@
       <p *ngIf="campoStock.errors.required">El stock es requerido</p>
       </div>
       <h4>Numero desabastecimiento</h4>
-      <input
+      <input  matInput
         class="input_field search_form_name"
         type="number"
         placeholder="desabastecimiento"

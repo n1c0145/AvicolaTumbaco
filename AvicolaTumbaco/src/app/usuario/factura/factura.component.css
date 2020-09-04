@@ -1,0 +1,91 @@
+.contenedor{
+    background-color: rgb(236, 236, 236);
+    width: 60%;
+    margin-left: 20%;
+    margin-top: 10px;
+}
+.a-1{
+    margin-top: 3%;
+}
+.a-2-1{
+    font-weight: 700;
+}
+.a-2-2{
+    font-weight: 500;
+}
+.a{
+    /* background-color: red; */
+    border-radius: 25px;
+    border:2px solid;
+    text-align: center;
+   
+}
+.a-3-1{
+    font-weight: 1000;
+    font-size: 1.5rem;
+}
+.a-3-2{
+    margin-top: 4%;
+    margin-bottom: 4%;
+    font-weight: 400;
+    font-size: 2.5rem;
+    letter-spacing: -5px
+}
+.b-1{
+    width: 300px;
+    margin-top: 20px;
+}
+.b-2{
+    margin-top: 20px;
+    margin-left: 22%;
+    width: 300px;
+}
+.c{
+    margin-top: 25px;
+}
+.c1{
+    border:1px solid;
+
+}
+.ccenter{
+    text-align: center;
+}
+.c2{
+    border-right: 1px solid ;
+border-top:1px solid;
+border-bottom:1px solid;
+}
+
+.d2{
+    border-left: 1px solid ;
+    border-top:1px solid;
+    border-bottom:1px solid;
+}
+.d3{
+    width: 133px;
+}
+.e{
+    margin-top: 25px;
+}
+.e1{
+    background-color: black;
+    border-radius: 15px;
+    color:white;
+    text-align: center;
+}
+.e2{
+    width: 100px;
+}
+.e3{
+    width: 100px;
+    letter-spacing: -1px
+}
+ tr {
+  
+    border: 1px solid #000;
+ }
+
+ .f{
+    text-align: center;
+    margin-top: 10%;
+ }

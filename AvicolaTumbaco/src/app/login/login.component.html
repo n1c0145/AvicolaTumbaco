@@ -57,35 +57,45 @@
   </nav>
 
 
-
-
-<div>
-  <form id="search_form" class="search_form" #formularioUsuario="ngForm">
-      <h4>Usuario</h4>
-    <input
-      type="text"
-      placeholder="Usuario"
-      [(ngModel)]="usuario"
-      name="usuario"
-    />
-    <h4>Contraseña</h4>
-    <input
-      type="password"
-      placeholder="Password"
-      [(ngModel)]="pass"
-      name="pass"
-    />
-<div>
-
-<button type="submit" (click)='iniciarSesion()' class="btn btn-success">Iniciar Sesion</button>
+<div class="login">
+  <div class="login2">
+    <form id="search_form" class="search_form" #formularioUsuario="ngForm">
+      <h1>Login</h1>
+      <div>
+        <img src="../../assets/img/login.png"  width="30%" alt="">
+      </div>
+        <h2>Usuario</h2>
+      <input
+        type="text"
+        placeholder="Usuario"
+        [(ngModel)]="usuario"
+        name="usuario"
+      />
+      <h2>Contraseña</h2>
+      <input
+        type="password"
+        placeholder="Password"
+        [(ngModel)]="pass"
+        name="pass"
+      />
+  <div>
+  <ul></ul>
+  <button type="submit" (click)='iniciarSesion()' class="btn btn-success">Iniciar Sesion</button>
+  
+  </div>
+  
+  <div>
+    <ul></ul>
+    <h3>No tiene una cuenta?</h3>
+  <button [routerLink]="['/registrarse']" class="btn btn-warning">Registrarse</button>
+  
+  </div>
+    </form>
+  </div>
 
 </div>
 
-<div>
-<button [routerLink]="['/registrarse']" class="btn btn-warning">Registrarse</button>
-</div>
-  </form>
-</div>
+
 
 
 <p-toast></p-toast>

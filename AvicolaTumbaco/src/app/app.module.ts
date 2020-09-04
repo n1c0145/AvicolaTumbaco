@@ -15,7 +15,9 @@ import { MisionComponent } from './mision/mision.component';
 import { VisionComponent } from './vision/vision.component';
 import { ContactosComponent } from './contactos/contactos.component';
 import { ServiciosempresaComponent } from './serviciosempresa/serviciosempresa.component';
-
+import { FlexLayoutModule } from "@angular/flex-layout";
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +40,9 @@ import { ServiciosempresaComponent } from './serviciosempresa/serviciosempresa.c
     HttpClientModule,
     BrowserAnimationsModule ,
     ToastModule,
+    FlexLayoutModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

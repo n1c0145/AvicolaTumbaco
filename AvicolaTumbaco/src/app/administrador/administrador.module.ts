@@ -25,6 +25,7 @@ import { Filtro2Pipe } from '../pipes/filtro2.pipe';
 import {ToastModule} from 'primeng/toast';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import {DialogModule} from 'primeng/dialog';
+import {TableModule} from 'primeng/table';
 @NgModule({
   declarations: [
     InicioadministradorComponent,
@@ -55,7 +56,8 @@ import {DialogModule} from 'primeng/dialog';
     CalendarModule,
     ToastModule,
     FlexLayoutModule,
-    DialogModule
+    DialogModule,
+    TableModule
   ],
 })
 export class AdministradorModule {}

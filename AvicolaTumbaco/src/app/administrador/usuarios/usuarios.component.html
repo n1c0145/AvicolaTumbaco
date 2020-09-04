@@ -73,36 +73,38 @@
   
  <div>
 <input type="text" placeholder="Search...." [(ngModel)]="filterPost" name="filterPost">
-  <table class="mat-elevation-z8">
-        <thead>
-          <tr>
-            <th>Cedula</th>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Direccion</th>
-            <th>Telefono</th>
-            <th>Usuario</th>
-            <th>Clave</th>
-            <th>Tipo</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let user of usuarios | filtro:filterPost ">
-            <td>{{ user.cedula }}</td>
-            <td>{{ user.nombre }}</td>
-            <td>{{ user.apellido }}</td>
-            <td>{{ user.direccion }}</td>
-            <td>0{{ user.telefono }}</td>
-             <td>{{ user.idLogin.usuario}}</td>
-            <td>*****</td>
-            <td *ngIf="user.idLogin.idTipoPerfil === 1">Usuario</td>
-            <td *ngIf="user.idLogin.idTipoPerfil === 2">Administrador</td> 
-            <button type="button" class="btn btn-primary" (click)="editar(user)">Editar</button>
+ 
+ <table class="table table-condensed">
+  <thead>
+    <tr>
+      <th>Cedula</th>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Direccion</th>
+      <th>Telefono</th>
+      <th>Usuario</th>
+      <th>Clave</th>
+      <th>Tipo</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of usuarios | filtro:filterPost ">
+      <td>{{ user.cedula }}</td>
+      <td>{{ user.nombre }}</td>
+      <td>{{ user.apellido }}</td>
+      <td>{{ user.direccion }}</td>
+      <td>0{{ user.telefono }}</td>
+       <td>{{ user.idLogin.usuario}}</td>
+      <td>*****</td>
+      <td *ngIf="user.idLogin.idTipoPerfil === 1">Usuario</td>
+      <td *ngIf="user.idLogin.idTipoPerfil === 2">Administrador</td> 
+      <button type="button" class="btn btn-primary" (click)="editar(user)">Editar</button>
 
-            <button type="button" class="btn btn-danger" (click)="eliminar(user)">Eliminar</button>  
-          </tr>
-        </tbody>
-      </table>
+      <button type="button" class="btn btn-danger" (click)="eliminar(user)">Eliminar</button>  
+    </tr>
+  </tbody>
+</table> 
 
 </div> 
 <p-dialog header="Header" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"

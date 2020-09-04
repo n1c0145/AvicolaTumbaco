@@ -79,7 +79,7 @@
       [(ngModel)]="filterPost"
       name="filterPost"
     />
-    <table class="mat-elevation-z8">
+    <table class="table table-condensed">
       <thead>
         <tr>
           <th>Nombre</th>
@@ -91,7 +91,7 @@
         <tr *ngFor="let user of proveedores | filtro2: filterPost">
           <td>{{ user.nombre }}</td>
           <td>{{ user.descripcion }}</td>
-          <td>{{ user.telefono }}</td>
+          <td>0{{ user.telefono }}</td>
           <button type="button" class="btn btn-primary" (click)="editar(user)">
             Editar
           </button>

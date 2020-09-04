@@ -12,7 +12,7 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { CalendarModule } from 'primeng/calendar';
 import { ToastModule } from 'primeng/toast';
 import {DialogModule} from 'primeng/dialog';
-
+import { FlexLayoutModule } from "@angular/flex-layout";
 @NgModule({
   declarations: [
     IniciousuarioComponent,
@@ -31,6 +31,7 @@ import {DialogModule} from 'primeng/dialog';
     CalendarModule,
     ToastModule,
     DialogModule,
+    FlexLayoutModule
   ],
 })
 export class UsuarioModule {}
