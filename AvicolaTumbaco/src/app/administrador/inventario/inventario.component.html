@@ -97,7 +97,7 @@
         </tr>
       </tbody>
     </table>
-    <p-dialog header="Header" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
+    <p-dialog header="Actualizar Activo" [(visible)]="displayModal" [modal]="true" [style]="{width: '30vw'}" [baseZIndex]="10000"
     [draggable]="false" [resizable]="false">
     <div *ngIf="editOn">
 <h4>Operatividad</h4>
@@ -112,10 +112,12 @@
     </mat-select>
   </mat-form-field>
 </div>
+<ul></ul>
+<div>
   <button type="button" class="btn btn-outline-success" (click)="ingresoactivo()">
   Actualizar 
     </button>
-
+  </div>
 </div>
 
 </p-dialog>
@@ -147,7 +149,7 @@
         </tr>
       </tbody>
     </table>
-    <p-dialog header="Header" [(visible)]="displayModal2" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
+    <p-dialog header="Actualizar Equipo de Proteccion Personal" [(visible)]="displayModal2" [modal]="true" [style]="{width: '30vw'}" [baseZIndex]="10000"
     [draggable]="false" [resizable]="false">
     <div *ngIf="editOn">
       <p-inputNumber
@@ -161,10 +163,12 @@
       incrementButtonIcon="pi pi-plus"
       decrementButtonIcon="pi pi-minus"
     ></p-inputNumber>
+    <ul></ul>
+    <div>
     <button type="button" class="btn btn-outline-success" (click)="ingreso()">
     Actualizar Stock
       </button>
- 
+    </div>
   </div>
 </p-dialog>
   </mat-tab>
@@ -194,7 +198,7 @@
         </tr>
       </tbody>
     </table>
-    <p-dialog header="Header" [(visible)]="displayModal3" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
+    <p-dialog header="Actualizar Alimento-Balanceado" [(visible)]="displayModal3" [modal]="true" [style]="{width: '30vw'}" [baseZIndex]="10000"
     [draggable]="false" [resizable]="false">
     <div *ngIf="editOn">
       <p-inputNumber
@@ -208,7 +212,7 @@
       incrementButtonIcon="pi pi-plus"
       decrementButtonIcon="pi pi-minus"
     ></p-inputNumber>
-
+<ul></ul>
     <div class="p-field-radiobutton">
       <p-radioButton value="val1" [(ngModel)]="unidad"></p-radioButton>
       <label for="city1">Quintal</label>
@@ -219,7 +223,7 @@
     <label for="city2">kilo</label>
 </div>
 
-
+<ul></ul>
 
 
     <button type="button" class="btn btn-outline-success" (click)="ingreso2()">
@@ -255,7 +259,7 @@
         </tr>
       </tbody>
     </table>
-    <p-dialog header="Header" [(visible)]="displayModal4" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
+    <p-dialog header="Actualizar Vacuna" [(visible)]="displayModal4" [modal]="true" [style]="{width: '30vw'}" [baseZIndex]="10000"
     [draggable]="false" [resizable]="false">
     <div *ngIf="editOn">
       <p-inputNumber
@@ -269,10 +273,12 @@
       incrementButtonIcon="pi pi-plus"
       decrementButtonIcon="pi pi-minus"
     ></p-inputNumber>
+    <ul></ul>
+    <div>
     <button type="button" class="btn btn-outline-success" (click)="ingreso()">
     Actualizar Stock
       </button>
-  
+    </div>
   </div>
 </p-dialog>
   </mat-tab>
@@ -302,7 +308,7 @@
         </tr>
       </tbody>
     </table>
-    <p-dialog header="Header" [(visible)]="displayModal5" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
+    <p-dialog header="Actualizar Implemento Operacion" [(visible)]="displayModal5" [modal]="true" [style]="{width: '30vw'}" [baseZIndex]="10000"
     [draggable]="false" [resizable]="false">
     <div *ngIf="editOn">
       <p-inputNumber
@@ -316,10 +322,12 @@
       incrementButtonIcon="pi pi-plus"
       decrementButtonIcon="pi pi-minus"
     ></p-inputNumber>
+    <ul></ul>
+    <div>
     <button type="button" class="btn btn-outline-success" (click)="ingreso()">
     Actualizar Stock
       </button>
-
+    </div>
   </div>
 </p-dialog>
 
@@ -330,3 +338,9 @@
 
 
 <p-toast></p-toast>
+
+<p-dialog header="Desabastecimiento" [(visible)]="displayBasic" [style]="{width: '50vw'}" [baseZIndex]="10000">
+  <div class="texto">Hay un Desabastecimiento</div>
+  <div class="texto">Porfavor contacte a su proveedor</div>
+
+</p-dialog>

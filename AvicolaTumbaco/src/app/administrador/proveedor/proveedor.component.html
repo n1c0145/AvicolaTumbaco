@@ -100,7 +100,7 @@
         </tr>
       </tbody>
     </table>
-    <p-dialog header="Header" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
+    <p-dialog header="Actualizar Proveedor" [(visible)]="displayModal" [modal]="true" [style]="{width: '30vw'}" [baseZIndex]="10000"
     [draggable]="false" [resizable]="false">
     <div *ngIf="editOn">
       <form  (ngSubmit)="obtenerFormulario(formularioUsuario)"
@@ -137,6 +137,8 @@
           value="{{ selectedProveedor.telefono }}"
           required="required"
         />
+        <ul></ul>
+        <div>
         <button
           class="search_submit_button"
           (click)="actualizar()"
@@ -145,6 +147,7 @@
         >
           Actualizar
         </button>
+      </div>
       </form>
     </div>
   </p-dialog>

@@ -35,6 +35,7 @@ export class InventarioComponent implements OnInit {
   displayModal3: boolean;
   displayModal4: boolean;
   displayModal5: boolean;
+  displayBasic: boolean;
   constructor(
     private readonly _router: Router,
     private readonly _AvicolaService: AvicolaService,
@@ -127,7 +128,7 @@ export class InventarioComponent implements OnInit {
     } else {
       this.cantidad = this.stock + this.val;
 if(this.cantidad<=this.desabastecimiento){
-  alert('Hay un desabastecimiento')
+  this.displayBasic=true;
 }
       this._AvicolaService
         .metodoPut('http://localhost:1337/inventario/' + this.id, {
@@ -153,7 +154,7 @@ if(this.cantidad<=this.desabastecimiento){
         this.cantidad = this.stock + this.val;
        
         if(this.cantidad<=this.desabastecimiento){
-          alert('Hay un desabastecimiento')
+          this.displayBasic=true;
         }
         this._AvicolaService
           .metodoPut('http://localhost:1337/inventario/' + this.id, {
@@ -171,7 +172,7 @@ if(this.cantidad<=this.desabastecimiento){
       } else {
         this.cantidad = this.stock + this.val / 100;
         if(this.cantidad<=this.desabastecimiento){
-          alert('Hay un desabastecimiento')
+          this.displayBasic=true;
         }
         this._AvicolaService
           .metodoPut('http://localhost:1337/inventario/' + this.id, {
@@ -212,7 +213,7 @@ if(this.cantidad<=this.desabastecimiento){
   }
   showSuccess() {
     this.messageService.add({severity:'success', detail: 'Actualizado'});
-return setTimeout('document.location.reload()',2200);
+return setTimeout('document.location.reload()',2500);
 
 
   }

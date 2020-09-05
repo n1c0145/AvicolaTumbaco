@@ -16,7 +16,7 @@
     <ul></ul>
     <ul></ul>
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item ">
+      <li class="nav-item">
         <a
           class="nav-link button"
           [routerLink]="['/administrador/inicioadministrador']"
@@ -24,10 +24,14 @@
         >
       </li>
       <li class="nav-item">
-        <a class="nav-link button" [routerLink]="['/administrador/perfil']">Perfil</a>
+        <a class="nav-link button" [routerLink]="['/administrador/perfil']"
+          >Perfil</a
+        >
       </li>
       <li class="nav-item">
-        <a class="nav-link button" [routerLink]="['/administrador/usuarios']">Usuarios</a>
+        <a class="nav-link button" [routerLink]="['/administrador/usuarios']"
+          >Usuarios</a
+        >
       </li>
       <li class="nav-item">
         <a class="nav-link button" [routerLink]="['/administrador/inventario']"
@@ -45,7 +49,9 @@
         >
       </li>
       <li class="nav-item">
-        <a class="nav-link button" [routerLink]="['/administrador/datosempresa']"
+        <a
+          class="nav-link button"
+          [routerLink]="['/administrador/datosempresa']"
           >Datos Empresa</a
         >
       </li>
@@ -55,7 +61,9 @@
         >
       </li>
       <li class="nav-item">
-        <a class="nav-link button" [routerLink]="['/administrador/ventaproducto']"
+        <a
+          class="nav-link button"
+          [routerLink]="['/administrador/ventaproducto']"
           >Venta Producto</a
         >
       </li>
@@ -70,149 +78,157 @@
     </form>
   </div>
 </nav>
-  
- <div>
-   <ul></ul>
-   <div class="container">
- <input type="text" placeholder="Buscar..." [(ngModel)]="filterPost" name="filterPost" class="form-control"> 
-</div>
- <table class="table table-condensed">
-  <thead>
-    <tr>
-      <th>Cedula</th>
-      <th>Nombre</th>
-      <th>Apellido</th>
-      <th>Direccion</th>
-      <th>Telefono</th>
-      <th>Usuario</th>
-      <th>Clave</th>
-      <th>Tipo</th>
-      <th>Acciones</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let user of usuarios | filtro:filterPost ">
-      <td>{{ user.cedula }}</td>
-      <td>{{ user.nombre }}</td>
-      <td>{{ user.apellido }}</td>
-      <td>{{ user.direccion }}</td>
-      <td>0{{ user.telefono }}</td>
-       <td>{{ user.idLogin.usuario}}</td>
-      <td>*****</td>
-      <td *ngIf="user.idLogin.idTipoPerfil === 1">Usuario</td>
-      <td *ngIf="user.idLogin.idTipoPerfil === 2">Administrador</td> 
-      <button type="button" class="btn btn-primary" (click)="editar(user)">Editar</button>
-
-      <button type="button" class="btn btn-danger" (click)="eliminar(user)">Eliminar</button>  
-    </tr>
-  </tbody>
-</table> 
-
-</div> 
-<p-dialog header="Header" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
-    [draggable]="false" [resizable]="false">
-<div *ngIf="editOn">
-  <form
-    (ngSubmit)="obtenerFormulario(formularioUsuario)"
-    #formularioUsuario="ngForm"
-  >
-    <h4>Cedula</h4>
-    <input
-      type="text"
-      placeholder="Cedula"
-      required="required"
-      [(ngModel)]="selectedPerfil.cedula"
-      name="cedula"
-      value="{{selectedPerfil.cedula}}"
-    />
-    <h4>Nombre</h4>
-    <input
-      type="text"
-      placeholder="Apellido"
-      required="required"
-      [(ngModel)]="selectedPerfil.nombre"
-      name="nombre"
-      value="{{selectedPerfil.nombre}}"
-    />
-    <h4>Apellido</h4>
-    <input
-      class="input_field search_form_name"
-      type="text"
-      placeholder="Apellido"
-      required="required"
-      [(ngModel)]="selectedPerfil.apellido"
-      name="apellido"
-      value="{{selectedPerfil.apellido}}"
-    />
-    <h4>Direccion</h4>
-    <input
-      class="input_field search_form_name"
-      type="text"
-      placeholder="Direccion"
-      required="required"
-      [(ngModel)]="selectedPerfil.direccion"
-      name="direccion"
-      value="{{selectedPerfil.direccion}}"
-    />
-    <h4>Telefono</h4>
-    <input
-      class="input_field search_form_name"
-      type="text"
-      placeholder="Telefono"
-      [(ngModel)]="selectedPerfil.telefono"
-      name="telefono"
-      required="required"
-
-      value="{{selectedPerfil.telefono}}"
-    />
-     <h4>Usuario</h4>
-    <input
-      class="input_field search_form_name"
-      type="text"
-      placeholder="Usuario"
-      [(ngModel)]="usuario"
-      required="required"
-
-      name="usuario"
-      value="usuario"
-    />
-    <h4>Clave</h4>
-    <input
-      class="input_field search_form_name"
-      type="password"
-      placeholder="Clave"
-      [(ngModel)]="clave"
-      required="required"
-
-      name="clave"
-      value="clave"
-    /> 
 
 <div>
-    <mat-form-field>
-      <mat-label>Cambiar Tipo de Usuario</mat-label>
-      <mat-select [(ngModel)]="select" name="select">
-        <mat-option value="1">Usuario</mat-option>
-        <mat-option value ="2">Administrador</mat-option>
-      </mat-select>
-    </mat-form-field>
+  <ul></ul>
+  <div class="container">
+    <input
+      type="text"
+      placeholder="Buscar..."
+      [(ngModel)]="filterPost"
+      name="filterPost"
+      class="form-control"
+    />
   </div>
-    <div>
-    <button
-      class="search_submit_button"
-      (click)="actualizar()"
-      class="btn btn-primary"
-      [disabled]="formularioUsuario.invalid"
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>Cedula</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Direccion</th>
+        <th>Telefono</th>
+        <th>Usuario</th>
+        <th>Clave</th>
+        <th>Tipo</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of usuarios | filtro: filterPost">
+        <td>{{ user.cedula }}</td>
+        <td>{{ user.nombre }}</td>
+        <td>{{ user.apellido }}</td>
+        <td>{{ user.direccion }}</td>
+        <td>0{{ user.telefono }}</td>
+        <td>{{ user.idLogin.usuario }}</td>
+        <td>*****</td>
+        <td *ngIf="user.idLogin.idTipoPerfil === 1">Usuario</td>
+        <td *ngIf="user.idLogin.idTipoPerfil === 2">Administrador</td>
+        <button type="button" class="btn btn-primary" (click)="editar(user)">
+          Editar
+        </button>
+
+        <button type="button" class="btn btn-danger" (click)="eliminar(user)">
+          Eliminar
+        </button>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p-dialog
+  header="Actualizar Usuario"
+  [(visible)]="displayModal"
+  [modal]="true"
+  [style]="{ width: '30vw' }"
+  [baseZIndex]="10000"
+  [draggable]="false"
+  [resizable]="false"
+>
+  <div *ngIf="editOn">
+    <form
+      (ngSubmit)="obtenerFormulario(formularioUsuario)"
+      #formularioUsuario="ngForm"
     >
-    Actualizar
-    </button>
+      <h4>Cedula</h4>
+      <input
+        type="text"
+        placeholder="Cedula"
+        required="required"
+        [(ngModel)]="selectedPerfil.cedula"
+        name="cedula"
+        value="{{ selectedPerfil.cedula }}"
+      />
+      <h4>Nombre</h4>
+      <input
+        type="text"
+        placeholder="Apellido"
+        required="required"
+        [(ngModel)]="selectedPerfil.nombre"
+        name="nombre"
+        value="{{ selectedPerfil.nombre }}"
+      />
+      <h4>Apellido</h4>
+      <input
+        class="input_field search_form_name"
+        type="text"
+        placeholder="Apellido"
+        required="required"
+        [(ngModel)]="selectedPerfil.apellido"
+        name="apellido"
+        value="{{ selectedPerfil.apellido }}"
+      />
+      <h4>Direccion</h4>
+      <input
+        class="input_field search_form_name"
+        type="text"
+        placeholder="Direccion"
+        required="required"
+        [(ngModel)]="selectedPerfil.direccion"
+        name="direccion"
+        value="{{ selectedPerfil.direccion }}"
+      />
+      <h4>Telefono</h4>
+      <input
+        class="input_field search_form_name"
+        type="text"
+        placeholder="Telefono"
+        [(ngModel)]="selectedPerfil.telefono"
+        name="telefono"
+        required="required"
+        value="{{ selectedPerfil.telefono }}"
+      />
+      <h4>Usuario</h4>
+      <input
+        class="input_field search_form_name"
+        type="text"
+        placeholder="Usuario"
+        [(ngModel)]="usuario"
+        required="required"
+        name="usuario"
+        value="usuario"
+      />
+      <h4>Clave</h4>
+      <input
+        class="input_field search_form_name"
+        type="password"
+        placeholder="Clave"
+        [(ngModel)]="clave"
+        required="required"
+        name="clave"
+        value="clave"
+      />
+
+      <div>
+        <mat-form-field>
+          <mat-label>Cambiar Tipo de Usuario</mat-label>
+          <mat-select [(ngModel)]="select" name="select">
+            <mat-option value="1">Usuario</mat-option>
+            <mat-option value="2">Administrador</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div>
+        <button
+          class="btn btn-success"
+          (click)="actualizar()"
+          [disabled]="formularioUsuario.invalid"
+        >
+          Actualizar
+        </button>
+      </div>
+    </form>
   </div>
-  </form>
-</div> 
 </p-dialog>
 
-
-
 <p-toast></p-toast>
-
-

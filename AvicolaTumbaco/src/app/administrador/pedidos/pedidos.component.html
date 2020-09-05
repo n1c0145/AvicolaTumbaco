@@ -102,8 +102,8 @@
         <td>{{ user.idRegistro.telefono }}</td>
         <td>{{ user.idDetalleFactura.total}}</td>
 
-<button (click)="cambiar(user)">Cambiar a entregado</button>
-<button (click)="facturar(user)">Ver factura</button>
+<button (click)="cambiar(user)" class="btn btn-warning">Cambiar a entregado</button>
+<button (click)="facturar(user)" class="btn btn-info">Ver factura</button>
 
 
       </tr>
@@ -140,8 +140,8 @@
         <td>{{ user.idRegistro.telefono }}</td>
         <td>{{ user.idDetalleFactura.total}}</td>
 
-<button (click)="eliminar(user)">Eliminar</button>
-<button (click)="facturar(user)">Ver factura</button>
+<button (click)="eliminar(user)" class="btn btn-danger">Eliminar</button>
+<button (click)="facturar(user)" class="btn btn-info">Ver factura</button>
 
 
       </tr>

@@ -1,6 +1,6 @@
 .contenedor{
-    background-color: rgb(235, 223, 223);
-    width: 60%;
+    background-color: rgb(236, 236, 236);
+        width: 60%;
     margin-left: 20%;
     margin-top: 10px;
 }
@@ -88,4 +88,9 @@ border-bottom:1px solid;
  .f{
     text-align: center;
     margin-top: 10%;
+ }
+
+ .botonpdf{
+    text-align: center;
+
  }

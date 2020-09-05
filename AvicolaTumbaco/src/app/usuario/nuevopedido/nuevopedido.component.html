@@ -72,10 +72,10 @@
     </tbody>
   </table>
   <p-dialog
-    header="Header"
+    header="Pedido"
     [(visible)]="displayModal"
     [modal]="true"
-    [style]="{ width: '50vw' }"
+    [style]="{ width: '30vw' }"
     [baseZIndex]="10000"
     [draggable]="false"
     [resizable]="false"
@@ -94,6 +94,7 @@
         min="1"
       ></p-inputNumber>
       <div>
+        <ul></ul>
         <button type="button" class="btn btn-primary" (click)="agregar2()">
           Agregar
         </button>
@@ -101,17 +102,17 @@
     </div>
   </p-dialog>
   <p-dialog
-    header="Header"
+    header="Pedido"
     [(visible)]="displayModal2"
     [modal]="true"
-    [style]="{ width: '50vw' }"
+    [style]="{ width: '40vw' }"
     [baseZIndex]="10000"
     [draggable]="false"
     [resizable]="false"
   >
     <div *ngIf="editOn2">
       <div>
-<img src="https://lh3.googleusercontent.com/proxy/WP4lszAs3cqaiH3o-82Ss3IfPIIf_FD44oq7fKF_hyvI0sNwV_uvm_OpTLZepogDxMj_iF2SXSOmuqTrVyziWj6hLNfamw6wIz85ZFpYQljC3lfeHw" width="40%">
+<img src="https://lh3.googleusercontent.com/proxy/WP4lszAs3cqaiH3o-82Ss3IfPIIf_FD44oq7fKF_hyvI0sNwV_uvm_OpTLZepogDxMj_iF2SXSOmuqTrVyziWj6hLNfamw6wIz85ZFpYQljC3lfeHw" width="50%">
 
       </div>
 
@@ -144,11 +145,11 @@
       <div>
         <button
           type="button"
-          class="btn btn-primary"
+          class="btn btn-success"
           (click)="comprar()"
           [disabled]="formularioUsuario.invalid"
         >
-          Pedir
+          Realizar Pedido
         </button>
       </div>
     </div>
@@ -198,7 +199,7 @@
                   
                 
               </td>
-              <td><button (click)="eliminar(i)" class="boton">x</button></td>
+              <td><button (click)="eliminar(i)" class="boton" class="btn btn-danger">x</button></td>
             </div>
           </td>
         </tr>
@@ -206,7 +207,7 @@
     </table>
   </div>
   <div class="pedido">
-    <button (click)="pedir()">Realizar pedido</button>
+    <button (click)="pedir()" class="btn btn-success">Realizar pedido</button>
   </div>
 </div>
 

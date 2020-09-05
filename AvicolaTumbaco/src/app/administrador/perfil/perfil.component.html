@@ -92,7 +92,7 @@
     </div>
     <div fxLayout="row" fxLayoutAlign=" center" class="div">
       <div class="titulo">Apellido:</div>
-      <div class="texto">{{ user.apellido }}</div >
+      <div class="texto">{{ user.apellido }}</div>
     </div>
 
     <div fxLayout="row" fxLayoutAlign=" center" class="div">
@@ -122,10 +122,10 @@
 </div>
 
 <p-dialog
-  header="Header"
+  header="Actualizar Datos"
   [(visible)]="displayModal"
   [modal]="true"
-  [style]="{ width: '50vw' }"
+  [style]="{ width: '30vw' }"
   [baseZIndex]="10000"
   [draggable]="false"
   [resizable]="false"
@@ -203,13 +203,16 @@
         required="required"
         value="clave"
       />
-      <button
-        class="search_submit_button"
-        (click)="actualizar(selectedPerfil)"
-        [disabled]="formularioUsuario.invalid"
-      >
-        Actualizar
-      </button>
+      <ul></ul>
+      <div>
+        <button
+        class="btn btn-success"
+          (click)="actualizar(selectedPerfil)"
+          [disabled]="formularioUsuario.invalid"
+        >
+          Actualizar
+        </button>
+      </div>
     </form>
   </div>
 </p-dialog>
