@@ -19,11 +19,15 @@ padding: 3% 0% 0% 0%;
 .titulo{
     font-size: 2rem;
     font-weight: bolder;
-    margin-bottom: 3%;
+}
+
+.caja{
+   
+    padding: 0% 17% 0% 3%;
+    margin-top: 3%;
 }
 
 .texto{
-    font-size: 1.4rem;
-    padding: 0% 17% 0% 3%;
-    margin-top: 3%;
+    font-size: 1.5rem;
+    margin-top: 20%;
 }

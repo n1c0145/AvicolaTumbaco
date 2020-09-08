@@ -46,6 +46,7 @@
         <th>Empresa</th>
       <th>Fecha Emision</th>
       <th>Fecha Entrega Pedido</th>
+      <th>Estado</th>
       <th>Total</th>
     </tr>
   </thead>
@@ -55,6 +56,8 @@
 
       <td>{{ user.fechaEmision | date }}</td>
       <td>{{ user.idDetalleFactura.fechaEntrega | date }}</td>
+      <td *ngIf="user.estado == 'activo'">Por entregar</td>
+      <td *ngIf="user.estado == 'entregado'">Entregado</td>
       <td>{{ user.idDetalleFactura.total }}</td>
 
       <button (click)="facturar(user)" class="btn btn-info">Ver factura</button>

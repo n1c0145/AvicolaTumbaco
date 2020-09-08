@@ -2,11 +2,11 @@
   <div id="element" #element>
     <div class="contenedor" *ngFor="let user of factura">
       <div fxLayout="row">
-        <div fxFlex="25" class="a-1">
+        <div fxFlex="30" class="a-1">
           <img src="../../../assets/img/avicolaBN.png" alt="" width="100%" />
         </div>
 
-        <div fxLayout="column" fxLayoutAlign=" center" fxFlex="40">
+        <div fxLayout="column" fxLayoutAlign=" center" fxFlex="45">
           <div class="a-2-1">AMAGUAÑA CORREA WILSON SALVADOR</div>
           <div class="a-2-1">{{ user.idDatosEmpresa.nombre }}</div>
           <div class="a-2-2">Ruc: {{ user.idDatosEmpresa.ruc }}</div>
@@ -19,11 +19,9 @@
         </div>
 
         <div fxLayout="column" fxLayoutAlign="center center" class="a">
-          <div class="a-3-1">FACTURA 001-001-</div>
+          <div class="a-3-1">Número de Pedido</div>
           <div class="a-3-2">N° 000{{ user.id }}</div>
-          <div class="a-2-2">AUTORIZACIÓN SRI No. 1126393390</div>
-          <div class="a-2-2">FECHA DE AUTORIZACIÓN E IMP 10/MARZO/2021</div>
-          <div class="a-2-2">DOCUMENTO NO CATEGORIZADO</div>
+     
         </div>
       </div>
       <div fxLayout="row">
@@ -217,13 +215,14 @@
         <div fxFlex="30" class="f">
           <div>__________________________</div>
           <div>Recibí Conforme</div>
-          <div> 
-        </div>
+          <ul></ul>
+        
       </div>
     </div>
+    <div class="textofinal">Factura de prueba. Documento exclusivo Avicola Tumbaco Granja Marianta. Este documento no cuenta con validez tributaria.</div>
   </div>
 </div>
 <ul></ul>
 <div class="botonpdf">
-<button (click)="generar()" class="btn btn-secondary">exportar pdf</button>
-</div>
+  <button (click)="generar()" class="btn btn-secondary">exportar pdf</button>
+  </div>

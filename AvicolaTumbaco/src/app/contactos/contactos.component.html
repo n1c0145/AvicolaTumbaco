@@ -1,82 +1,93 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <img src="../../../assets/img/avicola.png" width="10%"/>
+  <img src="../../../assets/img/avicola.png" width="10%" />
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul></ul>
+    <ul></ul>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link button" [routerLink]="['/inicio']">Inicio</a>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle button"
+          id="navbarDropdown"
+          role="button"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Quiénes Somos
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" [routerLink]="['/mision']">Misión</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" [routerLink]="['/vision']">Visión</a>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link button" [routerLink]="['/servicios']"
+          >Nuestros Servicios</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link button" [routerLink]="['/contactos']">Contactos</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
       <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
+        class="btn btn-outline-primary my-2 my-sm-0"
+        [routerLink]="['/registrarse']"
       >
-        <span class="navbar-toggler-icon"></span>
+        Registrarse
       </button>
-    
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-  <ul></ul>
-  <ul></ul>
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link button" [routerLink]="['/inicio']">Inicio</a>
-              </li>
-    
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle button"
-              
-              id="navbarDropdown"
-              role="button"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              Quiénes Somos
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" [routerLink]="['/mision']">Misión</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" [routerLink]="['/vision']">Visión</a>
-            </div>
-          </li>
-          
-          <li class="nav-item">
-            <a class="nav-link button" [routerLink]="['/servicios']">Nuestros Servicios</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link button" [routerLink]="['/contactos']">Contactos</a>
-          </li>
-      
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <button class="btn btn-outline-primary my-2 my-sm-0" [routerLink]="['/registrarse']">
-            Registrarse
-          </button>
-          <button class="btn btn-outline-primary my-2 my-sm-0" [routerLink]="['/login']">
-            Iniciar Sesion
-          </button>
-        </form>
-      </div>
-    </nav>
-  
-    <div class="registro">
-      <div fxLayout="row" class="container">
-<div fxFlex="40" class="texto">
-  <div class="titulo">Contacto</div>
-  <ul></ul>
-  <ul></ul>
-  <div>Direccion: Tumbaco Rumihuaico, Vista Hermosa, Via Ilalo</div>
-  <ul></ul>
-  <ul></ul>
-  <div>Telefono: 2373-928-2375342</div>
-  <ul></ul>
-  <ul></ul>
-  <div>Celular:0993759606</div>
-  <ul></ul>
-  <ul></ul>
-  <div>Correo:wilsonamcorrea@hotmail.com</div>
+      <button
+        class="btn btn-outline-primary my-2 my-sm-0"
+        [routerLink]="['/login']"
+      >
+        Iniciar Sesion
+      </button>
+    </form>
+  </div>
+</nav>
 
+<div class="registro">
+  <div fxLayout="row" class="container">
+    <div fxFlex="40" class="caja">
+      <div class="titulo">Contacto</div>
 
-</div>
-<div fxFlex="60"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d979.2644408311066!2d-78.39808637081047!3d-0.22234239998984934!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d596b259a6c625%3A0x8d37f2bba4d49ebf!2sDe%20las%20Orquideas%20297%2C%20Quito%20170184!5e1!3m2!1ses-419!2sec!4v1599321056369!5m2!1ses-419!2sec" width="600" height="400" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe></div>
-      </div>
+      <div class="texto">Direccion: Tumbaco Rumihuaico, Vista Hermosa, Via Ilalo</div>
+
+      <div class="texto">Telefono: 2373-928-2375342</div>
+
+      <div class="texto">Celular:0993759606</div>
+
+      <div class="texto">Correo:wilsonamcorrea@hotmail.com</div>
     </div>
+    <div fxFlex="60">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d979.2644408311066!2d-78.39808637081047!3d-0.22234239998984934!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d596b259a6c625%3A0x8d37f2bba4d49ebf!2sDe%20las%20Orquideas%20297%2C%20Quito%20170184!5e1!3m2!1ses-419!2sec!4v1599321056369!5m2!1ses-419!2sec"
+        width="600"
+        height="400"
+        frameborder="0"
+        style="border: 0"
+        allowfullscreen=""
+        aria-hidden="false"
+        tabindex="0"
+      ></iframe>
+    </div>
+  </div>
+</div>

@@ -3,12 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Inventario } from '../../modelos/inventario.interface';
-import {MessageService} from 'primeng/api';
+import { MessageService } from 'primeng/api';
 @Component({
   selector: 'app-inventario',
   templateUrl: './inventario.component.html',
   styleUrls: ['./inventario.component.css'],
-  providers: [MessageService]
+  providers: [MessageService],
 })
 export class InventarioComponent implements OnInit {
   val;
@@ -27,7 +27,7 @@ export class InventarioComponent implements OnInit {
   unidad;
   selectedProducto: Inventario;
   operativo;
-  filterPost ='';
+  filterPost = '';
   selectoperacional;
   operacion;
   displayModal: boolean;
@@ -93,7 +93,7 @@ export class InventarioComponent implements OnInit {
     this.selectedProducto = cat2;
     this.id = cat2.id;
     this.stock = cat2.stock;
-    this.desabastecimiento = cat2.desabastecimiento
+    this.desabastecimiento = cat2.desabastecimiento;
   }
   editar3(cat3: Inventario) {
     this.editOn = true;
@@ -101,8 +101,7 @@ export class InventarioComponent implements OnInit {
     this.selectedProducto = cat3;
     this.id = cat3.id;
     this.stock = cat3.stock;
-    this.desabastecimiento = cat3.desabastecimiento
-
+    this.desabastecimiento = cat3.desabastecimiento;
   }
   editar4(cat4: Inventario) {
     this.editOn = true;
@@ -110,8 +109,7 @@ export class InventarioComponent implements OnInit {
     this.selectedProducto = cat4;
     this.id = cat4.id;
     this.stock = cat4.stock;
-    this.desabastecimiento = cat4.desabastecimiento
-
+    this.desabastecimiento = cat4.desabastecimiento;
   }
   editar5(cat5: Inventario) {
     this.editOn = true;
@@ -119,79 +117,89 @@ export class InventarioComponent implements OnInit {
     this.selectedProducto = cat5;
     this.id = cat5.id;
     this.stock = cat5.stock;
-    this.desabastecimiento = cat5.desabastecimiento
-
+    this.desabastecimiento = cat5.desabastecimiento;
   }
   ingreso() {
     if (this.val === undefined) {
-     this.showWarn()
+      this.showWarn();
     } else {
       this.cantidad = this.stock + this.val;
-if(this.cantidad<=this.desabastecimiento){
-  this.displayBasic=true;
-}
-      this._AvicolaService
-        .metodoPut('http://localhost:1337/inventario/' + this.id, {
-          stock: this.cantidad,
-          fechaActualizacion: this.fecha,
-          nombreUsuarioActualizacion: this.user,
-        })
-        .subscribe((producto) => {
-          this.showSuccess()
-          this.displayModal2 = false
-          this.displayModal4 = false
-          this.displayModal5 = false
 
-        });
+      if (this.cantidad < 0) {
+        this.showWarn4()
+      } else {
+        if (this.cantidad <= this.desabastecimiento) {
+          this.displayBasic = true;
+        }
+        this._AvicolaService
+          .metodoPut('http://localhost:1337/inventario/' + this.id, {
+            stock: this.cantidad,
+            fechaActualizacion: this.fecha,
+            nombreUsuarioActualizacion: this.user,
+          })
+          .subscribe((producto) => {
+            this.showSuccess();
+            this.displayModal2 = false;
+            this.displayModal4 = false;
+            this.displayModal5 = false;
+          });
+      }
     }
   }
 
   ingreso2() {
     if (this.unidad == 'val1') {
       if (this.val === undefined) {
-        this.showWarn()
+        this.showWarn();
       } else {
         this.cantidad = this.stock + this.val;
-       
-        if(this.cantidad<=this.desabastecimiento){
-          this.displayBasic=true;
+        if (this.cantidad < 0) {
+          this.showWarn4()
+        } else {
+          if (this.cantidad <= this.desabastecimiento) {
+            this.displayBasic = true;
+          }
+          this._AvicolaService
+            .metodoPut('http://localhost:1337/inventario/' + this.id, {
+              stock: this.cantidad,
+              fechaActualizacion: this.fecha,
+              nombreUsuarioActualizacion: this.user,
+            })
+            .subscribe((producto) => {
+              this.showSuccess();
+            });
         }
-        this._AvicolaService
-          .metodoPut('http://localhost:1337/inventario/' + this.id, {
-            stock: this.cantidad,
-            fechaActualizacion: this.fecha,
-            nombreUsuarioActualizacion: this.user,
-          })
-          .subscribe((producto) => {
-            this.showSuccess()
-          });
       }
     } else if (this.unidad == 'val2') {
       if (this.val === undefined) {
-        this.showWarn()
+        this.showWarn();
       } else {
         this.cantidad = this.stock + this.val / 100;
-        if(this.cantidad<=this.desabastecimiento){
-          this.displayBasic=true;
+        if (this.cantidad < 0) {
+         this.showWarn4()
+        } else {
+          if (this.cantidad <= this.desabastecimiento) {
+            this.displayBasic = true;
+          }
+          this._AvicolaService
+            .metodoPut('http://localhost:1337/inventario/' + this.id, {
+              stock: this.cantidad,
+              fechaActualizacion: this.fecha,
+              nombreUsuarioActualizacion: this.user,
+            })
+            .subscribe((producto) => {
+              this.showSuccess();
+              this.displayModal3 = false;
+            });
         }
-        this._AvicolaService
-          .metodoPut('http://localhost:1337/inventario/' + this.id, {
-            stock: this.cantidad,
-            fechaActualizacion: this.fecha,
-            nombreUsuarioActualizacion: this.user,
-          })
-          .subscribe((producto) => {
-            this.showSuccess()
-            this.displayModal3 = false
-          });
       }
     } else {
-    this.showWarn2()
+      this.showWarn2();
     }
   }
-  ingresoactivo(){
+  ingresoactivo() {
     if (this.selectoperacional === undefined) {
-      this.showWarn3()
+      this.showWarn3();
     } else {
       if (this.selectoperacional == 1) {
         this.operacion = 'operativo';
@@ -199,36 +207,38 @@ if(this.cantidad<=this.desabastecimiento){
         this.operacion = 'no operativo';
       }
       this._AvicolaService
-      .metodoPut('http://localhost:1337/inventario/' + this.id, {
-        operativo: this.operacion,
-        fechaActualizacion: this.fecha,
-        nombreUsuarioActualizacion: this.user,
-      })
-      .subscribe((producto) => {
-        this.displayModal = false
-     this.showSuccess()
-      });
-
+        .metodoPut('http://localhost:1337/inventario/' + this.id, {
+          operativo: this.operacion,
+          fechaActualizacion: this.fecha,
+          nombreUsuarioActualizacion: this.user,
+        })
+        .subscribe((producto) => {
+          this.displayModal = false;
+          this.showSuccess();
+        });
     }
   }
   showSuccess() {
-    this.messageService.add({severity:'success', detail: 'Actualizado'});
-return setTimeout('document.location.reload()',2500);
-
-
+    this.messageService.add({ severity: 'success', detail: 'Actualizado' });
+    return setTimeout('document.location.reload()', 2500);
   }
   showWarn() {
-    this.messageService.add({severity:'warn',  detail: 'Escoja un valor a cambiar'});
-}
-showWarn2() {
-  this.messageService.add({severity:'warn',  detail: 'Escoja una unidad'});
-}
-showWarn3() {
-  this.messageService.add({severity:'warn',  detail: 'Escoja un estado'});
-}
-cerrarSesion(){
-  this._router.navigate(['inicio/']);
-  localStorage.clear()
-
-}
+    this.messageService.add({
+      severity: 'warn',
+      detail: 'Escoja un valor a cambiar',
+    });
+  }
+  showWarn2() {
+    this.messageService.add({ severity: 'warn', detail: 'Escoja una unidad' });
+  }
+  showWarn3() {
+    this.messageService.add({ severity: 'warn', detail: 'Escoja un estado' });
+  }
+  showWarn4() {
+    this.messageService.add({ severity: 'warn', detail: 'No se puede sacar esa catidad del inventario' });
+  }
+  cerrarSesion() {
+    this._router.navigate(['inicio/']);
+    localStorage.clear();
+  }
 }

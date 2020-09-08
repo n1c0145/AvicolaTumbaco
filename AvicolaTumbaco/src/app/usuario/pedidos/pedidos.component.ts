@@ -22,7 +22,7 @@ export class PedidosComponent implements OnInit {
     this.id = localStorage.getItem('id');
 
     this._AvicolaService
-      .metodoGet('http://localhost:1337/factura?idRegistro=' + this.id)
+      .metodoGet('http://localhost:1337/factura?estado=activo&&estado=entregado&&idRegistro=' + this.id)
       .subscribe((data) => {
         this.facturas = data;
         

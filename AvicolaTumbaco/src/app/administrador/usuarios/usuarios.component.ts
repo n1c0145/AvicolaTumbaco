@@ -103,6 +103,7 @@ export class UsuariosComponent implements OnInit {
       .metodoPut('http://localhost:1337/registro/' + this.id, {
         estado: 'inactivo',
         nombreUsuarioActualizacion: this.user,
+        fechaActualizacion: this.fecha,
       })
       .subscribe(() => {
         this._AvicolaService
