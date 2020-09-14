@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <img src="../../../assets/img/avicola.png" width="12%" alt="" />
   <button
@@ -84,7 +85,7 @@
   <div class="container">
     <input
       type="text"
-      placeholder="Buscar..."
+      placeholder="Buscar por nombre de usuario..."
       [(ngModel)]="filterPost"
       name="filterPost"
       class="form-control"
@@ -126,14 +127,16 @@
     </tbody>
   </table>
 </div>
+
 <p-dialog
   header="Actualizar Usuario"
   [(visible)]="displayModal"
   [modal]="true"
   [style]="{ width: '30vw' }"
   [baseZIndex]="10000"
-  [draggable]="false"
-  [resizable]="false"
+  [draggable]="true"
+  [resizable]="true"
+class="hola"
 >
   <div *ngIf="editOn">
     <form
@@ -231,4 +234,7 @@
   </div>
 </p-dialog>
 
+
 <p-toast></p-toast>
+
+

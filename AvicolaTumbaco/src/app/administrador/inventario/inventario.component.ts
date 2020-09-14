@@ -1,3 +1,4 @@
+import { Categoria } from './../../modelos/categoria.interface';
 import { AvicolaService } from './../../servicios/avicola.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
@@ -16,6 +17,7 @@ export class InventarioComponent implements OnInit {
   fecha = new Date();
   stock;
   cantidad;
+  descripcion;
   user;
   cat1;
   cat2;
@@ -26,6 +28,7 @@ export class InventarioComponent implements OnInit {
   desabastecimiento;
   unidad;
   selectedProducto: Inventario;
+  selectedCategoria: Categoria;
   operativo;
   filterPost = '';
   selectoperacional;
@@ -35,7 +38,10 @@ export class InventarioComponent implements OnInit {
   displayModal3: boolean;
   displayModal4: boolean;
   displayModal5: boolean;
+  displayModal6: boolean;
   displayBasic: boolean;
+  categoria;
+  catego:Categoria[];
   constructor(
     private readonly _router: Router,
     private readonly _AvicolaService: AvicolaService,
@@ -79,6 +85,11 @@ export class InventarioComponent implements OnInit {
       .subscribe((data) => {
         this.cat5 = data;
       });
+    this._AvicolaService
+      .metodoGet('http://localhost:1337/categoria')
+      .subscribe((data) => {
+        this.categoria = data;
+      });
   }
   editar(cat1: Inventario) {
     this.editOn = true;
@@ -119,6 +130,16 @@ export class InventarioComponent implements OnInit {
     this.stock = cat5.stock;
     this.desabastecimiento = cat5.desabastecimiento;
   }
+  editarcategoria(catego:Categoria) {
+    this.editOn = true;
+    this.selectedCategoria=catego
+    this.id = catego.id
+    this.displayModal6 = true;
+    
+  }
+  actualizarcategoria(){
+
+  }
   ingreso() {
     if (this.val === undefined) {
       this.showWarn();
@@ -126,7 +147,7 @@ export class InventarioComponent implements OnInit {
       this.cantidad = this.stock + this.val;
 
       if (this.cantidad < 0) {
-        this.showWarn4()
+        this.showWarn4();
       } else {
         if (this.cantidad <= this.desabastecimiento) {
           this.displayBasic = true;
@@ -154,7 +175,7 @@ export class InventarioComponent implements OnInit {
       } else {
         this.cantidad = this.stock + this.val;
         if (this.cantidad < 0) {
-          this.showWarn4()
+          this.showWarn4();
         } else {
           if (this.cantidad <= this.desabastecimiento) {
             this.displayBasic = true;
@@ -176,7 +197,7 @@ export class InventarioComponent implements OnInit {
       } else {
         this.cantidad = this.stock + this.val / 100;
         if (this.cantidad < 0) {
-         this.showWarn4()
+          this.showWarn4();
         } else {
           if (this.cantidad <= this.desabastecimiento) {
             this.displayBasic = true;
@@ -235,7 +256,10 @@ export class InventarioComponent implements OnInit {
     this.messageService.add({ severity: 'warn', detail: 'Escoja un estado' });
   }
   showWarn4() {
-    this.messageService.add({ severity: 'warn', detail: 'No se puede sacar esa catidad del inventario' });
+    this.messageService.add({
+      severity: 'warn',
+      detail: 'No se puede sacar esa catidad del inventario',
+    });
   }
   cerrarSesion() {
     this._router.navigate(['inicio/']);
