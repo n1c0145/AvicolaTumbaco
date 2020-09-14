@@ -453,6 +453,8 @@
       [resizable]="false"
     >
       <div *ngIf="editOn">
+        <form     (ngSubmit)="obtenerFormulario(formularioUsuario)"
+        #formularioUsuario="ngForm">
         <h4>Nombre</h4>
         <input
           type="text"
@@ -479,10 +481,12 @@
             type="button"
             class="btn btn-success"
             (click)="actualizarcategoria()"
+            [disabled]="formularioUsuario.invalid"
           >
             Actualizar
           </button>
         </div>
+        </form>
       </div>
     </p-dialog>
     </div>

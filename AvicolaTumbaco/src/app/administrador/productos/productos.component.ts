@@ -157,6 +157,7 @@ export class ProductosComponent implements OnInit {
                   nombre: this.nombre,
                   descripcion: this.descripcion,
                   operativo: this.operacion,
+                  desabastecimiento: -1,
                   estado: 'activo',
                   fechaCreacion: this.fecha,
                   nombreUsuarioCreacion: this.user,
@@ -205,6 +206,7 @@ this.showWar2()
               .metodoPut('http://localhost:1337/inventario/' + this.id, {
                 nombre: this.selectedProducto.nombre,
                 descripcion: this.selectedProducto.descripcion,
+                desabastecimiento:this.selectedProducto.desabastecimiento,
                 fechaActualizacion: this.fecha,
                 nombreUsuarioActualizacion: this.user,
                 idCategoria: this.idcategoria,

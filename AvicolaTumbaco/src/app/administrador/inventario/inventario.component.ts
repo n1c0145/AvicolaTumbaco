@@ -151,6 +151,7 @@ export class InventarioComponent implements OnInit {
  this.showSuccess()
     });
   }
+  obtenerFormulario(formulario) {}
   ingreso() {
     if (this.val === undefined) {
       this.showWarn();

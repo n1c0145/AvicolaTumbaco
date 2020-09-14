@@ -121,16 +121,31 @@
         />
 
         <h4>Descripcion</h4>
+  
         <input
-          class="input_field search_form_name"
-          type="text"
-          placeholder="Descripcion"
-          required="required"
-          [(ngModel)]="selectedProducto.descripcion"
-          name="descripcion"
-          value="{{ selectedProducto.descripcion }}"
-        />
+        class="input_field search_form_name"
+        type="text"
+        placeholder="Descripcion"
+        required="required"
+        [(ngModel)]="selectedProducto.descripcion"
+        name="descripcion"
+        value="{{ selectedProducto.descripcion }}"
+      />
 
+         <div *ngIf="selectedProducto.desabastecimiento != -1">
+          <h4>Número de desabastecimiento</h4>
+
+        <input
+        class="input_field search_form_name"
+        type="text"
+        placeholder="desabastecimiento"
+        required="required"
+        [(ngModel)]="selectedProducto.desabastecimiento"
+        name="desabastecimiento"
+        value="{{ selectedProducto.desabastecimiento }}"
+      /> 
+      
+    </div>  
         <h4>Categoria</h4>
         <mat-form-field>
           <mat-label>Escoja una categoria</mat-label>
