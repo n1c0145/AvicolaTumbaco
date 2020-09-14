@@ -80,7 +80,7 @@
 </nav>
 
 <mat-tab-group mat-align-tabs="center">
-  <mat-tab label="Activos">
+  <mat-tab *ngFor="let user of [0]" label="{{categorias[user].categoria}}">
     <ul></ul>
     <div class="container">
       <input
@@ -148,7 +148,7 @@
       </div>
     </p-dialog>
   </mat-tab>
-  <mat-tab label="Equipos de Proteccion Personal">
+  <mat-tab *ngFor="let user of [1]" label="{{categorias[user].categoria}}">
     <ul></ul>
     <div class="container">
       <input
@@ -213,7 +213,7 @@
       </div>
     </p-dialog>
   </mat-tab>
-  <mat-tab label="Alimento-Balanceado">
+  <mat-tab *ngFor="let user of [2]" label="{{categorias[user].categoria}}">
     <ul></ul>
     <div class="container">
       <input
@@ -289,7 +289,7 @@
       </div>
     </p-dialog>
   </mat-tab>
-  <mat-tab label="Vacunas">
+  <mat-tab *ngFor="let user of [3]" label="{{categorias[user].categoria}}">
     <ul></ul>
     <div class="container">
       <input
@@ -354,7 +354,7 @@
       </div>
     </p-dialog>
   </mat-tab>
-  <mat-tab label="Implementos Operacion">
+  <mat-tab *ngFor="let user of [4]" label="{{categorias[user].categoria}}">
     <ul></ul>
     <div class="container">
       <input
@@ -421,25 +421,71 @@
   </mat-tab>
   <mat-tab label="Administrar categorias">
     <div class="container">
-<table class="table table-condensed">
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Descripcion</th>
-      <th>Accion</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let user of categoria | filtro2: filterPost">
-      <td>{{ user.categoria }}</td>
-      <td>{{ user.descripcion }}</td>
-      <button type="button" class="btn btn-warning" (click)="editarcategoria(user)">
-        Editar Categoria
-      </button>
-    </tr>
-  </tbody>
-</table>
-</div>
+      <table class="table table-condensed">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Accion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of categorias">
+            <td>{{ user.categoria }}</td>
+            <td>{{ user.descripcion }}</td>
+            <button
+              type="button"
+              class="btn btn-warning"
+              (click)="editarcategoria(user)"
+            >
+              Editar Categoria
+            </button>
+          </tr>
+        </tbody>
+      </table>
+      <p-dialog
+      header="Actualizar"
+      [(visible)]="displayModal6"
+      [modal]="true"
+      [style]="{ width: '30vw' }"
+      [baseZIndex]="10000"
+      [draggable]="false"
+      [resizable]="false"
+    >
+      <div *ngIf="editOn">
+        <h4>Nombre</h4>
+        <input
+          type="text"
+          placeholder="Nombre"
+          required="required"
+          [(ngModel)]="selectedCategoria.categoria"
+          name="categoria"
+          value="{{ selectedCategoria.categoria }}"
+          class="input"
+        />
+        <h4>Descripcion</h4>
+        <input
+          type="text"
+          placeholder="Descripcion"
+          required="required"
+          [(ngModel)]="selectedCategoria.descripcion"
+          name="descripcion"
+          value="{{ selectedCategoria.descripcion }}"
+          class="input"
+        />
+        <ul></ul>
+        <div>
+          <button
+            type="button"
+            class="btn btn-success"
+            (click)="actualizarcategoria()"
+          >
+            Actualizar
+          </button>
+        </div>
+      </div>
+    </p-dialog>
+    </div>
   </mat-tab>
 </mat-tab-group>
 
@@ -453,32 +499,6 @@
 >
   <div class="texto">Hay un Desabastecimiento</div>
   <div class="texto">Porfavor contacte a su proveedor</div>
-</p-dialog>
-<p-dialog
-header="Actualizar Categoria"
-[(visible)]="displayModal6"
-[modal]="true"
-[style]="{ width: '30vw' }"
-[baseZIndex]="10000"
-[draggable]="false"
-[resizable]="false"
->
-<h4>Nombre</h4>
 
-<h4>Descripciion</h4>
-<!-- <input
-type="text"
-placeholder="Descripcion"
-required="required"
-[(ngModel)]="selectedCategoria.descripcion"
-name="descripcion"
-value="{{ selectedCategoria.descripcion }}"
-/> -->
-<ul></ul>
-<div>
-<button type="button" class="btn btn-success" (click)="actualizarcategoria()">
 
-Actualizar
-</button>
-</div>
 </p-dialog>

@@ -40,8 +40,8 @@ export class InventarioComponent implements OnInit {
   displayModal5: boolean;
   displayModal6: boolean;
   displayBasic: boolean;
-  categoria;
-  catego:Categoria[];
+  categorias;
+  categoria:Categoria[];
   constructor(
     private readonly _router: Router,
     private readonly _AvicolaService: AvicolaService,
@@ -88,7 +88,7 @@ export class InventarioComponent implements OnInit {
     this._AvicolaService
       .metodoGet('http://localhost:1337/categoria')
       .subscribe((data) => {
-        this.categoria = data;
+        this.categorias = data;
       });
   }
   editar(cat1: Inventario) {
@@ -130,15 +130,26 @@ export class InventarioComponent implements OnInit {
     this.stock = cat5.stock;
     this.desabastecimiento = cat5.desabastecimiento;
   }
-  editarcategoria(catego:Categoria) {
+  editarcategoria(categoria:Categoria) {
     this.editOn = true;
-    this.selectedCategoria=catego
-    this.id = catego.id
+    this.selectedCategoria=categoria
+    this.id = categoria.id
     this.displayModal6 = true;
-    
+
   }
   actualizarcategoria(){
-
+    this._AvicolaService
+    .metodoPut('http://localhost:1337/categoria/' + this.id, {
+     categoria:this.selectedCategoria.categoria,
+     descripcion:this.selectedCategoria.descripcion,
+      fechaActualizacion: this.fecha,
+      nombreUsuarioActualizacion: this.user,
+   
+    })
+    .subscribe(() => {
+   
+ this.showSuccess()
+    });
   }
   ingreso() {
     if (this.val === undefined) {

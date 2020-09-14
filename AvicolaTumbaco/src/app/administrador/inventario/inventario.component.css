@@ -6,3 +6,7 @@ border-radius: 15px;
 .texto{
     color: red;
 }
+
+.input{
+    width: 70%;
+}
