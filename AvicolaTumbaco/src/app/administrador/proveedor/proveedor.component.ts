@@ -47,10 +47,9 @@ export class ProveedorComponent implements OnInit {
         for (let key in resultado) {
           if (this.nombre == resultado[key]['nombre']) {
             this.band = true;
-            this.showInfo();
           }
         }
-
+this.showInfo()
         console.log(this.band);
 
         if (this.band == false) {
@@ -66,7 +65,7 @@ export class ProveedorComponent implements OnInit {
               nombreUsuarioActualizacion: this.user,
             })
             .subscribe((registrocreado) => {
-              this.showSuccess();
+              this.showSuccess()
             });
         }
       });
@@ -88,8 +87,8 @@ export class ProveedorComponent implements OnInit {
         nombreUsuarioActualizacion: this.user,
       })
       .subscribe(() => {
+        this.displayModal = false;
         this.showSuccess2();
-        this.displayModal = false
       });
   }
   eliminar(proveedor: Proveedor) {
@@ -101,8 +100,14 @@ export class ProveedorComponent implements OnInit {
         nombreUsuarioActualizacion: this.user,
       })
       .subscribe(() => {
-        this.showError();
+        this.showError()
       });
+  }
+
+  obtenerFormulario(formulario) {}
+  cerrarSesion() {
+    this._router.navigate(['inicio/']);
+    localStorage.clear();
   }
   showSuccess() {
     this.messageService.add({
@@ -114,7 +119,6 @@ export class ProveedorComponent implements OnInit {
   }
   showSuccess2() {
     this.messageService.add({
-      key: 'tc',
       severity: 'success',
       detail: 'Proveedor actualizado',
     });
@@ -133,11 +137,5 @@ export class ProveedorComponent implements OnInit {
       severity: 'info',
       detail: 'Esta proveedor ya se encuetra registrado',
     });
-  }
-  obtenerFormulario(formulario) {}
-  cerrarSesion(){
-    this._router.navigate(['inicio/']);
-    localStorage.clear()
-
   }
 }

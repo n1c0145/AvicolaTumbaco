@@ -28,7 +28,7 @@ export class FacturaComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.idfactura = localStorage.getItem('idFactura');
+    this.idfactura = JSON.parse(localStorage.getItem('idFactura'));
      this.id = this.idfactura;
     this._AvicolaService
       .metodoGet('http://localhost:1337/factura?id=' + this.id)

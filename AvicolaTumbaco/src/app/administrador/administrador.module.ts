@@ -22,10 +22,10 @@ import { FacturaComponent } from '../administrador/factura/factura.component';
 import { VentaproductoComponent } from './ventaproducto/ventaproducto.component';
 import { FiltroPipe } from '../pipes/filtro.pipe';
 import { Filtro2Pipe } from '../pipes/filtro2.pipe';
-import {ToastModule} from 'primeng/toast';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import {DialogModule} from 'primeng/dialog';
 import {TableModule} from 'primeng/table';
+import {ToastModule} from 'primeng/toast';
 @NgModule({
   declarations: [
     InicioadministradorComponent,
@@ -54,10 +54,10 @@ import {TableModule} from 'primeng/table';
     InputNumberModule,
     RadioButtonModule,
     CalendarModule,
-    ToastModule,
     FlexLayoutModule,
     DialogModule,
-    TableModule
+    TableModule,
+    ToastModule
   ],
 })
 export class AdministradorModule {}

@@ -41,7 +41,7 @@ export class InventarioComponent implements OnInit {
   displayModal6: boolean;
   displayBasic: boolean;
   categorias;
-  categoria:Categoria[];
+  categoria: Categoria[];
   constructor(
     private readonly _router: Router,
     private readonly _AvicolaService: AvicolaService,
@@ -130,26 +130,23 @@ export class InventarioComponent implements OnInit {
     this.stock = cat5.stock;
     this.desabastecimiento = cat5.desabastecimiento;
   }
-  editarcategoria(categoria:Categoria) {
+  editarcategoria(categoria: Categoria) {
     this.editOn = true;
-    this.selectedCategoria=categoria
-    this.id = categoria.id
+    this.selectedCategoria = categoria;
+    this.id = categoria.id;
     this.displayModal6 = true;
-
   }
-  actualizarcategoria(){
+  actualizarcategoria() {
     this._AvicolaService
-    .metodoPut('http://localhost:1337/categoria/' + this.id, {
-     categoria:this.selectedCategoria.categoria,
-     descripcion:this.selectedCategoria.descripcion,
-      fechaActualizacion: this.fecha,
-      nombreUsuarioActualizacion: this.user,
-   
-    })
-    .subscribe(() => {
-   
- this.showSuccess()
-    });
+      .metodoPut('http://localhost:1337/categoria/' + this.id, {
+        categoria: this.selectedCategoria.categoria,
+        descripcion: this.selectedCategoria.descripcion,
+        fechaActualizacion: this.fecha,
+        nombreUsuarioActualizacion: this.user,
+      })
+      .subscribe(() => {
+        this.showSuccess();
+      });
   }
   obtenerFormulario(formulario) {}
   ingreso() {
@@ -232,7 +229,7 @@ export class InventarioComponent implements OnInit {
   }
   ingresoactivo() {
     if (this.selectoperacional === undefined) {
-      this.showWarn3();
+      this.showWarn3()
     } else {
       if (this.selectoperacional == 1) {
         this.operacion = 'operativo';
@@ -270,7 +267,7 @@ export class InventarioComponent implements OnInit {
   showWarn4() {
     this.messageService.add({
       severity: 'warn',
-      detail: 'No se puede sacar esa catidad del inventario',
+      detail: 'No se puede sacar esa cantidad del inventario',
     });
   }
   cerrarSesion() {
