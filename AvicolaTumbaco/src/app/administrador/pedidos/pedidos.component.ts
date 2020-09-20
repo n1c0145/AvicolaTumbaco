@@ -69,7 +69,7 @@ eliminar(pedido:Factura){
 
   }
   showSuccess() {
-    this.messageService.add({severity:'success', detail: 'Pedido entreegado'});
+    this.messageService.add({severity:'success', detail: 'Pedido entregado'});
 return setTimeout('document.location.reload()',2200);
 
 

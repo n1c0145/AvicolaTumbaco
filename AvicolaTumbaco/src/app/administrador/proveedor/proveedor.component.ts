@@ -50,7 +50,6 @@ export class ProveedorComponent implements OnInit {
           }
         }
 this.showInfo()
-        console.log(this.band);
 
         if (this.band == false) {
           this._AvicolaService

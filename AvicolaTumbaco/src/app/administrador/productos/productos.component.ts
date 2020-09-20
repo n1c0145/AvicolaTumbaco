@@ -63,15 +63,17 @@ export class ProductosComponent implements OnInit {
   ingresar() {
     this._AvicolaService
       .metodoGet('http://localhost:1337/inventario?estado=activo')
-      .subscribe((resultadoParametro) => {
-        var rest = JSON.stringify(resultadoParametro);
-        for (let key in resultadoParametro) {
-          if (this.nombre === resultadoParametro[key]['nombre']) {
+      .subscribe((resultado) => {
+        var rest = JSON.stringify(resultado);
+        for (let key in resultado) {
+          if (this.nombre == resultado[key]['nombre']) {
             this.band = true;
-            this.showInfo();
+     
           }
         }
-      });
+        this.showInfo();
+        console.log(this.band);
+      
 
     if (this.band == false) {
       if (this.select2 === undefined) {
@@ -116,6 +118,7 @@ export class ProductosComponent implements OnInit {
         }
       }
     }
+  });
     return (this.band = false);
   }
   ingresar2() {
@@ -124,12 +127,13 @@ export class ProductosComponent implements OnInit {
       .subscribe((resultadoParametro) => {
         var rest = JSON.stringify(resultadoParametro);
         for (let key in resultadoParametro) {
-          if (this.nombre === resultadoParametro[key]['nombre']) {
+          if (this.nombre == resultadoParametro[key]['nombre']) {
             this.band = true;
-            this.showInfo();
+   
           }
         }
-      });
+        this.showInfo();
+     
     console.log(this.band);
     if (this.band == false) {
       if (this.selectoperacional === undefined) {
@@ -173,6 +177,7 @@ export class ProductosComponent implements OnInit {
         }
       }
     }
+  });
     return (this.band = false);
   }
   editar(producto: Inventario) {
@@ -242,7 +247,7 @@ this.showWar2()
   showInfo() {
     this.messageService.add({
       severity: 'info',
-      detail: 'Este producto ya se encuentra registro',
+      detail: 'Este producto ya se encuentra registrado',
     });
   }
   showWarn() {

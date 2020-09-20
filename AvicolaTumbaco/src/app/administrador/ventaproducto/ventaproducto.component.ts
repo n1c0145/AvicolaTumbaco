@@ -54,7 +54,7 @@ export class VentaproductoComponent implements OnInit {
         } else {
           this._AvicolaService
             .crearVenta({
-              descripcion: 'pollos',
+              descripcion: this.descripcion,
               peso: this.peso,
               precio: this.precio,
               stock: this.stock,

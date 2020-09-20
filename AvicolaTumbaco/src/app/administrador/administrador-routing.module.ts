@@ -20,38 +20,56 @@ const routes: Routes = [
   {
     path: 'perfil',
     component: PerfilComponent,
+    canActivate: [ProtectGuard]
+
   },
   {
     path: 'inventario',
     component: InventarioComponent,
+    canActivate: [ProtectGuard]
+
   },
    {
      path: 'productos',
      component: ProductosComponent,
+     canActivate: [ProtectGuard]
+
    },
   {
     path: 'usuarios',
     component: UsuariosComponent,
+    canActivate: [ProtectGuard]
+
   },
   {
     path: 'proveedor',
     component: ProveedorComponent,
+    canActivate: [ProtectGuard]
+
   },
   {
     path: 'datosempresa',
     component: DatosempresaComponent,
+    canActivate: [ProtectGuard]
+
   },
   {
     path: 'factura',
     component: FacturaComponent,
+    canActivate: [ProtectGuard]
+
   },
   {
     path: 'pedidos',
     component: PedidosComponent,
+    canActivate: [ProtectGuard]
+
   },
   {
     path: 'ventaproducto',
     component: VentaproductoComponent,
+    canActivate: [ProtectGuard]
+
   },
 ];
 
