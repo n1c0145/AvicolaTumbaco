@@ -8,3 +8,7 @@ border-radius: 15px;
 .pedido{
     text-align: center;
 }
+
+.direccion{
+    width: 80%;
+}

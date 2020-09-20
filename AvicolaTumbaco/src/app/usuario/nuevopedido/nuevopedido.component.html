@@ -120,9 +120,9 @@
         (ngSubmit)="obtenerFormulario(formularioUsuario)"
         #formularioUsuario="ngForm"
       >
-        <h4>Actualizar Direccion</h4>
+        <h3>Actualizar Dirección de entrega</h3>
         <input
-          class="input_field search_form_name"
+          class="direccion"
           type="text"
           placeholder="Direccion actualizada"
           required="required"
@@ -131,7 +131,7 @@
           value="{{ direc }}"
         />
       </form>
-      <h2>Recuerde realizar el pedido en estas fechas</h2>
+      <h3>Recuerde realizar el pedido en una fecha mayor a estas fechas:</h3>
       <div *ngFor="let user of arrayfechas">
         <div>{{ user | date }}</div>
       </div>

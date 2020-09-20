@@ -214,7 +214,7 @@ export class NuevopedidoComponent implements OnInit {
               });
           });
       } else {
-        alert('fecha no valida');
+      this.showWarn4()
       }
     }
   
@@ -228,7 +228,9 @@ showWarn2() {
 showWarn3() {
   this.messageService.add({severity:'warn',  detail: 'Aun no compra nada'});
 }
-
+showWarn4() {
+  this.messageService.add({severity:'warn',  detail: 'Fecha no valida'});
+}
 showWarn5() {
   this.messageService.add({severity:'warn',  detail: 'Escoja una fecha'});
 }

@@ -7,15 +7,16 @@ import {
 } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
+
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
-export class ProtectGuard implements CanActivate {
+export class Protect2Guard implements CanActivate {
   constructor(private readonly _router: Router) {}
   canActivate(): boolean {
     const valorLocal = JSON.parse(localStorage.getItem('log'));
 
-    if (valorLocal == 'loginAdmin') {
+    if (valorLocal == 'loginUser') {
       return true;
     } else {
       this._router.navigate(['login/']);

@@ -46,14 +46,19 @@ export class LoginComponent implements OnInit {
                   this.idd = resultadoMetodoGet[0].idTipoPerfil.id;
                   this.idstoge = resultadoMetodoGet[0].id;
                   this.user = resultadoMetodoGet[0].usuario;
-                  localStorage.clear()
+                  localStorage.clear();
                   localStorage.setItem('id', JSON.stringify(this.idstoge));
                   localStorage.setItem('user', JSON.stringify(this.user));
                   localStorage.setItem('log', JSON.stringify('login'));
                   if (this.idd == 1) {
-this.showSuccess()                  }
+                    this.showSuccess();
+                    localStorage.setItem('log', JSON.stringify('loginUser'));
+ 
+                  }
                   if (this.idd == 2) {
-                  this.showSuccess2()
+                    this.showSuccess2();
+                    localStorage.setItem('log', JSON.stringify('loginAdmin'));
+
                   }
                 });
             }
@@ -77,14 +82,20 @@ this.showSuccess()                  }
       severity: 'success',
       detail: 'Login Exitoso , Bienvenido',
     });
-    return setTimeout(()=>this._router.navigate(['usuario/iniciousuario/']),2200);
+    return setTimeout(
+      () => this._router.navigate(['usuario/iniciousuario/']),
+      2200
+    );
   }
   showSuccess2() {
     this.messageService.add({
       severity: 'success',
       detail: 'Login Exitoso , Bienvenido',
     });
-    return setTimeout(()=>this._router.navigate(['administrador/inicioadministrador/']),2200);
+    return setTimeout(
+      () => this._router.navigate(['administrador/inicioadministrador/']),
+      2200
+    );
   }
 }
 
