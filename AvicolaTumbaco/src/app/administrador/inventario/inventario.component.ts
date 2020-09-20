@@ -1,15 +1,16 @@
 import { Categoria } from './../../modelos/categoria.interface';
 import { AvicolaService } from './../../servicios/avicola.service';
-import { Component, OnInit } from '@angular/core';
+import { ANALYZE_FOR_ENTRY_COMPONENTS, Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Inventario } from '../../modelos/inventario.interface';
-import {MessageService} from 'primeng/api';
+import { MessageService } from 'primeng/api';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-inventario',
   templateUrl: './inventario.component.html',
   styleUrls: ['./inventario.component.css'],
-  providers: [MessageService]
+  providers: [MessageService],
 })
 export class InventarioComponent implements OnInit {
   val;
@@ -91,6 +92,7 @@ export class InventarioComponent implements OnInit {
         this.categorias = data;
       });
   }
+
   editar(cat1: Inventario) {
     this.editOn = true;
     this.displayModal = true;
@@ -105,6 +107,8 @@ export class InventarioComponent implements OnInit {
     this.id = cat2.id;
     this.stock = cat2.stock;
     this.desabastecimiento = cat2.desabastecimiento;
+    console.log(this.desabastecimiento);
+    
   }
   editar3(cat3: Inventario) {
     this.editOn = true;
@@ -113,6 +117,8 @@ export class InventarioComponent implements OnInit {
     this.id = cat3.id;
     this.stock = cat3.stock;
     this.desabastecimiento = cat3.desabastecimiento;
+    console.log(this.desabastecimiento);
+
   }
   editar4(cat4: Inventario) {
     this.editOn = true;
@@ -121,6 +127,8 @@ export class InventarioComponent implements OnInit {
     this.id = cat4.id;
     this.stock = cat4.stock;
     this.desabastecimiento = cat4.desabastecimiento;
+    console.log(this.desabastecimiento);
+
   }
   editar5(cat5: Inventario) {
     this.editOn = true;
@@ -129,12 +137,16 @@ export class InventarioComponent implements OnInit {
     this.id = cat5.id;
     this.stock = cat5.stock;
     this.desabastecimiento = cat5.desabastecimiento;
+    console.log(this.desabastecimiento);
+
   }
   editarcategoria(categoria: Categoria) {
     this.editOn = true;
     this.selectedCategoria = categoria;
     this.id = categoria.id;
     this.displayModal6 = true;
+    console.log(this.desabastecimiento);
+
   }
   actualizarcategoria() {
     this._AvicolaService
@@ -145,20 +157,23 @@ export class InventarioComponent implements OnInit {
         nombreUsuarioActualizacion: this.user,
       })
       .subscribe(() => {
-        // this.showSuccess();
+        this.showSucces();
       });
   }
   obtenerFormulario(formulario) {}
+
   ingreso() {
     if (this.val === undefined) {
-      // this.showWarn();
+      this.showInfo3();
     } else {
       this.cantidad = this.stock + this.val;
 
       if (this.cantidad < 0) {
-        // this.showWarn4();
+        this.showInfo();
       } else {
         if (this.cantidad <= this.desabastecimiento) {
+          console.log(this.cantidad);
+          
           this.displayBasic = true;
         }
         this._AvicolaService
@@ -168,7 +183,7 @@ export class InventarioComponent implements OnInit {
             nombreUsuarioActualizacion: this.user,
           })
           .subscribe((producto) => {
-            // this.showSuccess();
+            this.showSucces();
             this.displayModal2 = false;
             this.displayModal4 = false;
             this.displayModal5 = false;
@@ -180,14 +195,15 @@ export class InventarioComponent implements OnInit {
   ingreso2() {
     if (this.unidad == 'val1') {
       if (this.val === undefined) {
-        // this.showWarn();
+        this.showInfo3();
       } else {
         this.cantidad = this.stock + this.val;
         if (this.cantidad < 0) {
-          //  this.showWarn4();
+          this.showInfo();
         } else {
           if (this.cantidad <= this.desabastecimiento) {
             this.displayBasic = true;
+            alert('ffff')
           }
           this._AvicolaService
             .metodoPut('http://localhost:1337/inventario/' + this.id, {
@@ -196,17 +212,17 @@ export class InventarioComponent implements OnInit {
               nombreUsuarioActualizacion: this.user,
             })
             .subscribe((producto) => {
-              // this.showSuccess();
+              this.showSucces();
             });
         }
       }
     } else if (this.unidad == 'val2') {
       if (this.val === undefined) {
-        //  this.showWarn();
+        this.showInfo3();
       } else {
         this.cantidad = this.stock + this.val / 100;
         if (this.cantidad < 0) {
-          //  this.showWarn4();
+          this.showInfo();
         } else {
           if (this.cantidad <= this.desabastecimiento) {
             this.displayBasic = true;
@@ -218,18 +234,18 @@ export class InventarioComponent implements OnInit {
               nombreUsuarioActualizacion: this.user,
             })
             .subscribe((producto) => {
-              //  this.showSuccess();
+              this.showSucces();
               this.displayModal3 = false;
             });
         }
       }
     } else {
-      // this.showWarn2();
+      this.showInfo4();
     }
   }
   ingresoactivo() {
     if (this.selectoperacional === undefined) {
-     this.showWarn3()
+      this.showInfo2();
     } else {
       if (this.selectoperacional == 1) {
         this.operacion = 'operativo';
@@ -243,18 +259,43 @@ export class InventarioComponent implements OnInit {
           nombreUsuarioActualizacion: this.user,
         })
         .subscribe((producto) => {
-      this.showSuccess();
+          this.showSucces();
 
           this.displayModal = false;
         });
     }
   }
-  showSuccess() {
-    this.messageService.add({severity:'success', summary: 'Success', detail: 'Actualizado'});
-}
-showWarn3() {
-  this.messageService.add({ severity: 'warn', detail: 'Escoja un estado' });
-}
+  showSucces() {
+    Swal.fire({
+      title: 'Actualizado',
+      icon: 'success',
+    });
+    return setTimeout('document.location.reload()', 2200);
+  }
+  showInfo() {
+    Swal.fire({
+      title: 'No se puede sacar esa cantidad del inventario',
+      icon: 'error',
+    });
+  }
+  showInfo2() {
+    Swal.fire({
+      title: 'Escoja un estado',
+      icon: 'info',
+    });
+  }
+  showInfo3() {
+    Swal.fire({
+      title: 'Ingrese un valor',
+      icon: 'info',
+    });
+  }
+  showInfo4() {
+    Swal.fire({
+      title: 'Escoja una unidad',
+      icon: 'info',
+    });
+  }
   cerrarSesion() {
     this._router.navigate(['inicio/']);
     localStorage.clear();

@@ -238,8 +238,8 @@
         <tr *ngFor="let user of cat3 | filtro2: filterPost">
           <td>{{ user.nombre }}</td>
           <td>{{ user.descripcion }}</td>
-          <td>{{ user.stock }}</td>
-          Quintales
+          <td>{{ user.stock }}  Quintales</td>
+         
           <button type="button" class="btn btn-warning" (click)="editar3(user)">
             Editar Stock
           </button>
@@ -507,7 +507,4 @@
 </p-dialog>
 
 
-<p-toast class="hola"></p-toast>
 
-
-<button type="button" pButton pRipple (click)="showSuccess()" label="Success" class="p-button-success"></button>
