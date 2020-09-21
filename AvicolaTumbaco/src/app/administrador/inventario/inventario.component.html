@@ -238,7 +238,7 @@
         <tr *ngFor="let user of cat3 | filtro2: filterPost">
           <td>{{ user.nombre }}</td>
           <td>{{ user.descripcion }}</td>
-          <td>{{ user.stock }}  Quintales</td>
+          <td>{{ user.stock | number : '1.0-2' }}  Quintales</td>
          
           <button type="button" class="btn btn-warning" (click)="editar3(user)">
             Editar Stock
@@ -496,15 +496,7 @@
   </mat-tab>
 </mat-tab-group>
 
-<p-dialog
-  header="Desabastecimiento"
-  [(visible)]="displayBasic"
-  [style]="{ width: '50vw' }"
-  [baseZIndex]="10000"
->
-  <div class="texto">Hay un Desabastecimiento</div>
-  <div class="texto">Porfavor contacte a su proveedor</div>
-</p-dialog>
+
 
 
 

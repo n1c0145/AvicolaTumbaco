@@ -1,6 +1,6 @@
 import { Categoria } from './../../modelos/categoria.interface';
 import { AvicolaService } from './../../servicios/avicola.service';
-import { ANALYZE_FOR_ENTRY_COMPONENTS, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Inventario } from '../../modelos/inventario.interface';
@@ -40,7 +40,7 @@ export class InventarioComponent implements OnInit {
   displayModal4: boolean;
   displayModal5: boolean;
   displayModal6: boolean;
-  displayBasic: boolean;
+  displayDesabastecimiento:boolean;
   categorias;
   categoria: Categoria[];
   constructor(
@@ -107,8 +107,6 @@ export class InventarioComponent implements OnInit {
     this.id = cat2.id;
     this.stock = cat2.stock;
     this.desabastecimiento = cat2.desabastecimiento;
-    console.log(this.desabastecimiento);
-    
   }
   editar3(cat3: Inventario) {
     this.editOn = true;
@@ -117,7 +115,6 @@ export class InventarioComponent implements OnInit {
     this.id = cat3.id;
     this.stock = cat3.stock;
     this.desabastecimiento = cat3.desabastecimiento;
-    console.log(this.desabastecimiento);
 
   }
   editar4(cat4: Inventario) {
@@ -127,7 +124,6 @@ export class InventarioComponent implements OnInit {
     this.id = cat4.id;
     this.stock = cat4.stock;
     this.desabastecimiento = cat4.desabastecimiento;
-    console.log(this.desabastecimiento);
 
   }
   editar5(cat5: Inventario) {
@@ -137,7 +133,6 @@ export class InventarioComponent implements OnInit {
     this.id = cat5.id;
     this.stock = cat5.stock;
     this.desabastecimiento = cat5.desabastecimiento;
-    console.log(this.desabastecimiento);
 
   }
   editarcategoria(categoria: Categoria) {
@@ -145,7 +140,6 @@ export class InventarioComponent implements OnInit {
     this.selectedCategoria = categoria;
     this.id = categoria.id;
     this.displayModal6 = true;
-    console.log(this.desabastecimiento);
 
   }
   actualizarcategoria() {
@@ -171,24 +165,25 @@ export class InventarioComponent implements OnInit {
       if (this.cantidad < 0) {
         this.showInfo();
       } else {
-        if (this.cantidad <= this.desabastecimiento) {
-          console.log(this.cantidad);
-          
-          this.displayBasic = true;
-        }
-        this._AvicolaService
-          .metodoPut('http://localhost:1337/inventario/' + this.id, {
+    
+         this._AvicolaService
+           .metodoPut('http://localhost:1337/inventario/' + this.id, {
             stock: this.cantidad,
             fechaActualizacion: this.fecha,
             nombreUsuarioActualizacion: this.user,
           })
           .subscribe((producto) => {
-            this.showSucces();
             this.displayModal2 = false;
             this.displayModal4 = false;
             this.displayModal5 = false;
           });
       }
+      if (this.cantidad <= this.desabastecimiento) {
+this.showError()
+        }else{
+            this.showSucces();
+
+        }
     }
   }
 
@@ -202,8 +197,7 @@ export class InventarioComponent implements OnInit {
           this.showInfo();
         } else {
           if (this.cantidad <= this.desabastecimiento) {
-            this.displayBasic = true;
-            alert('ffff')
+ 
           }
           this._AvicolaService
             .metodoPut('http://localhost:1337/inventario/' + this.id, {
@@ -212,7 +206,12 @@ export class InventarioComponent implements OnInit {
               nombreUsuarioActualizacion: this.user,
             })
             .subscribe((producto) => {
-              this.showSucces();
+              if (this.cantidad <= this.desabastecimiento) {
+                this.showError()
+                        }else{
+                            this.showSucces();
+                
+                        }
             });
         }
       }
@@ -225,7 +224,6 @@ export class InventarioComponent implements OnInit {
           this.showInfo();
         } else {
           if (this.cantidad <= this.desabastecimiento) {
-            this.displayBasic = true;
           }
           this._AvicolaService
             .metodoPut('http://localhost:1337/inventario/' + this.id, {
@@ -234,8 +232,12 @@ export class InventarioComponent implements OnInit {
               nombreUsuarioActualizacion: this.user,
             })
             .subscribe((producto) => {
-              this.showSucces();
-              this.displayModal3 = false;
+              if (this.cantidad <= this.desabastecimiento) {
+                this.showError()
+                        }else{
+                            this.showSucces();
+                
+                        }
             });
         }
       }
@@ -264,6 +266,19 @@ export class InventarioComponent implements OnInit {
           this.displayModal = false;
         });
     }
+  }
+  showError(){
+    Swal.fire({
+      title: 'Desabastecimiento',
+      html:'<b>Hay un desabastecimiento del producto , porfavor contacte a su proveedor de manera inmediata.</b>',
+      icon: 'error',
+      confirmButtonText: `Entendido`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+       location.reload()
+      }
+    })
+    
   }
   showSucces() {
     Swal.fire({
