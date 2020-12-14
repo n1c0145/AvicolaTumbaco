@@ -47,9 +47,10 @@ export class ProveedorComponent implements OnInit {
         for (let key in resultado) {
           if (this.nombre == resultado[key]['nombre']) {
             this.band = true;
+            this.showInfo()
           }
         }
-this.showInfo()
+
 
         if (this.band == false) {
           this._AvicolaService

@@ -99,7 +99,7 @@
       
         <td>{{ user.fechaEmision | date}}</td>
         <td>{{ user.idDetalleFactura.fechaEntrega | date}}</td>
-        <td>{{ user.idRegistro.telefono }}</td>
+        <td>0{{ user.idRegistro.telefono }}</td>
         <td>{{ user.idDetalleFactura.total}}</td>
 
 <button (click)="cambiar(user)" class="btn btn-warning">Cambiar a entregado</button>
@@ -137,7 +137,7 @@
       
         <td>{{ user.fechaEmision | date}}</td>
         <td>{{ user.idDetalleFactura.fechaEntrega | date}}</td>
-        <td>{{ user.idRegistro.telefono }}</td>
+        <td>0{{ user.idRegistro.telefono }}</td>
         <td>{{ user.idDetalleFactura.total}}</td>
 
 <button (click)="eliminar(user)" class="btn btn-danger">Eliminar</button>

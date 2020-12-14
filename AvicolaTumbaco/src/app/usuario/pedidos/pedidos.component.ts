@@ -25,6 +25,7 @@ export class PedidosComponent implements OnInit {
       .metodoGet('http://localhost:1337/factura?estado=activo&&estado=entregado&&idRegistro=' + this.id)
       .subscribe((data) => {
         this.facturas = data;
+        console.log(this.facturas);
         
       });
   }

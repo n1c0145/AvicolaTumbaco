@@ -68,10 +68,10 @@ export class ProductosComponent implements OnInit {
         for (let key in resultado) {
           if (this.nombre == resultado[key]['nombre']) {
             this.band = true;
-     
+            this.showInfo();
+
           }
         }
-        this.showInfo();
         console.log(this.band);
       
 
@@ -129,10 +129,10 @@ export class ProductosComponent implements OnInit {
         for (let key in resultadoParametro) {
           if (this.nombre == resultadoParametro[key]['nombre']) {
             this.band = true;
-   
+            this.showInfo();
+
           }
         }
-        this.showInfo();
      
     console.log(this.band);
     if (this.band == false) {
@@ -156,23 +156,23 @@ export class ProductosComponent implements OnInit {
                 this.operacion = 'no operativo';
               }
 
-              this._AvicolaService
-                .crearProducto({
-                  nombre: this.nombre,
-                  descripcion: this.descripcion,
-                  operativo: this.operacion,
-                  desabastecimiento: -1,
-                  estado: 'activo',
-                  fechaCreacion: this.fecha,
-                  nombreUsuarioCreacion: this.user,
-                  fechaActualizacion: this.fecha,
-                  nombreUsuarioActualizacion: this.user,
-                  idCategoria: 1,
-                  idProveedor: this.idproveedor,
-                })
-                .subscribe((registroCreado) => {
-                  this.showSuccess();
-                });
+               this._AvicolaService
+                 .crearProducto({
+                   nombre: this.nombre,
+                   descripcion: this.descripcion,
+                   operativo: this.operacion,
+                   desabastecimiento: -1,
+                   estado: 'activo',
+                   fechaCreacion: this.fecha,
+                   nombreUsuarioCreacion: this.user,
+                   fechaActualizacion: this.fecha,
+                   nombreUsuarioActualizacion: this.user,
+                   idCategoria: 1,
+                   idProveedor: this.idproveedor,
+                 })
+                 .subscribe((registroCreado) => {
+                   this.showSuccess();
+                 });
             });
         }
       }
@@ -209,13 +209,13 @@ this.showWar2()
             this.idproveedor = data3[0].id;
             this._AvicolaService
               .metodoPut('http://localhost:1337/inventario/' + this.id, {
-                nombre: this.selectedProducto.nombre,
-                descripcion: this.selectedProducto.descripcion,
-                desabastecimiento:this.selectedProducto.desabastecimiento,
-                fechaActualizacion: this.fecha,
-                nombreUsuarioActualizacion: this.user,
-                idCategoria: this.idcategoria,
-                idProveedor: this.idproveedor,
+                 nombre: this.selectedProducto.nombre,
+                 descripcion: this.selectedProducto.descripcion,
+                 desabastecimiento:this.selectedProducto.desabastecimiento,
+                 fechaActualizacion: this.fecha,
+                 nombreUsuarioActualizacion: this.user,
+                 idCategoria: this.idcategoria,
+                 idProveedor: this.idproveedor,
               })
               .subscribe((producto) => {
                 this.showSuccess2();
