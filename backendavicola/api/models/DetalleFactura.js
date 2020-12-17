@@ -1,5 +1,5 @@
 /**
- * Proveedor.js
+ * DetalleFactura.js
  *
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
@@ -8,16 +8,31 @@
 module.exports = {
 
   attributes: {
-
-    nombre: {
-      type: "string",
+    descripcionFactura: {
+      type: "json",
     },
-    descripcion: {
-      type: "string",
+    peso: {
+      type: "json",
     },
-    telefono: {
+    precioPorLibra: {
+      type: "json",
+    },
+    cantidad: {
+      type: "json",
+    },
+    subtotalPorPedido: {
+      type: "json",
+    },
+    subtotal: {
       type: "number",
     },
+    total: {
+      type: "number",
+    },
+    fechaEntrega: {
+      type: "string",
+    },
+
     estado: {
       type: "string",
     },
@@ -33,11 +48,10 @@ module.exports = {
     nombreUsuarioActualizacion: {
       type: "string",
     },
-    inventario: {
-      collection: "inventario",
-      via: "idProveedor",
-    },
-  
+    factura:{
+      collection:'factura',
+      via:'idDetalleFactura'
+    }
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝

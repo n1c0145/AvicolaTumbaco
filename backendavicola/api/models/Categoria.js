@@ -1,5 +1,5 @@
 /**
- * Inventario.js
+ * Categoria.js
  *
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
@@ -8,21 +8,11 @@
 module.exports = {
 
   attributes: {
-    
-    nombre:{
-      type:'string'
+    categoria: {
+      type: "string",
     },
-    descripcion:{
-      type:'string'
-    },
-    stock:{
-      type:'number'
-    },
-    desabastecimiento:{
-      type:'number'
-    },
-    operativo:{
-      type: "string"
+    descripcion: {
+      type: "string",
     },
     estado: {
       type: "string",
@@ -39,11 +29,9 @@ module.exports = {
     nombreUsuarioActualizacion: {
       type: "string",
     },
-    idCategoria: {
-      model: "Categoria",
-    },
-    idProveedor: {
-      model: "Proveedor",
+    inventario: {
+      collection: "inventario",
+      via: "idCategoria",
     },
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗

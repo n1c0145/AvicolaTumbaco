@@ -46,7 +46,10 @@ export class ProductosComponent implements OnInit {
     this._AvicolaService
       .metodoGet('http://localhost:1337/inventario?estado=activo')
       .subscribe((data) => {
+     
+        
         this.productos = data;
+        console.log(this.productos);
       });
     this._AvicolaService
       .metodoGet('http://localhost:1337/proveedor?estado=activo')
